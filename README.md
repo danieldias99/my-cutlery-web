@@ -22,3 +22,7 @@ A distribuição de requisitos/funcionalidades ao longo do período de desenvolv
 
 | Aluno Nr.	| Sprint A | Sprint B | Sprint C | Sprint D |
 |------------|----------|----------|----------|---------|
+| **1161071** | [UC05](/docs/1161071/UC05), [UC12](/docs/1161071/UC12), [UC13](/docs/1161071/UC13) | | | |
+| **1170785** | [UC03](/docs/1170785/UC03), [UC06](/docs/1170785/UC06), [UC08](/docs/1170785/UC08), [UC09](/docs/1170785/UC09) | | | |
+| **1170790** | [UC01](/docs/1170790/UC01), [UC04](/docs/1170790/UC04), [UC07](/docs/1170790/UC07) | | | |
+| **1150503** | [UC02](/docs/1150503/UC02), [UC10](/docs/1150503/UC10), [UC11](/docs/1150503/UC11) | | | |

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using LAPR5_3DD_019.Model.ClassesDeDominio;
 
 namespace LAPR5_3DD_019
 {
@@ -25,6 +27,9 @@ namespace LAPR5_3DD_019
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*services.AddDbContext<LAPR5DBContext>(opt =>
+               opt.UseInMemoryDatabase("LAPR5_DB"));
+            services.AddMvc().SetCompatibilityVersion()*/
             services.AddControllers();
         }
 

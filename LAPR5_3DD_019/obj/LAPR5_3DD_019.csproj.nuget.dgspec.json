@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj": {}
+    "C:\\Users\\Daniel\\Desktop\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
   },
   "projects": {
-    "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj": {
+    "C:\\Users\\Daniel\\Desktop\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
+        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
         "projectName": "LAPR5_3DD_019",
-        "projectPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
-        "packagesPath": "/Users/goncalo/.nuget/packages/",
-        "outputPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/",
+        "projectPath": "C:\\Users\\Daniel\\Desktop\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Daniel\\Desktop\\Projeto\\LAPR5_3DD_019\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/goncalo/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp2.2"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "netcoreapp2.2": {
             "projectReferences": {}
           }
         },
@@ -37,44 +37,31 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp2.2": {
           "dependencies": {
-            "Microsoft.EntityFrameworkCore.Design": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.2.0, )",
+              "autoReferenced": true
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.2.0, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "Microsoft.EntityFrameworkCore.Tools.DotNet": {
-              "target": "Package",
-              "version": "[2.0.3, )"
+              "version": "[2.2.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

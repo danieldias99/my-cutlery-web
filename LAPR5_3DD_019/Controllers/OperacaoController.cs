@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using LAPR5_3DD_019.Models.ClassesDeDominio;
 using LAPR5_3DD_019.Models;
-using LAPR5_3DD_019.Models.ValueObjects;
+using LAPR5_3DD_019.Models.DTO;
+using LAPR5_3DD_019.Models.Repositorios;
 
 namespace LAPR5_3DD_019.Controllers
 {
@@ -13,11 +11,12 @@ namespace LAPR5_3DD_019.Controllers
     [ApiController]
     public class OperacaoController : ControllerBase
     {
-        private readonly LAPR5DBContext _context;
+        public OperacaoRepositorio repositorio;
 
         public OperacaoController(LAPR5DBContext context)
         {
-            _context = context;
+            repositorio = new OperacaoRepositorio(context);
+            /*_context = context;
 
             if (_context.Operacoes.Count() == 0)
             {
@@ -26,30 +25,28 @@ namespace LAPR5_3DD_019.Controllers
                 Operacao op = new Operacao { descricaoOperacao = new Descricao {Id = "OperacaoTeste"}, duracaoOperacao = new DuracaoOperacao {hora=1, min=50, seg=5} };
                 _context.Operacoes.Add(op);
                 _context.SaveChanges();
-            }
+            }*/
         }
 
         // GET: api/Operacao/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Operacao>> GetOperacao(long id)
+        public async Task<ActionResult<OperacaoDTO>> GetOperacao(long id)
         {
-            var operacao = await _context.Operacoes.FindAsync(id);
+            var operacaoDTO = await repositorio.getOperacaoById(id);
 
-            if (operacao == null)
+            if (operacaoDTO == null)
             {
                 return NotFound();
             }
 
-            return operacao;
+            return operacaoDTO;
         }
 
         // POST: api/Operacao
         [HttpPost]
         public async Task<ActionResult<Operacao>> PostOperacao(Operacao newOperacao)
         {
-            _context.Operacoes.Add(newOperacao);
-            await _context.SaveChangesAsync();
-
+            repositorio.addOperacao(newOperacao);
             return CreatedAtAction(nameof(GetOperacao), new { id = newOperacao.Id }, newOperacao);
         }
     }

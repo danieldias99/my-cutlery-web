@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LAPR5_3DD_019.Migrations
 {
     [DbContext(typeof(LAPR5DBContext))]
-    [Migration("20191022155435_mi2")]
-    partial class mi2
+    [Migration("20191023093602_migrations")]
+    partial class migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

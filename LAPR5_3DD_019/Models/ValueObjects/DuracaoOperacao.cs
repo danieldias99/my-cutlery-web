@@ -12,5 +12,9 @@ namespace LAPR5_3DD_019.Models.ValueObjects
         public DuracaoOperacao(){}
 
         public DuracaoOperacao(int hora, int min, int sec){this.hora=hora; this.min=min; this.seg=seg;}
+
+        public string toString(){
+            return hora.ToString() + ":" + min.ToString() + ":" + seg.ToString();
+        }
     }
 }

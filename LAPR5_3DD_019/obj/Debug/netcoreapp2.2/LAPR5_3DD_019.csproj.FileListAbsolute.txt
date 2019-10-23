@@ -12,3 +12,17 @@ C:\Users\Daniel\Desktop\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_
 C:\Users\Daniel\Desktop\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
 C:\Users\Daniel\Desktop\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
 C:\Users\Daniel\Desktop\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cs
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfoInputs.cache
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+c:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\Rep\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb

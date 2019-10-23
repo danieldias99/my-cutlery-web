@@ -3,14 +3,16 @@ using LAPR5_3DD_019.Models.ClassesDeDominio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LAPR5_3DD_019.Migrations
 {
     [DbContext(typeof(LAPR5DBContext))]
-    partial class LAPR5DBContextModelSnapshot : ModelSnapshot
+    [Migration("20191023141333_migrationslapr")]
+    partial class migrationslapr
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

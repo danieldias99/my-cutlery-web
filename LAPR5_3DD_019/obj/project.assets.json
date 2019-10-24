@@ -12074,23 +12074,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/goncalo/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\Rep\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectUniqueName": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\Rep\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\Rep\\LAPR5_3DD_019\\obj\\",
+      "projectPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
+      "packagesPath": "/Users/goncalo/.nuget/packages/",
+      "outputPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/goncalo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12131,10 +12131,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

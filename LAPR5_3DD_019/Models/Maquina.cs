@@ -1,5 +1,6 @@
 using LAPR5_3DD_019.Models.Shared;
 using LAPR5_3DD_019.Models.ValueObjects;
+using LAPR5_3DD_019.Models.DTO;
 
 namespace LAPR5_3DD_019.Models {
 
@@ -10,9 +11,25 @@ namespace LAPR5_3DD_019.Models {
 
     public Maquina() {}
 
-    /*public Maquina(Descricao descricaoMaquina) {
-      this.descricaoMaquina = descricaoMaquina;
-      //this.tipoMaquina = tipoMaquina;
-    }  */  
+    public Maquina(NomeMaquina nomeMaquina, PosicaoNaLinhaProducao posicaoLinhaProducao, TipoMaquina tipoMaquina) {
+      this.nomeMaquina = nomeMaquina;
+      this.tipoMaquina = tipoMaquina;
+      this.posicaoLinhaProducao = posicaoLinhaProducao;
+    }
+
+    public MaquinaDTO toDTO() {
+      return new MaquinaDTO(nomeMaquina, posicaoLinhaProducao, tipoMaquina);
+    }
+
+    /* pm.test("Content-Type is JSON", function (){
+    pm.response.headers["Content-Type"] == "application/json"
+    });
+
+    var jsonData = pm.response.json();
+    pm.test("Status code is 201 - Created", function(){
+      pm.expect(jsonData.statusCode) == 201;
+      });
+
+      pm.globals.set("ID_OperacaoTest", jsonData.id); */
   }
 }

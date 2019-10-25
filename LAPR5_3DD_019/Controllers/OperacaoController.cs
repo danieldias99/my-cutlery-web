@@ -13,7 +13,7 @@ namespace LAPR5_3DD_019.Controllers
     {
         public OperacaoRepositorio repositorio;
 
-        public OperacaoController(LAPR5DBContext context)
+        public OperacaoController(MDFContext context)
         {
             repositorio = new OperacaoRepositorio(context);
             /*_context = context;

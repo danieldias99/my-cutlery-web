@@ -45,6 +45,22 @@ c:/Users/Daniel/Desktop/Universidade/3oAno/1oSemestre/LAPR5/Projeto/Rep/LAPR5_3D
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/Debug/netcoreapp2.2/LAPR5_3DD_019.dll
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/Debug/netcoreapp2.2/LAPR5_3DD_019.pdb
 >>>>>>> ee12379b1ea19a0d0022a6585a26cc15566914db
+<<<<<<< HEAD
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cs
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfoInputs.cache
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache
+=======
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_10.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_10_insider.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_2008_r2.json
@@ -79,3 +95,4 @@ c:/Users/Daniel/Desktop/Universidade/3oAno/1oSemestre/LAPR5/Projeto/Rep/LAPR5_3D
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_1903_docker.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider_docker.json
+>>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b

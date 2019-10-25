@@ -4,9 +4,9 @@ using LAPR5_3DD_019.Models;
 
 namespace LAPR5_3DD_019.Models.ClassesDeDominio
 {
-    public class LAPR5DBContext : DbContext
+    public class MDFContext : DbContext
     {
-        public LAPR5DBContext(DbContextOptions<LAPR5DBContext> options) : base(options) { }
+        public MDFContext(DbContextOptions<MDFContext> options) : base(options) { }
 
         public DbSet<Operacao> Operacoes { get; set; }
         public DbSet<TipoMaquina> TiposMaquina { get; set; }

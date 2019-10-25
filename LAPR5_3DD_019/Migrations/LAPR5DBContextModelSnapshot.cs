@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LAPR5_3DD_019.Migrations
 {
-    [DbContext(typeof(LAPR5DBContext))]
+    [DbContext(typeof(MDFContext))]
     partial class LAPR5DBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

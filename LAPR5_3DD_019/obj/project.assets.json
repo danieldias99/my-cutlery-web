@@ -12074,30 +12074,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
+    "C:\\Users\\mAniaK\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectUniqueName": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
+      "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\mAniaK\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12145,13 +12143,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

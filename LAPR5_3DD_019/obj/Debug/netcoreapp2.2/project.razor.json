@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "FilePath": "c:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-=======
-  "FilePath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
->>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b
+  "FilePath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -2960,7 +2956,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 703
+    "CSharpLanguageVersion": 800
   },
   "RootNamespace": "LAPR5_3DD_019",
   "Documents": [],

@@ -8,9 +8,9 @@ namespace LAPR5_3DD_019.Models.Repositorios{
 
     public class MaquinaRepositorio{
 
-        private readonly LAPR5DBContext _context;
+        private readonly MDFContext _context;
 
-        public MaquinaRepositorio(LAPR5DBContext context){
+        public MaquinaRepositorio(MDFContext context){
             _context = context;
         }
 

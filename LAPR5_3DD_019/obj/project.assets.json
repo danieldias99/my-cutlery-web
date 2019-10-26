@@ -12074,41 +12074,24 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\PedroMiura\\.nuget\\packages\\": {},
+    "C:\\Users\\Daniel\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
-=======
-    "/Users/goncalo/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
->>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "packagesPath": "C:\\Users\\PedroMiura\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
-=======
-      "projectUniqueName": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
-      "projectName": "LAPR5_3DD_019",
-      "projectPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
-      "packagesPath": "/Users/goncalo/.nuget/packages/",
-      "outputPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/",
->>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b
+      "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\PedroMiura\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
-        "/Users/goncalo/.nuget/NuGet/NuGet.Config"
->>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12159,8 +12142,16 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

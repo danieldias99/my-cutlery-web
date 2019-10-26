@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +29,7 @@ namespace LAPR5_3DD_019
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<LAPR5DBContext>(opt => opt.UseSqlServer("Server=localhost;Database=master;Trusted_Connection=True;"));
-            services.AddDbContext<MDFContext>(opt => opt.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=ME;Trusted_Connection=True;"));
+            services.AddDbContext<MDFContext>(opt => opt.UseSqlServer("Server=localhost\\SQLEXPRESS01;Database=ME;Trusted_Connection=True;"));
             
             //services.AddDbContext<LAPR5DBContext>(opt => opt.UseInMemoryDatabase("todoList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

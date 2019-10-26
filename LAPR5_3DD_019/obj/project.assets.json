@@ -12074,46 +12074,28 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
-    "C:\\Users\\Mata\\.nuget\\packages\\": {},
-=======
     "C:\\Users\\mAniaK\\.nuget\\packages\\": {},
->>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "packagesPath": "C:\\Users\\Mata\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\obj\\",
-=======
       "projectUniqueName": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
       "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
->>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
-        "C:\\Users\\Mata\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-=======
         "C:\\Users\\mAniaK\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -12152,12 +12134,7 @@
           "net461"
         ],
         "assetTargetFallback": true,
-<<<<<<< HEAD
         "warn": true
-=======
-        "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
->>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
       }
     }
   }

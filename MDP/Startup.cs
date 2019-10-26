@@ -10,11 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using LAPR5_3DD_019.Models.ClassesDeDominio;
+using MDP.Models.ClassesDeDominio;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace LAPR5_3DD_019
+namespace MDP
 {
     public class Startup
     {
@@ -28,16 +27,8 @@ namespace LAPR5_3DD_019
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<LAPR5DBContext>(opt => opt.UseSqlServer("Server=localhost;Database=master;Trusted_Connection=True;"));
-            services.AddDbContext<MDFContext>(opt => opt.UseSqlServer("Server=localhost\\MSSQLSERVER01;Database=ME;Trusted_Connection=True;"));
-            
-            //services.AddDbContext<LAPR5DBContext>(opt => opt.UseInMemoryDatabase("todoList"));
+            services.AddDbContext<MDPContext>(opt => opt.UseSqlServer("Server=localhost\\SQLEXPRESS02;Database=ME;Trusted_Connection=True;"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddMvc()
-                .AddJsonOptions(opt => {
-                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

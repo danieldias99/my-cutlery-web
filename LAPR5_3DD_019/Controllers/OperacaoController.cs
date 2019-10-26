@@ -13,19 +13,9 @@ namespace LAPR5_3DD_019.Controllers
     {
         public OperacaoRepositorio repositorio;
 
-        public OperacaoController(LAPR5DBContext context)
+        public OperacaoController(MDFContext context)
         {
             repositorio = new OperacaoRepositorio(context);
-            /*_context = context;
-
-            if (_context.Operacoes.Count() == 0)
-            {
-                // Create a new Operacao if collection is empty,
-                // which means you can't delete all Operacoes.
-                Operacao op = new Operacao { descricaoOperacao = new Descricao {Id = "OperacaoTeste"}, duracaoOperacao = new DuracaoOperacao {hora=1, min=50, seg=5} };
-                _context.Operacoes.Add(op);
-                _context.SaveChanges();
-            }*/
         }
 
         // GET: api/Operacao/5
@@ -33,12 +23,10 @@ namespace LAPR5_3DD_019.Controllers
         public async Task<ActionResult<OperacaoDTO>> GetOperacao(long id)
         {
             var operacaoDTO = await repositorio.getOperacaoById(id);
-
             if (operacaoDTO == null)
             {
                 return NotFound();
             }
-
             return operacaoDTO;
         }
 

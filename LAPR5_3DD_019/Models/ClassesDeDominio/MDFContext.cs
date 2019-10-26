@@ -1,15 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using LAPR5_3DD_019.Models.ValueObjects;
 using LAPR5_3DD_019.Models;
+using LAPR5_3DD_019.Associations;
 
 namespace LAPR5_3DD_019.Models.ClassesDeDominio
 {
-    public class LAPR5DBContext : DbContext
+    public class MDFContext : DbContext
     {
-        public LAPR5DBContext(DbContextOptions<LAPR5DBContext> options) : base(options) { }
+        public MDFContext(DbContextOptions<MDFContext> options) : base(options) { }
 
         public DbSet<Operacao> Operacoes { get; set; }
         public DbSet<TipoMaquina> TiposMaquina { get; set; }
+        public DbSet<TipoMaquinaOperacao> TipoMaquinaOperacao { get; set; }
         public DbSet<Maquina> Maquinas { get; set; }
         public DbSet<LinhaProducao> LinhasProducao { get; set; }
         public DbSet<Produto> Produtos { get; set; }
@@ -22,11 +24,24 @@ namespace LAPR5_3DD_019.Models.ClassesDeDominio
             modelBuilder.Entity<Operacao>().OwnsOne(j => j.descricaoOperacao);
             modelBuilder.Entity<Operacao>().OwnsOne(j => j.duracaoOperacao);
 
+
             //Tipo Maquina
             modelBuilder.Entity<TipoMaquina>().HasKey(a => a.Id);
-            modelBuilder.Entity<TipoMaquina>().Property(a => a.Id).HasConversion(v => v.id_TipoMaquina, v => new ID_TipoMaquina(v));
+            modelBuilder.Entity<TipoMaquina>().Property(a => a.Id).ValueGeneratedNever();
 
             modelBuilder.Entity<TipoMaquina>().OwnsOne(a => a.descricaoTipoMaquina);
+
+            //Tipo Maquina Operacao
+            modelBuilder.Entity<TipoMaquinaOperacao>()
+                .HasKey(tmo => new { tmo.id_operacao, tmo.id_tipoMaquina });
+            modelBuilder.Entity<TipoMaquinaOperacao>()
+                .HasOne(tmo => tmo.operacao)
+                .WithMany(b => b.tiposMaquinas)
+                .HasForeignKey(tmo => tmo.id_operacao);
+            modelBuilder.Entity<TipoMaquinaOperacao>()
+                .HasOne(tmo => tmo.tipoMaquina)
+                .WithMany(c => c.operacoesMaquina)
+                .HasForeignKey(tmo => tmo.id_tipoMaquina);
 
             //Maquina
             modelBuilder.Entity<Maquina>().HasKey(b => b.nomeMaquina);

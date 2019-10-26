@@ -1,5 +1,8 @@
 using LAPR5_3DD_019.Models.Shared;
 using LAPR5_3DD_019.Models.ValueObjects;
+using LAPR5_3DD_019.Models.DTO;
+using LAPR5_3DD_019.Associations;
+using System.Collections.Generic;
 
 namespace LAPR5_3DD_019.Models
 {
@@ -7,15 +10,27 @@ namespace LAPR5_3DD_019.Models
     public class TipoMaquina : Entity, IAggregateRoot
     {
 
-        public ID_TipoMaquina Id { set; get; }
+        public long Id { set; get; }
         public Descricao descricaoTipoMaquina { set; get; }
+        public ICollection<TipoMaquinaOperacao> operacoesMaquina { set; get; }
 
         public TipoMaquina() { }
-        
-        public TipoMaquina(float id, string descricao)
+
+        public TipoMaquina(long id, string descricao, List<TipoMaquinaOperacao> list)
         {
-            this.Id = new ID_TipoMaquina(id);
+            this.Id = id;
             this.descricaoTipoMaquina = new Descricao(descricao);
+            this.operacoesMaquina = list;
+        }
+
+        public void addOperacao(TipoMaquinaOperacao operacao)
+        {
+            operacoesMaquina.Add(operacao);
+        }
+
+        public TipoMaquinaDTO toDTO()
+        {
+            return new TipoMaquinaDTO(Id, descricaoTipoMaquina.Id, operacoesMaquina);
         }
     }
 }

@@ -7,9 +7,9 @@ namespace LAPR5_3DD_019.Models.Repositorios{
 
     public class OperacaoRepositorio{
 
-        private readonly LAPR5DBContext _context;
+        private readonly MDFContext _context;
 
-        public OperacaoRepositorio(LAPR5DBContext context){
+        public OperacaoRepositorio(MDFContext context){
             _context = context;
         }
 

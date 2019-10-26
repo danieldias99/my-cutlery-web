@@ -38,8 +38,7 @@ namespace LAPR5_3DD_019.Models.ClassesDeDominio
 
             //Linhas de Producao
             modelBuilder.Entity<LinhaProducao>().HasKey(d => d.Id);
-            modelBuilder.Entity<LinhaProducao>().Property(d => d.Id).HasConversion(e => e.id_LinhaProducao, e => new ID_LinhaProducao(e));
-
+   
             modelBuilder.Entity<LinhaProducao>().HasMany(d => d.maquinas).WithOne();
 
             //Produto

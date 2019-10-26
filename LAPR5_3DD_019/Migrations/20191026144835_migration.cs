@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LAPR5_3DD_019.Migrations
 {
-    public partial class migrationslapr : Migration
+    public partial class migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,8 @@ namespace LAPR5_3DD_019.Migrations
                 name: "LinhasProducao",
                 columns: table => new
                 {
-                    Id = table.Column<float>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn)
                 },
                 constraints: table =>
                 {
@@ -66,7 +67,7 @@ namespace LAPR5_3DD_019.Migrations
                     nomeMaquina = table.Column<string>(nullable: false),
                     posicaoLinhaProducao_posicaoNaLinhaProducao = table.Column<int>(nullable: false),
                     tipoMaquinaId = table.Column<float>(nullable: true),
-                    LinhaProducaoId = table.Column<float>(nullable: true)
+                    LinhaProducaoId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {

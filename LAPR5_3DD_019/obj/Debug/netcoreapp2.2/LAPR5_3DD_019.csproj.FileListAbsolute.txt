@@ -79,3 +79,17 @@ c:/Users/Daniel/Desktop/Universidade/3oAno/1oSemestre/LAPR5/Projeto/Rep/LAPR5_3D
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_1903_docker.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider_docker.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cs
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfoInputs.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache

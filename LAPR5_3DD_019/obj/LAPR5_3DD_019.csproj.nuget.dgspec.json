@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj": {}
+    "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
   },
   "projects": {
-    "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj": {
+    "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
+        "projectUniqueName": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
         "projectName": "LAPR5_3DD_019",
-        "projectPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/LAPR5_3DD_019.csproj",
-        "packagesPath": "/Users/goncalo/.nuget/packages/",
-        "outputPath": "/Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/obj/",
+        "projectPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "packagesPath": "C:\\Users\\Mata\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/goncalo/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Mata\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,16 +60,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

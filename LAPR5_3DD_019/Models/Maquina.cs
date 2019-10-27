@@ -25,9 +25,14 @@ namespace LAPR5_3DD_019.Models
             this.posicaoLinhaProducao = posicaoLinhaProducao;
         }
 
+        public void addLinha(LinhaProducaoMaquinas linha)
+        {
+            this.linhasProducao.Add(linha);
+        }
+
         public MaquinaDTO toDTO()
         {
-            return new MaquinaDTO(nomeMaquina, posicaoLinhaProducao, tipoMaquina, linhasProducao);
+            return new MaquinaDTO(Id, nomeMaquina, posicaoLinhaProducao, tipoMaquina, linhasProducao);
         }
     }
 }

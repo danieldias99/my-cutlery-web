@@ -12074,39 +12074,23 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\Daniel\\.nuget\\packages\\": {},
-=======
-    "C:\\Users\\Mata\\.nuget\\packages\\": {},
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
       "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-      "packagesPath": "C:\\Users\\Mata\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\obj\\",
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-<<<<<<< HEAD
         "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-        "C:\\Users\\Mata\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12161,17 +12145,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-<<<<<<< HEAD
-  }
-=======
   },
   "logs": [
     {
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+      "message": "Problem reading the cache file C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
     }
   ]
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
 }

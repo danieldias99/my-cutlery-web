@@ -57,5 +57,21 @@ namespace LAPR5_3DD_019.Controllers
             repositorio.updateOperacao(update_operacao);
             return NoContent();
         }
+
+        // DELETE: api/Operacao/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<OperacaoDTO>> DeleteOperacao(long id)
+        {
+            var operacao = await GetOperacao(id);
+
+            if (operacao == null)
+            {
+                return NotFound();
+            }
+
+            repositorio.deleteOperacao(id);
+
+            return NoContent();
+        }
     }
 }

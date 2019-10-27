@@ -59,5 +59,21 @@ namespace LAPR5_3DD_019.Controllers
             return NoContent();
         }
 
+        // DELETE: api/Produto/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProdutoDTO>> DeleteProduto(long id)
+        {
+            var produto = await GetProduto(id);
+
+            if (produto == null)
+            {
+                return NotFound();
+            }
+
+            repositorio.deleteProduto(id);
+
+            return NoContent();
+        }
+
     }
 }

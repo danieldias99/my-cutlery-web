@@ -3,6 +3,8 @@ using LAPR5_3DD_019.Models.DTO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LAPR5_3DD_019.Associations;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace LAPR5_3DD_019.Models.Repositorios
 {
@@ -46,16 +48,21 @@ namespace LAPR5_3DD_019.Models.Repositorios
             }
         }
 
-        /*public void updateLinhaProducao(LinhaProducao linha, LinhaProducao newLinhaProducao)
-        {    
-            _context.LinhasProducao.Update(linha);
-            _context.SaveChanges();
-        }*/
-
-        public void deleteLinhaProducao(LinhaProducao linha)
+        public async void updateLinhaProducao(LinhaProducao update_linha)
         {
+            var current_linha = await _context.LinhasProducao.FindAsync(update_linha.Id);
+            current_linha.maquinas = update_linha.maquinas;
+            _context.Entry(current_linha).State = EntityState.Modified;
+            _context.Entry(current_linha).State = EntityState.Detached;
+            await _context.SaveChangesAsync();
+        }
+
+        public async void deleteLinhaProducao(long id)
+        {
+            var linha = await _context.LinhasProducao.FindAsync(id);
             _context.LinhasProducao.Remove(linha);
-            _context.SaveChanges();
+            _context.Entry(linha).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -40,22 +40,25 @@ namespace LAPR5_3DD_019.Controllers
             return CreatedAtAction(nameof(GetLinhaProducao), new { id = newLinhaProducao.Id }, newLinhaProducao);
         }
 
-        /*// PUT: api/LinhaProducao/5
-        [HttpPut]
-        public async Task<ActionResult<LinhaProducao>> PutLinhaProducao(LinhaProducao newLinhaProducao)
+        // PUT: api/Todo/5
+        [HttpPut("{id}")]
+        public async Task<ActionResult<LinhaProducaoDTO>> PutLinhaProducao(long id, LinhaProducao update_linha)
         {
-            var linha = await GetLinhaProducao(newLinhaProducao.Id);
+            var linha = await repositorio.getLinhaProducaoById(id);
 
             if (linha == null)
             {
                 return NotFound();
             }
 
+            if (id != update_linha.Id)
+            {
+                return BadRequest();
+            }
 
-            repositorio.updateLinhaProducao(linha.Value.toLinhaProducao(),newLinhaProducao);
-
+            repositorio.updateLinhaProducao(update_linha);
             return NoContent();
-        }*/
+        }
 
         // DELETE: api/LinhaProducao/5
         [HttpDelete("{id}")]
@@ -68,7 +71,7 @@ namespace LAPR5_3DD_019.Controllers
                 return NotFound();
             }
 
-            repositorio.deleteLinhaProducao(linha.Value.toLinhaProducao());
+            repositorio.deleteLinhaProducao(id);
 
             return NoContent();
         }

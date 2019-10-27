@@ -93,6 +93,20 @@ C:\Users\PedroMiura\Documents\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcor
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_1903_docker.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider.json
 /Users/goncalo/Documents/eP1cK/College/3ano/lapr5/lei19-20_s5_3dd_019/LAPR5_3DD_019/bin/Debug/netcoreapp2.2/packer-windows/windows_server_insider_docker.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cs
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfoInputs.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\Mata\Desktop\ARQSI\Projeto\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache
 >>>>>>> a088aec79c8b4e64ce038b40225397f6bf8a884b
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
@@ -110,3 +124,21 @@ C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csprojAssemblyReference.cache
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cache
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorAssemblyInfo.cs
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfoInputs.cache
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.RazorTargetAssemblyInfo.cache
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
+>>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache

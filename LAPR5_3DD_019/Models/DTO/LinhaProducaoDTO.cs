@@ -17,11 +17,5 @@ namespace LAPR5_3DD_019.Models.DTO
             this.maquinas = maquinas;
         }
 
-        public LinhaProducao toLinhaProducao()
-        {
-            return new LinhaProducao(Id, maquinas);
-        }
-
-
     }
 }

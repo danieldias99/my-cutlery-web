@@ -1,44 +1,28 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
-=======
-    "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
+    "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
+    "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "projectUniqueName": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
         "projectName": "LAPR5_3DD_019",
-<<<<<<< HEAD
-        "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
-=======
-        "projectPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-        "packagesPath": "C:\\Users\\Mata\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mata\\Desktop\\ARQSI\\Projeto\\LAPR5_3DD_019\\obj\\",
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
+        "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-          "C:\\Users\\Mata\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> acdf4e6961dfe59c6a98d0335b2e8e2e08614299
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\mAniaK\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -71,19 +55,17 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "xUnit": {
+              "target": "Package",
+              "version": "[2.4.1, )"
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

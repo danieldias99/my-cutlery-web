@@ -59,5 +59,21 @@ namespace LAPR5_3DD_019.Controllers
             repositorio.updateTipoMaquina(update_TipoMaquina);
             return NoContent();
         }
+
+        // DELETE: api/TipoMaquina/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<TipoMaquinaDTO>> DeleteTipoMaquina(long id)
+        {
+            var tipoMaquina = await GetTipoMaquina(id);
+
+            if (tipoMaquina == null)
+            {
+                return NotFound();
+            }
+
+            repositorio.deleteTipoMaquina(id);
+
+            return NoContent();
+        }
     }
 }

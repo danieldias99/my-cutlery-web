@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "72bd7d59-6e13-4289-a05c-e4d246614c6d",
+		"name": "Maquina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Maquina",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d0ac04e2-955e-41b8-bd20-f3db6028e804",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 201 - Created\", function(){",
+							"    pm.expect(jsonData.statusCode) == 201;",
+							"});",
+							"",
+							"pm.globals.set(\"ID_MaquinaTeste\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\" : 30,\n\t\"nomeMaquina\" :{\n\t\t\"nomeMaquina\": \"Maquina30\"\n\t},\n\t\"posicaoLinhaProducao\": {\n\t\t\"posicaoLinhaProducao\": 1\n\t},\n\t\"id_tipoMaquina\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Maquina",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina/{{ID_MaquinaTeste}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina",
+						"{{ID_MaquinaTeste}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Maquina",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Id\" : 30,\n\t\"nomeMaquina\" :{\n\t\t\"nomeMaquina\": \"Maquina1_PUT\"\n\t},\n\t\"posicaoLinhaProducao\": {\n\t\t\"posicaoLinhaProducao\": 5\n\t},\n\t\"id_tipoMaquina\": 6\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina/{{ID_MaquinaTeste}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina",
+						"{{ID_MaquinaTeste}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Maquina",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina/{{ID_MaquinaTeste}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina",
+						"{{ID_MaquinaTeste}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Maquina",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina/{{ID_MaquinaTeste}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina",
+						"{{ID_MaquinaTeste}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Maquina",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Maquina/{{ID_MaquinaTeste}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Maquina",
+						"{{ID_MaquinaTeste}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

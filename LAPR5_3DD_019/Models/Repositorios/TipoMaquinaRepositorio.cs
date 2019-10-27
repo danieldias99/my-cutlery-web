@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LAPR5_3DD_019.Associations;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace LAPR5_3DD_019.Models.Repositorios
 {
@@ -20,7 +21,7 @@ namespace LAPR5_3DD_019.Models.Repositorios
 
         public async Task<ActionResult<TipoMaquinaDTO>> getTipoMaquinaById(long id)
         {
-            var tipoMaquina = _context.TiposMaquina.Find(id);
+            var tipoMaquina = await _context.TiposMaquina.FindAsync(id);
             setOperacoesTipoMaquina(tipoMaquina);
             return tipoMaquina.toDTO();
         }
@@ -30,6 +31,17 @@ namespace LAPR5_3DD_019.Models.Repositorios
             setOperacoesTipoMaquina(newTipoMaquina);
             _context.TiposMaquina.Add(newTipoMaquina);
             _context.SaveChanges();
+        }
+
+        public async void updateTipoMaquina(TipoMaquina update_TipoMaquina)
+        {
+            var current_TipoMaquina = await _context.TiposMaquina.FindAsync(update_TipoMaquina.Id);
+            current_TipoMaquina.descricaoTipoMaquina = update_TipoMaquina.descricaoTipoMaquina;
+            current_TipoMaquina.operacoesMaquina = update_TipoMaquina.operacoesMaquina;
+            current_TipoMaquina.maquinas = update_TipoMaquina.maquinas;
+            _context.Entry(current_TipoMaquina).State = EntityState.Modified;
+            _context.Entry(current_TipoMaquina).State = EntityState.Detached;
+            await _context.SaveChangesAsync();
         }
 
         public void setOperacoesTipoMaquina(TipoMaquina tipoMaquina)
@@ -45,5 +57,6 @@ namespace LAPR5_3DD_019.Models.Repositorios
                 }
             }
         }
+
     }
 }

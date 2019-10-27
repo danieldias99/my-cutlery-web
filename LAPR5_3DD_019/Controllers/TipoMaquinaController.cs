@@ -39,5 +39,25 @@ namespace LAPR5_3DD_019.Controllers
             repositorio.addTipoMaquina(newTipoMaquina);
             return CreatedAtAction(nameof(GetTipoMaquina), new { id = newTipoMaquina.Id }, newTipoMaquina);
         }
+
+        // PUT: api/Todo/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTipoMaquina(long id, TipoMaquina update_TipoMaquina)
+        {
+            var tipoMaquinaDTO = await repositorio.getTipoMaquinaById(id);
+
+            if (tipoMaquinaDTO == null)
+            {
+                return NotFound();
+            }
+
+            if (id != tipoMaquinaDTO.Value.Id_tipoMaquina)
+            {
+                return BadRequest();
+            }
+
+            repositorio.updateTipoMaquina(update_TipoMaquina);
+            return NoContent();
+        }
     }
 }

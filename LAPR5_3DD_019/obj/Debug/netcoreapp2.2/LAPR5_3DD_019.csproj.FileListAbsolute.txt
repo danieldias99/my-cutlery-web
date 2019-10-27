@@ -141,3 +141,4 @@ C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\ob
 C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
 C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
 >>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
+C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache

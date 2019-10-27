@@ -12258,11 +12258,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectUniqueName": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
-      "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
+      "outputPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12319,13 +12319,5 @@
         "warn": true
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -5882,11 +5882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\testProject.csproj",
+      "projectUniqueName": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\testProject.csproj",
       "projectName": "testProject",
-      "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\testProject.csproj",
+      "projectPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\testProject.csproj",
       "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\obj\\",
+      "outputPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\testProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5903,8 +5903,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
-              "projectPath": "C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj"
+            "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
+              "projectPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj"
             }
           }
         }

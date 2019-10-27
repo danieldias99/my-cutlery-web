@@ -16,9 +16,10 @@ namespace LAPR5_3DD_019.Controllers
         public ProdutoController(MDFContext context)
         {
             repositorio = new ProdutoRepositorio(context);
-           
-        }   
-    [HttpGet("{id}")]
+
+        }
+
+        [HttpGet("{id}")]
         public async Task<ActionResult<ProdutoDTO>> GetProduto(long id)
         {
             var ProdutoDTO = await repositorio.getProdutoById(id);
@@ -37,5 +38,22 @@ namespace LAPR5_3DD_019.Controllers
             repositorio.addProduto(newProduto);
             return CreatedAtAction(nameof(GetProduto), new { id = newProduto.Id }, newProduto);
         }
+
+        // DELETE: api/Produto/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ProdutoDTO>> DeleteProduto(long id)
+        {
+            var produto = await GetProduto(id);
+
+            if (produto == null)
+            {
+                return NotFound();
+            }
+            
+            repositorio.deleteProduto(produto.Value.toProduto());
+
+            return NoContent();
+        }
+
     }
 }

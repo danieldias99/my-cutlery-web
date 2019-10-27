@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
+    "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
+    "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "projectUniqueName": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
         "projectName": "LAPR5_3DD_019",
-        "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
-        "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
+        "projectPath": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+        "packagesPath": "C:\\Users\\PedroMiura\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PedroMiura\\Documents\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\PedroMiura\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,16 +60,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

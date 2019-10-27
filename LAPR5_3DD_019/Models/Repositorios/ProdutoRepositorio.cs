@@ -40,10 +40,12 @@ namespace LAPR5_3DD_019.Models.Repositorios
             await _context.SaveChangesAsync();
         }
 
-        public void deleteProduto(Produto produto)
+        public async void deleteProduto(long id)
         {
+            var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
-            _context.SaveChanges();
+            _context.Entry(produto).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
     }
 }

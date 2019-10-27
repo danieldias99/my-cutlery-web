@@ -44,5 +44,41 @@ namespace LAPR5_3DD_019.Controllers
             repositorioMaquina.addMaquina(newMaquina);
             return CreatedAtAction(nameof(getMaquina), new Maquina { nomeMaquina = newMaquina.nomeMaquina }, newMaquina);
         }
+
+        // PUT: api/Todo/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutMaquina(long id, Maquina update_operacao)
+        {
+            var MaquinaDTO = await repositorioMaquina.getMaquinaById(id);
+
+            if (MaquinaDTO == null)
+            {
+                return NotFound();
+            }
+
+            if (id != MaquinaDTO.Value.Id)
+            {
+                return BadRequest();
+            }
+
+            repositorioMaquina.updateMaquina(update_operacao);
+            return NoContent();
+        }
+
+        // DELETE: api/Maquina/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<MaquinaDTO>> DeleteMaquina(long id)
+        {
+            var Maquina = await getMaquina(id);
+
+            if (Maquina == null)
+            {
+                return NotFound();
+            }
+
+            repositorioMaquina.deleteMaquina(id);
+
+            return NoContent();
+        }
     }
 }

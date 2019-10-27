@@ -15,6 +15,7 @@ namespace testProject
         public void Test1()
         {   
             var nomeMaquinaTeste = new NomeMaquina("nomeTeste");
+            var nomeErradoTeste = new NomeMaquina("boas");
             var tipoMaquinaTeste = new TipoMaquina(1, "tipoTeste");
             var posicaoLinhaTeste = new PosicaoNaLinhaProducao(1);
             var maquina = new Maquina(nomeMaquinaTeste, posicaoLinhaTeste, tipoMaquinaTeste);

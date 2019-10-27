@@ -12319,5 +12319,13 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\LAPR5_3DD_019.csproj.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

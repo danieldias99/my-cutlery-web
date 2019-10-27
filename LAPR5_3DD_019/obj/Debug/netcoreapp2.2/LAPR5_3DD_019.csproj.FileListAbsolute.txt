@@ -115,9 +115,6 @@ C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.AssemblyInfo.cs
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.dll
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
-C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\appsettings.Development.json
-C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\appsettings.json
-C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\Properties\launchSettings.json
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.deps.json
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.json
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\bin\Debug\netcoreapp2.2\LAPR5_3DD_019.runtimeconfig.dev.json
@@ -139,3 +136,4 @@ C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\ob
 C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.pdb
 >>>>>>> 238d1ed2f4874a3b859aa2352588e4370f46eea7
 C:\Users\mAniaK\Desktop\mAniaK\Escola\LAPR5\lei19-20_s5_3dd_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\LAPR5_3DD_019\obj\Debug\netcoreapp2.2\LAPR5_3DD_019.csproj.CoreCompileInputs.cache

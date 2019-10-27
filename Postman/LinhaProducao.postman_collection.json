@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "aa28429c-0275-4886-bbbc-6709ee9e798f",
+		"name": "LinhaProducao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateLinhaProducao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a45e60c-ed92-41b1-ae2e-1c50c47f5da3",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 201 - Created\", function(){",
+							"    pm.expect(jsonData.statusCode) == 201;",
+							"});",
+							"",
+							"pm.globals.set(\"ID_ProdutoTest\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Id\": 1,\r\n    \"maquinas\": [\r\n    \t{ \r\n    \t\t\"id_maquina\": 30,\r\n    \t\t\"id_linhaProducao\": 1\r\n    \t},\r\n    \t{ \r\n    \t\t\"id_maquina\": 2,\r\n    \t\t\"id_linhaProducao\": 1\r\n    \t}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLinhaProducao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao/{{ID_LinhaProducaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao",
+						"{{ID_LinhaProducaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateLinhaProducao",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"Id\": 1,\r\n     \"maquinas\": [\r\n    \t{ \r\n    \t\t\"id_maquina\": 2,\r\n    \t\t\"id_linhaProducao\": 1\r\n    \t},\r\n    \t{ \r\n    \t\t\"id_maquina\": 3,\r\n    \t\t\"id_linhaProducao\": 1\r\n    \t}\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao/{{ID_LinhaProducaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao",
+						"{{ID_LinhaProducaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLinhaProducao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao/{{ID_LinhaProducaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao",
+						"{{ID_LinhaProducaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteLinhaProducao",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao/{{ID_LinhaProducaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao",
+						"{{ID_LinhaProducaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLinhaProducao",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/LinhaProducao/{{ID_LinhaProducaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"LinhaProducao",
+						"{{ID_LinhaProducaoTest}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

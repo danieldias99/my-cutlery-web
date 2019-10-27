@@ -12258,11 +12258,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "c:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "projectName": "LAPR5_3DD_019",
+      "projectPath": "c:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
+      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\LAPR5_3DD_019\\obj\\",
+=======
       "projectUniqueName": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "projectName": "LAPR5_3DD_019",
       "projectPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\LAPR5_3DD_019.csproj",
       "packagesPath": "C:\\Users\\mAniaK\\.nuget\\packages\\",
       "outputPath": "c:\\Users\\mAniaK\\Desktop\\mAniaK\\Escola\\LAPR5\\lei19-20_s5_3dd_019\\LAPR5_3DD_019\\obj\\",
+>>>>>>> 417f59e026840e44691562474854fb3516db3b93
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

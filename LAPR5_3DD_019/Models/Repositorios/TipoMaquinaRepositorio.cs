@@ -58,5 +58,13 @@ namespace LAPR5_3DD_019.Models.Repositorios
             }
         }
 
+        public async void deleteTipoMaquina(long id)
+        {
+            var tipoMaquina = await _context.TiposMaquina.FindAsync(id);
+            _context.TiposMaquina.Remove(tipoMaquina);
+            _context.Entry(tipoMaquina).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

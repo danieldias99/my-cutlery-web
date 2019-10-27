@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "4a94a53f-af73-4eef-b92b-9832612c3963",
+		"name": "Operação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Operacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9664d65f-ae34-46a6-8cb5-8204fdf6525d",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 201 - Created\", function(){",
+							"    pm.expect(jsonData.statusCode) == 201;",
+							"});",
+							"",
+							"pm.globals.set(\"ID_OperacaoTest\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"descricaoOperacao\": {\r\n        \"id\": \"OperacaoTeste4\"\r\n    },\r\n    \"duracaoOperacao\": {\r\n        \"hora\": 1,\r\n        \"min\": 50,\r\n        \"seg\": 5\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOperacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f5ac859-ac68-4a23-99f1-66c189cd615c",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 200 - Get\", function(){",
+							"    pm.expect(jsonData.statusCode) == 200;",
+							"});",
+							"",
+							"pm.test(\"Same object returned\", function () {",
+							"    pm.expect(jsonData.id).to.eq(pm.globals.get(\"ID_OperacaoTest\"))});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao/{{ID_OperacaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao",
+						"{{ID_OperacaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Operacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b6f60f9a-7098-459a-9b8b-1b61e0ab9575",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"descricaoOperacao\": {\r\n        \"id\": \"OperacaoTeste2\"\r\n    },\r\n    \"duracaoOperacao\": {\r\n        \"hora\": 2,\r\n        \"min\": 50,\r\n        \"seg\": 5\r\n    },\r\n    \"tiposMaquinas\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao/{{ID_OperacaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao",
+						"{{ID_OperacaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOperacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f5ac859-ac68-4a23-99f1-66c189cd615c",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 201 - Created\", function(){",
+							"    pm.expect(jsonData.statusCode) == 201;",
+							"});",
+							"",
+							"pm.test(\"Same object returned\", function () {",
+							"    pm.expect(jsonData.id).to.eq(pm.globals.get(\"ID_OperacaoTest\"))});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao/{{ID_OperacaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao",
+						"{{ID_OperacaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Operacao",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao/{{ID_OperacaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao",
+						"{{ID_OperacaoTest}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOperacao",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f5ac859-ac68-4a23-99f1-66c189cd615c",
+						"exec": [
+							"pm.test(\"Content-Type is JSON\", function (){",
+							"    pm.response.headers[\"Content-Type\"] == \"application/json\"",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.test(\"Status code is 201 - Created\", function(){",
+							"    pm.expect(jsonData.statusCode) == 201;",
+							"});",
+							"",
+							"pm.test(\"Same object returned\", function () {",
+							"    pm.expect(jsonData.id).to.eq(pm.globals.get(\"ID_OperacaoTest\"))});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/Operacao/{{ID_OperacaoTest}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"Operacao",
+						"{{ID_OperacaoTest}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

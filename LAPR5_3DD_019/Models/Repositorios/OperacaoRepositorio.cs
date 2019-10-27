@@ -39,5 +39,13 @@ namespace LAPR5_3DD_019.Models.Repositorios
             _context.Entry(current_operacao).State = EntityState.Detached;
             await _context.SaveChangesAsync();
         }
+
+        public async void deleteOperacao(long id)
+        {
+            var operacao = await _context.Operacoes.FindAsync(id);
+            _context.Operacoes.Remove(operacao);
+            _context.Entry(operacao).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
     }
 }

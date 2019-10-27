@@ -13,7 +13,7 @@ namespace LAPR5_3DD_019.Controllers
     {
         public LinhaProducaoRepositorio repositorio;
 
-        public LinhaProducaoController(LAPR5DBContext context)
+        public LinhaProducaoController(MDFContext context)
         {
             repositorio = new LinhaProducaoRepositorio(context);
         }
@@ -68,7 +68,7 @@ namespace LAPR5_3DD_019.Controllers
                 return NotFound();
             }
 
-            repositorio.deleteLinhaProducaoById(linha.Value.toLinhaProducao());
+            repositorio.deleteLinhaProducao(linha.Value.toLinhaProducao());
 
             return NoContent();
         }

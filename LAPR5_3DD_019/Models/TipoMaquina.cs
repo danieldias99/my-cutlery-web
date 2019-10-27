@@ -13,6 +13,7 @@ namespace LAPR5_3DD_019.Models
         public long Id { set; get; }
         public Descricao descricaoTipoMaquina { set; get; }
         public ICollection<TipoMaquinaOperacao> operacoesMaquina { set; get; }
+        public ICollection<Maquina> maquinas { get; set; }
 
         public TipoMaquina() { }
 
@@ -21,6 +22,12 @@ namespace LAPR5_3DD_019.Models
             this.Id = id;
             this.descricaoTipoMaquina = new Descricao(descricao);
             this.operacoesMaquina = list;
+        }
+
+        public TipoMaquina(long id, string descricao)
+        {
+            this.Id = id;
+            this.descricaoTipoMaquina = new Descricao(descricao);
         }
 
         public void addOperacao(TipoMaquinaOperacao operacao)

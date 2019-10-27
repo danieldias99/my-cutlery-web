@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LAPR5_3DD_019.Associations;
 
 namespace LAPR5_3DD_019.Models.DTO
 {
@@ -7,10 +8,10 @@ namespace LAPR5_3DD_019.Models.DTO
     {
 
         public long Id { get; set; }
-        public List<Maquina> maquinas { get; set; }
+        public ICollection<LinhaProducaoMaquinas> maquinas { get; set; }
 
 
-        public LinhaProducaoDTO(long Id, List<Maquina> maquinas)
+        public LinhaProducaoDTO(long Id, ICollection<LinhaProducaoMaquinas> maquinas)
         {
             this.Id = Id;
             this.maquinas = maquinas;

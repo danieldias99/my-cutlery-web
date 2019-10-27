@@ -6,15 +6,18 @@ namespace LAPR5_3DD_019.Models.DTO
     public class ProdutoDTO
     {
 
-        public float Id { get; set; }
+        public long Id { get; set; }
         public string infoProduto { get; set; }
 
-        public ProdutoDTO(float Id, string infoProduto)
+        public ProdutoDTO(long Id, string infoProduto)
         {
             this.Id = Id;
             this.infoProduto = infoProduto;
         }
 
+        public Produto toProduto(){
+            return new Produto(Id, new InfoProduto(infoProduto));
+        }
 
     }
 }

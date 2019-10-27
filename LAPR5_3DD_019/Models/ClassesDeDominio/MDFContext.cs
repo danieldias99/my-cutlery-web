@@ -73,7 +73,7 @@ namespace LAPR5_3DD_019.Models.ClassesDeDominio
 
             //Produto
             modelBuilder.Entity<Produto>().HasKey(f => f.Id);
-            modelBuilder.Entity<Produto>().Property(f => f.Id).HasConversion(g => g.id_produto, g => new ID_Produto(g));
+            modelBuilder.Entity<Produto>().Property(f => f.Id).ValueGeneratedNever();
 
             modelBuilder.Entity<Produto>().OwnsOne(f => f.informacaoProduto);
 

@@ -32,7 +32,7 @@ namespace LAPR5_3DD_019.Controllers
             return tipoMaquinaDTO;
         }
 
-        // POST: api/Operacao
+        // POST: api/TipoMaquina
         [HttpPost]
         public async Task<ActionResult<Operacao>> PostTipoMaquina(TipoMaquina newTipoMaquina)
         {

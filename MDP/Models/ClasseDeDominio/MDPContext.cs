@@ -13,9 +13,7 @@ namespace MDP.Models.ClassesDeDominio
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Tipo Maquina
-            /*modelBuilder.Entity<PlanoFabrico>().HasKey(a => a.Id);
-            modelBuilder.Entity<PlanoFabrico>().Property(a => a.Id).HasConversion(v => v.id_planoFabrico, v => new ID_TipoMaquina(v));*/
+            modelBuilder.Entity<PlanoFabrico>().HasKey(a => a.Id);
 
         }
 

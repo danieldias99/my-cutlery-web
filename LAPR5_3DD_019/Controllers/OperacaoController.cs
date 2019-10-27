@@ -37,5 +37,25 @@ namespace LAPR5_3DD_019.Controllers
             repositorio.addOperacao(newOperacao);
             return CreatedAtAction(nameof(GetOperacao), new { id = newOperacao.Id }, newOperacao);
         }
+
+        // PUT: api/Todo/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutOperacao(long id, Operacao update_operacao)
+        {
+            var operacaoDTO = await repositorio.getOperacaoById(id);
+
+            if (operacaoDTO == null)
+            {
+                return NotFound();
+            }
+
+            if (id != operacaoDTO.Value.Id)
+            {
+                return BadRequest();
+            }
+
+            repositorio.updateOperacao(update_operacao);
+            return NoContent();
+        }
     }
 }

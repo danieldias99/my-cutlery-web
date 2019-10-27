@@ -11,7 +11,7 @@ namespace LAPR5_3DD_019.Migrations
                 name: "LinhasProducao",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    Id = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace LAPR5_3DD_019.Migrations
                 name: "Produtos",
                 columns: table => new
                 {
-                    Id = table.Column<float>(nullable: false),
+                    Id = table.Column<long>(nullable: false),
                     informacaoProduto_nomeProduto = table.Column<string>(nullable: true),
                     informacaoProduto_descricaoProduto = table.Column<string>(nullable: true)
                 },
@@ -63,20 +63,26 @@ namespace LAPR5_3DD_019.Migrations
                 name: "Maquinas",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false),
-                    nomeMaquina_nomeMaquina = table.Column<string>(nullable: true),
+                    nomeMaquina = table.Column<string>(nullable: false),
                     posicaoLinhaProducao_posicaoNaLinhaProducao = table.Column<int>(nullable: false),
-                    id_tipoMaquina = table.Column<long>(nullable: false)
+                    tipoMaquinaId = table.Column<long>(nullable: true),
+                    LinhaProducaoId = table.Column<float>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Maquinas", x => x.Id);
+                    table.PrimaryKey("PK_Maquinas", x => x.nomeMaquina);
                     table.ForeignKey(
-                        name: "FK_Maquinas_TiposMaquina_id_tipoMaquina",
-                        column: x => x.id_tipoMaquina,
+                        name: "FK_Maquinas_LinhasProducao_LinhaProducaoId",
+                        column: x => x.LinhaProducaoId,
+                        principalTable: "LinhasProducao",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Maquinas_TiposMaquina_tipoMaquinaId",
+                        column: x => x.tipoMaquinaId,
                         principalTable: "TiposMaquina",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,39 +109,15 @@ namespace LAPR5_3DD_019.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "LinhaProducaoMaquinas",
-                columns: table => new
-                {
-                    id_maquina = table.Column<long>(nullable: false),
-                    id_linhaProducao = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LinhaProducaoMaquinas", x => new { x.id_maquina, x.id_linhaProducao });
-                    table.ForeignKey(
-                        name: "FK_LinhaProducaoMaquinas_LinhasProducao_id_linhaProducao",
-                        column: x => x.id_linhaProducao,
-                        principalTable: "LinhasProducao",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_LinhaProducaoMaquinas_Maquinas_id_maquina",
-                        column: x => x.id_maquina,
-                        principalTable: "Maquinas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_LinhaProducaoMaquinas_id_linhaProducao",
-                table: "LinhaProducaoMaquinas",
-                column: "id_linhaProducao");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Maquinas_id_tipoMaquina",
+                name: "IX_Maquinas_LinhaProducaoId",
                 table: "Maquinas",
-                column: "id_tipoMaquina");
+                column: "LinhaProducaoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Maquinas_tipoMaquinaId",
+                table: "Maquinas",
+                column: "tipoMaquinaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TipoMaquinaOperacao_id_tipoMaquina",
@@ -146,7 +128,7 @@ namespace LAPR5_3DD_019.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "LinhaProducaoMaquinas");
+                name: "Maquinas");
 
             migrationBuilder.DropTable(
                 name: "Produtos");
@@ -156,9 +138,6 @@ namespace LAPR5_3DD_019.Migrations
 
             migrationBuilder.DropTable(
                 name: "LinhasProducao");
-
-            migrationBuilder.DropTable(
-                name: "Maquinas");
 
             migrationBuilder.DropTable(
                 name: "Operacoes");

@@ -7,11 +7,21 @@ namespace LAPR5_3DD_019.Models
     public class Produto : Entity, IAggregateRoot
     {
 
-        public ID_Produto Id{ get; set; }
+        public long Id{ get; set; }
         public InfoProduto informacaoProduto{ get; set; }
 
+
+        public Produto(){
+
+        }
+
+        public Produto(long id, InfoProduto nomeProduto){
+            this.Id = id;
+            this.informacaoProduto = nomeProduto;
+        }
+
          public ProdutoDTO toDTO(){
-            return new ProdutoDTO(Id.id_produto, informacaoProduto.nomeProduto);
+            return new ProdutoDTO(Id, informacaoProduto.nomeProduto);
         }
     }
 

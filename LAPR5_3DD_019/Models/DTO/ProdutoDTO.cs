@@ -7,17 +7,14 @@ namespace LAPR5_3DD_019.Models.DTO
     {
 
         public long Id { get; set; }
-        public string infoProduto { get; set; }
+        public string nomeProduto { get; set; }
+        public string descricaoProduto { get; set; }
 
-        public ProdutoDTO(long Id, string infoProduto)
+        public ProdutoDTO(long Id, string nomeProduto, string descricaoProduto)
         {
             this.Id = Id;
-            this.infoProduto = infoProduto;
+            this.nomeProduto = nomeProduto;
+            this.descricaoProduto = descricaoProduto;
         }
-
-        public Produto toProduto(){
-            return new Produto(Id, new InfoProduto(infoProduto));
-        }
-
     }
 }

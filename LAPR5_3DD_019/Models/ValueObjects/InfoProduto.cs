@@ -6,9 +6,12 @@ namespace LAPR5_3DD_019.Models.ValueObjects
     {
 
         public string nomeProduto { set; get; }
-        public string descricaoProduto { set; get;}
+        public string descricaoProduto { set; get; }
 
-        public InfoProduto (string nome){
+        public InfoProduto() { }
+
+        public InfoProduto(string nome)
+        {
             this.nomeProduto = nome;
         }
     }

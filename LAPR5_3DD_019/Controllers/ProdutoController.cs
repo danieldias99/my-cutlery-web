@@ -39,19 +39,23 @@ namespace LAPR5_3DD_019.Controllers
             return CreatedAtAction(nameof(GetProduto), new { id = newProduto.Id }, newProduto);
         }
 
-        // DELETE: api/Produto/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ProdutoDTO>> DeleteProduto(long id)
+        // PUT: api/Todo/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProduto(long id, Produto update_operacao)
         {
-            var produto = await GetProduto(id);
+            var produtoDTO = await repositorio.getProdutoById(id);
 
-            if (produto == null)
+            if (produtoDTO == null)
             {
                 return NotFound();
             }
-            
-            repositorio.deleteProduto(produto.Value.toProduto());
 
+            if (id != produtoDTO.Value.Id)
+            {
+                return BadRequest();
+            }
+
+            repositorio.updateProduto(update_operacao);
             return NoContent();
         }
 

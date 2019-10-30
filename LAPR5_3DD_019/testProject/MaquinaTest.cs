@@ -13,7 +13,7 @@ namespace testProject
     {
         [Fact]
         public void ensureGetsAndSetsReturnCorrectly()
-        {   
+        {
             var nomeMaquinaTeste = new NomeMaquina("nomeTeste");
             var nomeErradoTeste = new NomeMaquina("boas");
             var tipoMaquinaTeste = new TipoMaquina(1, "tipoTeste");

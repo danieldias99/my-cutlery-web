@@ -12,7 +12,7 @@ namespace testProject
     public class MaquinaTest
     {
         [Fact]
-        public void TestMaquina()
+        public void ensureGetsAndSetsReturnCorrectly()
         {   
             var nomeMaquinaTeste = new NomeMaquina("nomeTeste");
             var nomeErradoTeste = new NomeMaquina("boas");

@@ -1,1 +1,5 @@
 LAPR5_3DD_019/Startup.cs
+LAPR5_3DD_019/bin/**
+LAPR5_3DD_019/obj/**
+LAPR5_3DD_019/testProject/bin/**
+LAPR5_3DD_019/testProject/obj/**

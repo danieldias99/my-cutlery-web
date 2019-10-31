@@ -1,0 +1,14 @@
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\bin\Debug\netcoreapp2.2\MDF.deps.json
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\bin\Debug\netcoreapp2.2\MDF.runtimeconfig.json
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\bin\Debug\netcoreapp2.2\MDF.runtimeconfig.dev.json
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\bin\Debug\netcoreapp2.2\MDF.dll
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\bin\Debug\netcoreapp2.2\MDF.pdb
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.csproj.CoreCompileInputs.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.RazorAssemblyInfo.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.RazorAssemblyInfo.cs
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.AssemblyInfoInputs.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.AssemblyInfo.cs
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.RazorTargetAssemblyInfo.cache
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.dll
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDF\obj\Debug\netcoreapp2.2\MDF.pdb

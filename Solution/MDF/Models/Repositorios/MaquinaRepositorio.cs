@@ -19,12 +19,12 @@ namespace MDF.Models.Repositorios
             _context = context;
         }
 
-        public async Task<ActionResult<MaquinaDTO>> getMaquinaById(long Id)
+        public async Task<ActionResult<Maquina>> getMaquinaById(long Id)
         {
             var maquina = await _context.Maquinas.FindAsync(Id);
             maquina.tipoMaquina = (await _context.TiposMaquina.FindAsync(maquina.id_tipoMaquina));
             setLinhasProducaoMaquina(maquina);
-            return maquina.toDTO();
+            return maquina;
         }
 
         public void setLinhasProducaoMaquina(Maquina maquina)
@@ -47,16 +47,11 @@ namespace MDF.Models.Repositorios
             _context.SaveChanges();
         }
 
-        public async void updateMaquina(Maquina update_Maquina)
+        public async Task<ActionResult<Maquina>> updateMaquina(Maquina update_Maquina)
         {
-            var current_Maquina = await _context.Maquinas.FindAsync(update_Maquina.Id);
-            current_Maquina.id_tipoMaquina = update_Maquina.id_tipoMaquina;
-            current_Maquina.nomeMaquina = update_Maquina.nomeMaquina;
-            current_Maquina.posicaoLinhaProducao = update_Maquina.posicaoLinhaProducao;
-            current_Maquina.linhasProducao = update_Maquina.linhasProducao;
-            _context.Entry(current_Maquina).State = EntityState.Modified;
-            _context.Entry(current_Maquina).State = EntityState.Detached;
+            _context.Entry(update_Maquina).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            return update_Maquina;
         }
 
         public async void deleteMaquina(long id)

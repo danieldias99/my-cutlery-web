@@ -26,43 +26,52 @@ namespace MDF.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<MaquinaDTO>> getMaquina(long Id)
         {
-            var MaquinaDTO = await repositorioMaquina.getMaquinaById(Id);
+            var Maquina = await repositorioMaquina.getMaquinaById(Id);
 
-            if (MaquinaDTO == null)
+            if (Maquina == null)
             {
                 return NotFound();
             }
 
-            return MaquinaDTO;
+            return Maquina.Value.toDTO();
         }
 
         [HttpPost]
         public async Task<ActionResult<Maquina>> postMaquina(Maquina newMaquina)
         {
             var tipoMaquina = await repositorioTipoMaquina.getTipoMaquinaById(newMaquina.id_tipoMaquina);
-            newMaquina.tipoMaquina = new TipoMaquina(tipoMaquina.Value.Id_tipoMaquina, tipoMaquina.Value.descricaoTipoMaquina);
+            newMaquina.tipoMaquina = tipoMaquina.Value;
             repositorioMaquina.addMaquina(newMaquina);
             return CreatedAtAction(nameof(getMaquina), new Maquina { nomeMaquina = newMaquina.nomeMaquina }, newMaquina);
         }
 
         // PUT: api/Todo/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMaquina(long id, Maquina update_operacao)
+        public async Task<IActionResult> PutMaquina(long id, Maquina update_maquina)
         {
-            var MaquinaDTO = await repositorioMaquina.getMaquinaById(id);
-
-            if (MaquinaDTO == null)
+            var maquina = (await repositorioMaquina.getMaquinaById(id)).Value;
+            if (maquina == null)
             {
-                return NotFound();
+                return NotFound("A máquina escolhida não existe!");
             }
 
-            if (id != MaquinaDTO.Value.Id)
+            maquina.nomeMaquina = update_maquina.nomeMaquina;
+            maquina.posicaoLinhaProducao = update_maquina.posicaoLinhaProducao;
+
+            var tipoMaquina = (await repositorioTipoMaquina.getTipoMaquinaById(update_maquina.id_tipoMaquina)).Value;
+            if (tipoMaquina == null)
             {
-                return BadRequest();
+                return NotFound("O tipo de máquina escolhido não existe!");
             }
 
-            repositorioMaquina.updateMaquina(update_operacao);
-            return NoContent();
+            if (!maquina.alterarIdTipoMaquina(tipoMaquina))
+            {
+                return BadRequest("Não foi possivel alterar o tipo de máquina!");
+            }
+
+            await repositorioMaquina.updateMaquina(maquina);
+
+            return Ok("Maquina Atualizada com sucesso!");
         }
 
         // DELETE: api/Maquina/5

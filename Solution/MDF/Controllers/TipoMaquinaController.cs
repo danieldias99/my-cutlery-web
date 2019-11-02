@@ -22,14 +22,14 @@ namespace MDF.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TipoMaquinaDTO>> GetTipoMaquina(long id)
         {
-            var tipoMaquinaDTO = await repositorio.getTipoMaquinaById(id);
+            var tipoMaquina = await repositorio.getTipoMaquinaById(id);
 
-            if (tipoMaquinaDTO == null)
+            if (tipoMaquina == null)
             {
                 return NotFound();
             }
 
-            return tipoMaquinaDTO;
+            return tipoMaquina.Value.toDTO();
         }
 
         // POST: api/TipoMaquina
@@ -44,16 +44,11 @@ namespace MDF.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTipoMaquina(long id, TipoMaquina update_TipoMaquina)
         {
-            var tipoMaquinaDTO = await repositorio.getTipoMaquinaById(id);
+            var tipoMaquina = await repositorio.getTipoMaquinaById(id);
 
-            if (tipoMaquinaDTO == null)
+            if (tipoMaquina == null)
             {
-                return NotFound();
-            }
-
-            if (id != tipoMaquinaDTO.Value.Id_tipoMaquina)
-            {
-                return BadRequest();
+                return NotFound("O tipo de máquina escolhido não existe!");
             }
 
             repositorio.updateTipoMaquina(update_TipoMaquina);

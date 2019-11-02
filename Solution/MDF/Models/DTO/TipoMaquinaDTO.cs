@@ -20,10 +20,13 @@ namespace MDF.Models.DTO
 
         public void setOperacoes(ICollection<TipoMaquinaOperacao> operacoestipo)
         {
-            operacoes = new List<OperacaoDTO>();
-            foreach (TipoMaquinaOperacao tipoMaquinaOperacao in operacoestipo)
+            if (operacoestipo != null)
             {
-                operacoes.Add(tipoMaquinaOperacao.operacao.toDTO());
+                operacoes = new List<OperacaoDTO>();
+                foreach (TipoMaquinaOperacao tipoMaquinaOperacao in operacoestipo)
+                {
+                    operacoes.Add(tipoMaquinaOperacao.operacao.toDTO());
+                }
             }
         }
     }

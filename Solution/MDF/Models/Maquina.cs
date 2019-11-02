@@ -30,6 +30,18 @@ namespace MDF.Models
             this.linhasProducao.Add(linha);
         }
 
+        public bool alterarIdTipoMaquina(TipoMaquina tipoMaquina)
+        {
+            if (tipoMaquina == null)
+            {
+                return false;
+            }
+            this.tipoMaquina = tipoMaquina;
+            this.id_tipoMaquina = tipoMaquina.Id;
+            return true;
+        }
+
+
         public MaquinaDTO toDTO()
         {
             return new MaquinaDTO(Id, nomeMaquina, posicaoLinhaProducao, tipoMaquina, linhasProducao);

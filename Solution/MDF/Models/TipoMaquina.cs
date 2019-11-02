@@ -17,7 +17,7 @@ namespace MDF.Models
 
         public TipoMaquina() { }
 
-        public TipoMaquina(long id, string descricao, List<TipoMaquinaOperacao> list)
+        public TipoMaquina(long id, string descricao, ICollection<TipoMaquinaOperacao> list)
         {
             this.Id = id;
             this.descricaoTipoMaquina = new Descricao(descricao);

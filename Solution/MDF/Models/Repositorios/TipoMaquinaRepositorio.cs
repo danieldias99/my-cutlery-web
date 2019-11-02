@@ -19,11 +19,11 @@ namespace MDF.Models.Repositorios
             _context = context;
         }
 
-        public async Task<ActionResult<TipoMaquinaDTO>> getTipoMaquinaById(long id)
+        public async Task<ActionResult<TipoMaquina>> getTipoMaquinaById(long id)
         {
             var tipoMaquina = await _context.TiposMaquina.FindAsync(id);
             setOperacoesTipoMaquina(tipoMaquina);
-            return tipoMaquina.toDTO();
+            return tipoMaquina;
         }
 
         public void addTipoMaquina(TipoMaquina newTipoMaquina)

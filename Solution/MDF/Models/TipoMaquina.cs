@@ -35,19 +35,14 @@ namespace MDF.Models
             operacoesMaquina.Add(operacao);
         }
 
-        public bool update_operacoes(ICollection<Operacao> new_operacoes)
+        public bool update_operacoes(ICollection<TipoMaquinaOperacao> new_operacoes)
         {
-            this.operacoesMaquina = new List<TipoMaquinaOperacao>();
-
             if (new_operacoes == null)
             {
                 return false;
             }
 
-            foreach (Operacao operacao in new_operacoes)
-            {
-                operacoesMaquina.Add(new TipoMaquinaOperacao(this, operacao));
-            }
+            this.operacoesMaquina = new_operacoes;
 
             return true;
         }

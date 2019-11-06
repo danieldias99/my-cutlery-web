@@ -11,3 +11,4 @@ C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDP\obj\Debug\netcoreapp2.2\MDP.RazorTargetAssemblyInfo.cache
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDP\obj\Debug\netcoreapp2.2\MDP.dll
 C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDP\obj\Debug\netcoreapp2.2\MDP.pdb
+C:\Users\Daniel\Desktop\Universidade\3oAno\1oSemestre\LAPR5\Projeto\lei19-20_3DD_019\Solution\MDP\obj\Debug\netcoreapp2.2\MDP.csprojAssemblyReference.cache

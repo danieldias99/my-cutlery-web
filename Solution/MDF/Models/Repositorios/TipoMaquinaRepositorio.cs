@@ -28,7 +28,7 @@ namespace MDF.Models.Repositorios
 
         public void addTipoMaquina(TipoMaquina newTipoMaquina)
         {
-            setOperacoesTipoMaquina(newTipoMaquina);
+            //setOperacoesTipoMaquina(newTipoMaquina);
             _context.TiposMaquina.Add(newTipoMaquina);
             _context.SaveChanges();
         }

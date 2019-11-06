@@ -46,7 +46,7 @@ namespace MDF.Controllers
 
         // PUT: api/Todo/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTipoMaquina(long id, TipoMaquina update_TipoMaquina)
+        public async Task<IActionResult> PutTipoMaquina(long id, TipoMaquinaDTO update_TipoMaquina)
         {
             var tipoMaquina = await repositorio.getTipoMaquinaById(id);
 
@@ -55,18 +55,18 @@ namespace MDF.Controllers
                 return NotFound("O tipo de máquina escolhido não existe!");
             }
 
-            var new_list_operacoes = new List<Operacao>();
+            var new_list_operacoes = new List<TipoMaquinaOperacao>();
 
-            foreach (TipoMaquinaOperacao tmo in update_TipoMaquina.operacoesMaquina)
+            foreach (OperacaoDTO operacaodto in update_TipoMaquina.operacoes)
             {
-                var operacao = await repositorio_operacao.getOperacaoById(tmo.id_operacao);
+                var operacao = await repositorio_operacao.getOperacaoById(operacaodto.Id);
 
                 if (operacao == null)
                 {
-                    return NotFound("A operação " + tmo.id_operacao + " não existe!");
+                    return NotFound("A operação " + operacaodto.Id + " não existe!");
                 }
 
-                new_list_operacoes.Add(operacao.Value);
+                new_list_operacoes.Add(new TipoMaquinaOperacao(tipoMaquina.Value.Id, operacao.Value.Id));
             }
 
             if (!tipoMaquina.Value.update_operacoes(new_list_operacoes))
@@ -74,7 +74,7 @@ namespace MDF.Controllers
                 return BadRequest("Não foi possivel alterar operações deste tipo de máquina!");
             }
 
-            repositorio.updateTipoMaquina(update_TipoMaquina);
+            repositorio.updateTipoMaquina(tipoMaquina.Value);
             return Ok("Tipo de Máquina alterado com sucesso!");
         }
 

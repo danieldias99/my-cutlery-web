@@ -1,5 +1,8 @@
-LAPR5_3DD_019/Startup.cs
-LAPR5_3DD_019/bin/**
-LAPR5_3DD_019/obj/**
-LAPR5_3DD_019/testProject/bin/**
-LAPR5_3DD_019/testProject/obj/**
+Solution/MDF/Startup.cs
+Solution/MDP/Startup.cs
+Solution/MDF/bin/**
+Solution/MDP/bin/**
+Solution/MDF/obj/**
+Solution/MDP/obj/**
+Solution/Testes/bin/**
+Solution/Testes/obj/**

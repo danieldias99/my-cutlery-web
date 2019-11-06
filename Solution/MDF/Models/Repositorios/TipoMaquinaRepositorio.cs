@@ -35,12 +35,7 @@ namespace MDF.Models.Repositorios
 
         public async void updateTipoMaquina(TipoMaquina update_TipoMaquina)
         {
-            var current_TipoMaquina = await _context.TiposMaquina.FindAsync(update_TipoMaquina.Id);
-            current_TipoMaquina.descricaoTipoMaquina = update_TipoMaquina.descricaoTipoMaquina;
-            current_TipoMaquina.operacoesMaquina = update_TipoMaquina.operacoesMaquina;
-            current_TipoMaquina.maquinas = update_TipoMaquina.maquinas;
-            _context.Entry(current_TipoMaquina).State = EntityState.Modified;
-            _context.Entry(current_TipoMaquina).State = EntityState.Detached;
+            _context.Entry(update_TipoMaquina).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 

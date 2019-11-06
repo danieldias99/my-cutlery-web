@@ -18,10 +18,10 @@ namespace MDF.Models.Repositorios
             _context = context;
         }
 
-        public async Task<ActionResult<OperacaoDTO>> getOperacaoById(long id)
+        public async Task<ActionResult<Operacao>> getOperacaoById(long id)
         {
             var operacao = await _context.Operacoes.FindAsync(id);
-            return operacao.toDTO();
+            return operacao;
         }
 
         public void addOperacao(Operacao newOperacao)

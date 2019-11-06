@@ -22,12 +22,12 @@ namespace MDF.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<OperacaoDTO>> GetOperacao(long id)
         {
-            var operacaoDTO = await repositorio.getOperacaoById(id);
-            if (operacaoDTO == null)
+            var operacao = await repositorio.getOperacaoById(id);
+            if (operacao == null)
             {
-                return NotFound();
+                return NotFound("Operacao não existe!");
             }
-            return operacaoDTO;
+            return operacao.Value.toDTO();
         }
 
         // POST: api/Operacao
@@ -46,7 +46,7 @@ namespace MDF.Controllers
 
             if (operacaoDTO == null)
             {
-                return NotFound();
+                return NotFound("Operação não existe!");
             }
 
             if (id != operacaoDTO.Value.Id)
@@ -66,7 +66,7 @@ namespace MDF.Controllers
 
             if (operacao == null)
             {
-                return NotFound();
+                return NotFound("Operação não existe!");
             }
 
             repositorio.deleteOperacao(id);

@@ -1675,6 +1675,26 @@
         "build": {
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "MDF/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/MDF.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MDF.dll": {}
+        }
+      },
+      "MDP/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "compile": {
+          "bin/placeholder/MDP.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MDP.dll": {}
+        }
       }
     }
   },
@@ -5847,10 +5867,22 @@
         "xunit.runner.visualstudio.2.4.0.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "MDF/1.0.0": {
+      "type": "project",
+      "path": "../MDF/MDF.csproj",
+      "msbuildProject": "../MDF/MDF.csproj"
+    },
+    "MDP/1.0.0": {
+      "type": "project",
+      "path": "../MDP/MDP.csproj",
+      "msbuildProject": "../MDP/MDP.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
+      "MDF >= 1.0.0",
+      "MDP >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.0.1",
       "Microsoft.NETCore.App >= 2.2.0",
       "xunit >= 2.4.0",
@@ -5886,7 +5918,14 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\Solution\\MDF\\MDF.csproj": {
+              "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\Solution\\MDF\\MDF.csproj"
+            },
+            "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\Solution\\MDP\\MDP.csproj": {
+              "projectPath": "C:\\Users\\Daniel\\Desktop\\Universidade\\3oAno\\1oSemestre\\LAPR5\\Projeto\\lei19-20_3DD_019\\Solution\\MDP\\MDP.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -4,6 +4,8 @@ using MDF.Models.ClassesDeDominio;
 using MDF.Models;
 using MDF.Models.DTO;
 using MDF.Models.Repositorios;
+using System.Collections.Generic;
+using MDF.Associations;
 
 namespace MDF.Controllers
 {
@@ -12,10 +14,12 @@ namespace MDF.Controllers
     public class TipoMaquinaController : ControllerBase
     {
         public TipoMaquinaRepositorio repositorio;
+        public OperacaoRepositorio repositorio_operacao;
 
         public TipoMaquinaController(MDFContext context)
         {
             repositorio = new TipoMaquinaRepositorio(context);
+            repositorio_operacao = new OperacaoRepositorio(context);
         }
 
         // GET: api/TipoMaquina/ID
@@ -34,7 +38,7 @@ namespace MDF.Controllers
 
         // POST: api/TipoMaquina
         [HttpPost]
-        public async Task<ActionResult<Operacao>> PostTipoMaquina(TipoMaquina newTipoMaquina)
+        public async Task<ActionResult<TipoMaquina>> PostTipoMaquina(TipoMaquina newTipoMaquina)
         {
             repositorio.addTipoMaquina(newTipoMaquina);
             return CreatedAtAction(nameof(GetTipoMaquina), new { id = newTipoMaquina.Id }, newTipoMaquina);
@@ -51,8 +55,27 @@ namespace MDF.Controllers
                 return NotFound("O tipo de máquina escolhido não existe!");
             }
 
+            var new_list_operacoes = new List<Operacao>();
+
+            foreach (TipoMaquinaOperacao tmo in update_TipoMaquina.operacoesMaquina)
+            {
+                var operacao = await repositorio_operacao.getOperacaoById(tmo.id_operacao);
+
+                if (operacao == null)
+                {
+                    return NotFound("A operação " + tmo.id_operacao + " não existe!");
+                }
+
+                new_list_operacoes.Add(operacao.Value);
+            }
+
+            if (!tipoMaquina.Value.update_operacoes(new_list_operacoes))
+            {
+                return BadRequest("Não foi possivel alterar operações deste tipo de máquina!");
+            }
+
             repositorio.updateTipoMaquina(update_TipoMaquina);
-            return NoContent();
+            return Ok("Tipo de Máquina alterado com sucesso!");
         }
 
         // DELETE: api/TipoMaquina/5

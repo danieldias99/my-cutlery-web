@@ -103,6 +103,18 @@ var desenhaLinhaF = function (comprimento, largura, altura, posicaoLinhaZ, posic
     scene.add(linha);
 }
 
+//Delete Line - widget
+var apagarLinha = function () {
+    draw();
+
+    contTapetesNovo = contTapetes - 1;
+    contTapetes = 0;
+
+    for (i = 0; i < contTapetesNovo; i++) {
+        desenhaLinha();
+    }
+}
+
 var set_camera_init = function () {
     camera.position.z = 100;
     camera.position.y = 20;

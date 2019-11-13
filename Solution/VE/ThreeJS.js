@@ -115,6 +115,39 @@ var apagarLinha = function () {
     }
 }
 
+//Draw Machine - widget
+var contTapetesPreenchidos = 0;
+var contMaquinas = 0;
+
+var TAMANHO_MAQUINA = 3;
+var SIDEWALLK = 5;
+var MACHINE_SPACE = 5.25;
+
+var desenhaMaquina = function (size_m, x, y, z) {
+    var geometry_balcao = new THREE.BoxGeometry(size_m, size_m, size_m);
+    var material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    geometry_balcao.translate(x, y, z);
+    var linha = new THREE.Mesh(geometry_balcao, material);
+    scene.add(linha);
+}
+
+var desenhaMaquinas = function () {
+    switch (contMaquinas) {
+        case 0:
+            desenhaMaquina(TAMANHO_MAQUINA, - LARGURA_FABRICA / 2 + (SIDEWALLK + MACHINE_SPACE + (contMaquinas * (TAMANHO_MAQUINA + MACHINE_SPACE))), -17, - LARGURA_FABRICA / 2 + (8 + (2 * contTapetesPreenchidos * LARGURA_TAPETE) - TAMANHO_MAQUINA / 2)); //primeiras maquinas
+            contMaquinas++;
+            break;
+        case 1:
+            desenhaMaquina(TAMANHO_MAQUINA, - LARGURA_FABRICA / 2 + (SIDEWALLK + MACHINE_SPACE + (contMaquinas * (TAMANHO_MAQUINA + MACHINE_SPACE))), -17, - LARGURA_FABRICA / 2 + (8 + (2 * contTapetesPreenchidos * LARGURA_TAPETE) - TAMANHO_MAQUINA / 2)); //segundas maquinas
+            contMaquinas++;
+            break;
+        default:
+            desenhaMaquina(TAMANHO_MAQUINA, - LARGURA_FABRICA / 2 + (SIDEWALLK + MACHINE_SPACE + (contMaquinas * (TAMANHO_MAQUINA + MACHINE_SPACE))), -17, - LARGURA_FABRICA / 2 + (8 + (2 * contTapetesPreenchidos * LARGURA_TAPETE) - TAMANHO_MAQUINA / 2));// terceiras maquinas
+            contTapetesPreenchidos++;
+            contMaquinas = 0;
+    }
+}
+
 var set_camera_init = function () {
     camera.position.z = 100;
     camera.position.y = 20;

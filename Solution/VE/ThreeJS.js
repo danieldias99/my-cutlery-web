@@ -107,13 +107,19 @@ var desenhaLinhaF = function (comprimento, largura, altura, posicaoLinhaZ, posic
 var apagarLinha = function () {
     draw();
 
-    contTapetesNovo = contTapetes - 1;
+    /*contTapetesNovo = contTapetes - 1;
     contTapetes = 0;
 
+    var i;
     for (i = 0; i < contTapetesNovo; i++) {
         desenhaLinha();
-    }
+    }*/
 }
+
+desenhaLinha();
+contTapetes++;
+desenhaLinha();
+apagarLinha();
 
 var set_camera_init = function () {
     camera.position.z = 100;

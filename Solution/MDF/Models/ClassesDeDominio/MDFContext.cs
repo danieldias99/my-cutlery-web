@@ -21,6 +21,7 @@ namespace MDF.Models.ClassesDeDominio
         {
             //Operacao
             modelBuilder.Entity<Operacao>().HasKey(j => j.Id);
+            modelBuilder.Entity<Operacao>().Property(j => j.Id).ValueGeneratedNever();
 
             modelBuilder.Entity<Operacao>().OwnsOne(j => j.descricaoOperacao);
             modelBuilder.Entity<Operacao>().OwnsOne(j => j.duracaoOperacao);

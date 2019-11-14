@@ -4,17 +4,17 @@ namespace MDF.Models.ValueObjects
 {
     public class DuracaoOperacao : ValueObject
     {
-        public int hora { get; set; }
-        public int min { get; set; }
-        public int seg { get; set; }
+        public string hora { get; set; }
+        public string min { get; set; }
+        public string seg { get; set; }
 
         public DuracaoOperacao() { }
 
-        public DuracaoOperacao(int hora, int min, int sec) { this.hora = hora; this.min = min; this.seg = seg; }
+        public DuracaoOperacao(string hora, string min, string sec) { this.hora = hora; this.min = min; this.seg = sec; }
 
         public string toString()
         {
-            return hora.ToString() + ":" + min.ToString() + ":" + seg.ToString();
+            return hora + ":" + min + ":" + seg;
         }
     }
 }

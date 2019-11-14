@@ -3,11 +3,14 @@ using System.Threading.Tasks;
 using MDF.Models.ClassesDeDominio;
 using MDF.Models;
 using MDF.Models.DTO;
+using System.Collections.Generic;
 using MDF.Models.Repositorios;
+using Microsoft.AspNetCore.Cors;
 
 namespace MDF.Controllers
 {
     [Route("api/Operacao")]
+    [EnableCors("IT3Client")]
     [ApiController]
     public class OperacaoController : ControllerBase
     {
@@ -23,38 +26,56 @@ namespace MDF.Controllers
         public async Task<ActionResult<OperacaoDTO>> GetOperacao(long id)
         {
             var operacao = await repositorio.getOperacaoById(id);
-            if (operacao == null)
+            if (operacao.Value == null)
             {
                 return NotFound("Operacao não existe!");
             }
             return operacao.Value.toDTO();
         }
 
-        // POST: api/Operacao
-        [HttpPost]
-        public async Task<ActionResult<Operacao>> PostOperacao(Operacao newOperacao)
+        // GET: api/Operacao/
+        [HttpGet()]
+        public async Task<ActionResult<List<OperacaoDTO>>> GetAllOperacao()
         {
-            repositorio.addOperacao(newOperacao);
+            List<OperacaoDTO> listaMaquinasDTO = obterListaOperacaosDTO((await repositorio.getAllOperacao()).Value);
+            return listaMaquinasDTO;
+        }
+
+        private List<OperacaoDTO> obterListaOperacaosDTO(List<Operacao> listaOperacaos)
+        {
+            List<OperacaoDTO> listaOperacaosDTO = new List<OperacaoDTO>();
+            foreach (Operacao operacao in listaOperacaos)
+            {
+                listaOperacaosDTO.Add(operacao.toDTO());
+            }
+            return listaOperacaosDTO;
+        }
+
+        // POST: api/Operacao
+        [HttpPost()]
+        public async Task<ActionResult<Operacao>> PostOperacao(OperacaoDTO newOperacao)
+        {
+            repositorio.addOperacao(new Operacao(newOperacao.Id, newOperacao.descricaoOperacao, newOperacao.duracaoOperacao.Split(":")[0], newOperacao.duracaoOperacao.Split(":")[1], newOperacao.duracaoOperacao.Split(":")[2]));
             return CreatedAtAction(nameof(GetOperacao), new { id = newOperacao.Id }, newOperacao);
         }
 
-        // PUT: api/Todo/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutOperacao(long id, Operacao update_operacao)
+        // PUT: api/Todo
+        [HttpPut()]
+        public async Task<IActionResult> PutOperacao(OperacaoDTO update_operacao)
         {
-            var operacaoDTO = await repositorio.getOperacaoById(id);
+            var operacaoDTO = await repositorio.getOperacaoById(update_operacao.Id);
 
             if (operacaoDTO == null)
             {
                 return NotFound("Operação não existe!");
             }
 
-            if (id != operacaoDTO.Value.Id)
+            /*if (update_operacao.Id != operacaoDTO.Value.Id)
             {
                 return BadRequest();
-            }
+            }*/
 
-            repositorio.updateOperacao(update_operacao);
+            repositorio.updateOperacao(operacaoDTO.Value);
             return NoContent();
         }
 

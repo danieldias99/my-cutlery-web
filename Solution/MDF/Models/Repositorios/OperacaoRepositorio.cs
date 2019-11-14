@@ -1,9 +1,9 @@
 using MDF.Models.ClassesDeDominio;
-using MDF.Models.DTO;
-using MDF.Models.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using MDF.Models.DTO;
 
 namespace MDF.Models.Repositorios
 {
@@ -24,6 +24,11 @@ namespace MDF.Models.Repositorios
             return operacao;
         }
 
+        public async Task<ActionResult<List<Operacao>>> getAllOperacao()
+        {
+            return await _context.Operacoes.ToListAsync();
+        }
+
         public void addOperacao(Operacao newOperacao)
         {
             _context.Operacoes.Add(newOperacao);
@@ -36,16 +41,14 @@ namespace MDF.Models.Repositorios
             current_operacao.descricaoOperacao = update_operacao.descricaoOperacao;
             current_operacao.duracaoOperacao = update_operacao.duracaoOperacao;
             _context.Entry(current_operacao).State = EntityState.Modified;
-            _context.Entry(current_operacao).State = EntityState.Detached;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async void deleteOperacao(long id)
         {
             var operacao = await _context.Operacoes.FindAsync(id);
             _context.Operacoes.Remove(operacao);
-            _context.Entry(operacao).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

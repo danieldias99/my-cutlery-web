@@ -1,0 +1,16 @@
+<div *ngIf="operacao" align= "center">
+    <h2>{{operacao.descricaoOperacao | uppercase}} Detalhes</h2>
+    <div><span>id: </span>{{operacao.id}}</div>
+    <div>
+        <label>Descrição Operação:
+            <input [(ngModel)]="operacao.descricaoOperacao" placeholder="descricao" />
+        </label>
+        <br>
+        <label>Duração Operação:
+            <input [(ngModel)]="operacao.duracaoOperacao" placeholder="duracao" />
+        </label>
+    </div>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <button (click)="save()">Save</button>
+</div>

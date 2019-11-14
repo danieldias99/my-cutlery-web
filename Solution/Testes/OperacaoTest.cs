@@ -15,9 +15,9 @@ namespace Testes
         public void ensureGetsAndSetsReturnCorrectly()
         {
             string descricaoTest = "boas";
-            int horaTest = 10;
-            int minTest = 5;
-            int segTest = 50;
+            string horaTest = "10";
+            string minTest = "5";
+            string segTest = "50";
             long id = 4;
             var operacao = new Operacao(id);
             var descricao = new Descricao(descricaoTest);

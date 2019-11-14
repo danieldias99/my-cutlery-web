@@ -1,0 +1,32 @@
+<div *ngIf="statusMessage; else noError">
+    <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+    <div class="criar-opp-align" align="center">
+        <form>
+            <h2>Criar Operação</h2>
+            ID Operação:
+            <input #idOperacao type="text"><br><br>
+            Descrição da Operação:
+            <input #descricao type="text" id="ex2"><br><br>
+            Duração da Operação:
+            <input #duracao type="text" id="ex3"><br><br>
+            <button class="add-opp-btn"
+                (click)="addOperacao(idOperacao.value, descricao.value, duracao.value); idOperacao.value=''; descricao.value='';duracao.value=''">Submeter</button>
+            &nbsp;
+            <button class="add-opp-btn" (click)="goBack()">Back</button>
+        </form>
+    </div>
+
+    <div class="operacoes" align="center">
+        <h2>Operações Disponíveis:</h2>
+        <li *ngFor="let op of allOperacoes" value="{{op.id}}">
+            <a routerLink="/operacao-detail/{{op.id}}">
+                <span class="Badge">{{op.descricaoOperacao}}</span>
+            </a>
+            <button class="delete" title="delete operacao" (click)="delete(op)">x</button>
+        </li>
+    </div>
+
+</ng-template>

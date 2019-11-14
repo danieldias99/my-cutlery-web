@@ -29,14 +29,26 @@ namespace MDF
         {
             //services.AddDbContext<LAPR5DBContext>(opt => opt.UseSqlServer("Server=localhost;Database=master;Trusted_Connection=True;"));
             services.AddDbContext<MDFContext>(opt => opt.UseSqlServer("Server=localhost\\LAPR5_3DD_019;Database=ME;Trusted_Connection=True;"));
-            
+
             //services.AddDbContext<LAPR5DBContext>(opt => opt.UseInMemoryDatabase("todoList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddMvc()
-                .AddJsonOptions(opt => {
+                .AddJsonOptions(opt =>
+                {
                     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("IT3Client",
+                b =>
+                {
+                    b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,8 +64,9 @@ namespace MDF
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("IT3Client");
         }
     }
 }

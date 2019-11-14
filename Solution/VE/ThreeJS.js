@@ -1,3 +1,5 @@
+var linhaTemp = [];
+
 var buttons = document.getElementsByTagName("button");
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", onButtonClick, false);
@@ -155,18 +157,16 @@ var desenhaLinhaF = function (comprimento, largura, altura, posicaoLinhaZ, posic
     geometry_linha.translate(posicaoLinhaX, -17, descZ);
     var linha = new THREE.Mesh(geometry_linha, material);
     scene.add(linha);
+    linhaTemp.push(linha);
 }
 
 //Apagar um tapete/linha - widget
 var apagarLinha = function () {
-    draw();
-
-    contTapetesNovo = contTapetes - 1;
-    contTapetes = 0;
-
-    for (i = 0; i < contTapetesNovo; i++) {
-        desenhaLinha();
-    }
+    var linhaG = linhaTemp.pop();
+    scene.remove(linhaG);
+    var linhaP = linhaTemp.pop();
+    scene.remove(linhaP);
+    contTapetes--;
 }
 
 //Desenhar maquina - widget

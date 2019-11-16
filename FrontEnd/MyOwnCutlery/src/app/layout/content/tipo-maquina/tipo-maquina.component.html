@@ -1,0 +1,53 @@
+<div *ngIf="statusMessage; else noError">
+    <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+    <div class="criar-tm-align" align="center">
+        <form>
+            <h2>Criar Tipo Máquina</h2>
+            ID Tipo Máquina:
+            <input #idTipomaquina type="text"><br><br>
+            Descrição da Tipo Máquina:
+            <input #descricao type="text" id="ex2"><br><br>
+            <div class="ass-opp-div-r">
+                <div class="operacoes">
+                    Operações Disponíveis:
+                    <li *ngFor="let op of allOperacoes" value="{{op.id}}">
+                        <span class="Badge" (click)="assOperacaoTipoMaquina(op.id)">{{op.descricaoOperacao}}</span>
+                    </li>
+                </div>
+            </div>
+            <div class="ass-opp-div-l">
+                <div class="operacoes">
+                    Operações Associadas:
+                    <li *ngFor="let op of operacoesAssociadas" value="{{op.id}}">
+                        <a>
+                            <span class="Badge" (click)=deleteAssOperacaoTipoMaquina(op.id)>{{op.descricaoOperacao}}</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+
+            <div>
+                <form>
+                    <button class="add-tm-btn" (click)="addTipoMaquina(idTipomaquina.value, descricao.value); idTipomaquina.value=''; descricao.value=''">Submeter</button>
+                    &nbsp;
+                    <button class="add-tm-btn" (click)="goBack()">Back</button>
+                </form>
+            </div>
+
+            <div class="tiposMaquina" align="center">
+                <form>
+                    <h2>Tipos Máquina Disponíveis:</h2>
+                    <li *ngFor="let tm of allTiposMaquina" value="{{tm.id_tipoMaquina}}">
+                        <a routerLink="/tipo-maquina-detail/{{tm.id_tipoMaquina}}">
+                            <span class="Badge">{{tm.descricaoTipoMaquina}}</span>
+                        </a>
+                        <button class="delete" title="Delete Tipo Máquina" (click)="delete(tm)">x</button>
+                    </li>
+                </form>
+            </div>
+        </form>
+    </div>
+</ng-template>

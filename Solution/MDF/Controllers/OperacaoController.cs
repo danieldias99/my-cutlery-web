@@ -70,11 +70,6 @@ namespace MDF.Controllers
                 return NotFound("Operação não existe!");
             }
 
-            /*if (update_operacao.Id != operacaoDTO.Value.Id)
-            {
-                return BadRequest();
-            }*/
-
             repositorio.updateOperacao(operacaoDTO.Value);
             return NoContent();
         }

@@ -28,8 +28,8 @@ namespace MDF.Models.ClassesDeDominio
 
 
             //Tipo Maquina
-            modelBuilder.Entity<TipoMaquina>().HasKey(a => a.Id);
-            modelBuilder.Entity<TipoMaquina>().Property(a => a.Id).ValueGeneratedNever();
+            modelBuilder.Entity<TipoMaquina>().HasKey(a => a.id_tipoMaquina);
+            modelBuilder.Entity<TipoMaquina>().Property(a => a.id_tipoMaquina).ValueGeneratedNever();
 
             modelBuilder.Entity<TipoMaquina>().OwnsOne(a => a.descricaoTipoMaquina);
 

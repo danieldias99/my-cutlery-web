@@ -10,24 +10,40 @@ namespace MDF.Models
     public class TipoMaquina : Entity, IAggregateRoot
     {
 
-        public long Id { set; get; }
+        public long id_tipoMaquina { set; get; }
         public Descricao descricaoTipoMaquina { set; get; }
-        public ICollection<TipoMaquinaOperacao> operacoesMaquina { set; get; }
+        public List<TipoMaquinaOperacao> operacoesMaquina { set; get; }
         public ICollection<Maquina> maquinas { get; set; }
 
         public TipoMaquina() { }
 
-        public TipoMaquina(long id, string descricao, ICollection<TipoMaquinaOperacao> list)
+        public TipoMaquina(long id_tipoMaquina, string descricao, List<TipoMaquinaOperacao> list)
         {
-            this.Id = id;
+            this.id_tipoMaquina = id_tipoMaquina;
             this.descricaoTipoMaquina = new Descricao(descricao);
             this.operacoesMaquina = list;
         }
 
-        public TipoMaquina(long id, string descricao)
+        public TipoMaquina(long id_tipoMaquina, string descricao, List<OperacaoDTO> list)
         {
-            this.Id = id;
+            this.id_tipoMaquina = id_tipoMaquina;
             this.descricaoTipoMaquina = new Descricao(descricao);
+            this.operacoesMaquina = new List<TipoMaquinaOperacao>();
+            addOperacoes(list);
+        }
+
+        public TipoMaquina(long id_tipoMaquina, string descricao)
+        {
+            this.id_tipoMaquina = id_tipoMaquina;
+            this.descricaoTipoMaquina = new Descricao(descricao);
+        }
+
+        public void addOperacoes(List<OperacaoDTO> operacaoes)
+        {
+            foreach (OperacaoDTO operacao in operacaoes)
+            {
+                addOperacao(new TipoMaquinaOperacao(this.id_tipoMaquina, operacao.Id));
+            }
         }
 
         public void addOperacao(TipoMaquinaOperacao operacao)
@@ -35,7 +51,7 @@ namespace MDF.Models
             operacoesMaquina.Add(operacao);
         }
 
-        public bool update_operacoes(ICollection<TipoMaquinaOperacao> new_operacoes)
+        public bool update_operacoes(List<TipoMaquinaOperacao> new_operacoes)
         {
             if (new_operacoes == null)
             {
@@ -49,7 +65,7 @@ namespace MDF.Models
 
         public TipoMaquinaDTO toDTO()
         {
-            return new TipoMaquinaDTO(Id, descricaoTipoMaquina.Id, operacoesMaquina);
+            return new TipoMaquinaDTO(id_tipoMaquina, descricaoTipoMaquina.Id, operacoesMaquina);
         }
     }
 }

@@ -26,17 +26,21 @@ namespace MDF.Models.Repositorios
             return tipoMaquina;
         }
 
+        public async Task<ActionResult<List<TipoMaquina>>> getAllTipoMaquina()
+        {
+            return await _context.TiposMaquina.ToListAsync();
+        }
+
         public void addTipoMaquina(TipoMaquina newTipoMaquina)
         {
-            //setOperacoesTipoMaquina(newTipoMaquina);
             _context.TiposMaquina.Add(newTipoMaquina);
             _context.SaveChanges();
         }
 
-        public async void updateTipoMaquina(TipoMaquina update_TipoMaquina)
+        public void updateTipoMaquina(TipoMaquina update_TipoMaquina)
         {
             _context.Entry(update_TipoMaquina).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public void setOperacoesTipoMaquina(TipoMaquina tipoMaquina)
@@ -45,10 +49,9 @@ namespace MDF.Models.Repositorios
 
             foreach (TipoMaquinaOperacao tipo in all_tipos)
             {
-                if (tipo.id_tipoMaquina == tipoMaquina.Id)
+                if (tipo.id_tipoMaquina == tipoMaquina.id_tipoMaquina)
                 {
-                    tipo.operacao = _context.Operacoes.Find(tipo.id_operacao);
-                    tipoMaquina.addOperacao(tipo);
+                    var operacao = _context.Operacoes.Find(tipo.id_operacao);
                 }
             }
         }
@@ -58,7 +61,7 @@ namespace MDF.Models.Repositorios
             var tipoMaquina = await _context.TiposMaquina.FindAsync(id);
             _context.TiposMaquina.Remove(tipoMaquina);
             _context.Entry(tipoMaquina).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
     }

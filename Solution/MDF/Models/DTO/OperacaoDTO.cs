@@ -11,6 +11,13 @@ namespace MDF.Models.DTO
         public string duracaoOperacao { get; set; }
         public List<TipoMaquina> tiposMaquinas { get; set; }
 
+        public OperacaoDTO(){}
+        
+        public OperacaoDTO(long id)
+        {
+            this.Id = id;
+        }
+
         public OperacaoDTO(long id, string descricaoOperacao, string duracaoOperacao, ICollection<TipoMaquinaOperacao> listTipoMaquinaOperacoes)
         {
             this.Id = id;

@@ -86,9 +86,9 @@ namespace MDF.Migrations
 
             modelBuilder.Entity("MDF.Models.TipoMaquina", b =>
                 {
-                    b.Property<long>("Id");
+                    b.Property<long>("id_tipoMaquina");
 
-                    b.HasKey("Id");
+                    b.HasKey("id_tipoMaquina");
 
                     b.ToTable("TiposMaquina");
                 });
@@ -223,17 +223,17 @@ namespace MDF.Migrations
                 {
                     b.OwnsOne("MDF.Models.ValueObjects.Descricao", "descricaoTipoMaquina", b1 =>
                         {
-                            b1.Property<long>("TipoMaquinaId");
+                            b1.Property<long>("TipoMaquinaid_tipoMaquina");
 
                             b1.Property<string>("Id");
 
-                            b1.HasKey("TipoMaquinaId");
+                            b1.HasKey("TipoMaquinaid_tipoMaquina");
 
                             b1.ToTable("TiposMaquina");
 
                             b1.HasOne("MDF.Models.TipoMaquina")
                                 .WithOne("descricaoTipoMaquina")
-                                .HasForeignKey("MDF.Models.ValueObjects.Descricao", "TipoMaquinaId")
+                                .HasForeignKey("MDF.Models.ValueObjects.Descricao", "TipoMaquinaid_tipoMaquina")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
                 });

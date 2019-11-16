@@ -6,10 +6,12 @@ using MDF.Models.DTO;
 using MDF.Models.Repositorios;
 using System.Collections.Generic;
 using MDF.Associations;
+using Microsoft.AspNetCore.Cors;
 
 namespace MDF.Controllers
 {
     [Route("api/TipoMaquina")]
+    [EnableCors("IT3Client")]
     [ApiController]
     public class TipoMaquinaController : ControllerBase
     {
@@ -36,19 +38,38 @@ namespace MDF.Controllers
             return tipoMaquina.Value.toDTO();
         }
 
+        // GET: api/TipoMaquina/
+        [HttpGet]
+        public async Task<ActionResult<List<TipoMaquinaDTO>>> GetAllTipoMaquina()
+        {
+            List<TipoMaquinaDTO> listaMaquinasDTO = obterListaTipoMaquinasDTO((await repositorio.getAllTipoMaquina()).Value);
+            return listaMaquinasDTO;
+        }
+
+        private List<TipoMaquinaDTO> obterListaTipoMaquinasDTO(List<TipoMaquina> listaTipoMaquinas)
+        {
+            List<TipoMaquinaDTO> listaTipoMaquinasDTO = new List<TipoMaquinaDTO>();
+            foreach (TipoMaquina TipoMaquina in listaTipoMaquinas)
+            {
+                repositorio.setOperacoesTipoMaquina(TipoMaquina);
+                listaTipoMaquinasDTO.Add(TipoMaquina.toDTO());
+            }
+            return listaTipoMaquinasDTO;
+        }
+
         // POST: api/TipoMaquina
         [HttpPost]
-        public async Task<ActionResult<TipoMaquina>> PostTipoMaquina(TipoMaquina newTipoMaquina)
+        public async Task<ActionResult<TipoMaquina>> PostTipoMaquina(TipoMaquinaDTO newTipoMaquina)
         {
-            repositorio.addTipoMaquina(newTipoMaquina);
-            return CreatedAtAction(nameof(GetTipoMaquina), new { id = newTipoMaquina.Id }, newTipoMaquina);
+            repositorio.addTipoMaquina(new TipoMaquina(newTipoMaquina.id_tipoMaquina, newTipoMaquina.descricaoTipoMaquina, newTipoMaquina.operacoes));
+            return CreatedAtAction(nameof(GetTipoMaquina), new { id = newTipoMaquina.id_tipoMaquina }, newTipoMaquina);
         }
 
         // PUT: api/Todo/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTipoMaquina(long id, TipoMaquinaDTO update_TipoMaquina)
+        [HttpPut]
+        public async Task<IActionResult> PutTipoMaquina(TipoMaquinaDTO update_TipoMaquina)
         {
-            var tipoMaquina = await repositorio.getTipoMaquinaById(id);
+            var tipoMaquina = await repositorio.getTipoMaquinaById(update_TipoMaquina.id_tipoMaquina);
 
             if (tipoMaquina == null)
             {
@@ -57,16 +78,16 @@ namespace MDF.Controllers
 
             var new_list_operacoes = new List<TipoMaquinaOperacao>();
 
-            foreach (OperacaoDTO operacaodto in update_TipoMaquina.operacoes)
+            foreach (OperacaoDTO TipoMaquinaDTO in update_TipoMaquina.operacoes)
             {
-                var operacao = await repositorio_operacao.getOperacaoById(operacaodto.Id);
+                var TipoMaquina = await repositorio_operacao.getOperacaoById(TipoMaquinaDTO.Id);
 
-                if (operacao == null)
+                if (TipoMaquina == null)
                 {
-                    return NotFound("A operação " + operacaodto.Id + " não existe!");
+                    return NotFound("A operação " + TipoMaquinaDTO.Id + " não existe!");
                 }
 
-                new_list_operacoes.Add(new TipoMaquinaOperacao(tipoMaquina.Value.Id, operacao.Value.Id));
+                new_list_operacoes.Add(new TipoMaquinaOperacao(tipoMaquina.Value.id_tipoMaquina, TipoMaquina.Value.Id));
             }
 
             if (!tipoMaquina.Value.update_operacoes(new_list_operacoes))
@@ -74,8 +95,11 @@ namespace MDF.Controllers
                 return BadRequest("Não foi possivel alterar operações deste tipo de máquina!");
             }
 
+            tipoMaquina.Value.descricaoTipoMaquina = new Models.ValueObjects.Descricao(update_TipoMaquina.descricaoTipoMaquina);
+
             repositorio.updateTipoMaquina(tipoMaquina.Value);
-            return Ok("Tipo de Máquina alterado com sucesso!");
+            //return Ok("Tipo de Máquina alterado com sucesso!");
+            return NoContent();
         }
 
         // DELETE: api/TipoMaquina/5

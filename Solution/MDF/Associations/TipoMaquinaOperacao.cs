@@ -18,5 +18,12 @@ namespace MDF.Associations
             this.id_tipoMaquina = id_tipoMaquina;
             this.id_operacao = id_operacao;
         }
+
+        public TipoMaquinaOperacao(long id_tipoMaquina, long id_operacao, Operacao operacao)
+        {
+            this.id_tipoMaquina = id_tipoMaquina;
+            this.id_operacao = id_operacao;
+            this.operacao = operacao;
+        }
     }
 }

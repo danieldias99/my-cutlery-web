@@ -37,7 +37,7 @@ namespace MDF.Models
                 return false;
             }
             this.tipoMaquina = tipoMaquina;
-            this.id_tipoMaquina = tipoMaquina.Id;
+            this.id_tipoMaquina = tipoMaquina.id_tipoMaquina;
             return true;
         }
 

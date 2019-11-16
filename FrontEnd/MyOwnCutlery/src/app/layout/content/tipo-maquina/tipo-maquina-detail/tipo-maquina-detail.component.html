@@ -1,0 +1,31 @@
+<div *ngIf="tipomaquina" align= "center">
+    <h2>{{tipomaquina.descricaoTipoMaquina | uppercase}} Detalhes</h2>
+    <div><span>Id_tipoMaquina: </span>{{tipomaquina.id_tipoMaquina}}</div>
+    <div>
+        <label>Descrição Operação:
+            <input [(ngModel)]="tipomaquina.descricaoTipoMaquina" placeholder="descricao" />
+        </label>
+        <br>
+        <div class="ass-opp-div-r">
+            <div class="operacoes">
+                Operações Disponíveis:
+                <li *ngFor="let op of operacoesAll" value="{{op.id}}">
+                    <span class="Badge" (click)="assOperacaoTipoMaquina(op.id)">{{op.descricaoOperacao}}</span>
+                </li>
+            </div>
+        </div>
+        <div class="ass-opp-div-l">
+            <div class="operacoes">
+                Operações Associadas:
+                <li *ngFor="let op of operacoesAssociadas" value="{{op.id}}">
+                    <a>
+                        <span class="Badge">{{op.descricaoOperacao}}</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <button (click)="save()">Save</button>
+</div>

@@ -48,6 +48,7 @@ function onButtonClickApagarM(event) {
 //botao importar
 function onButtonClickIMP(event) {
     //método da importação
+    alert("Não é possível fazer import!");
 }
 
 //botao luminosidade

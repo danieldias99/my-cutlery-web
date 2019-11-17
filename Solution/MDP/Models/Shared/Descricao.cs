@@ -1,6 +1,6 @@
 using MDP.Models.Shared;
 
-namespace MDP.Models.ValueObjects
+namespace MDP.Models.Shared
 {
     public class Descricao : ValueObject
     {

@@ -1,0 +1,98 @@
+div.criar-p-align {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15em;
+    margin-top: 50px;
+}
+
+div.errorMsg{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 15em;
+    color: red;
+}
+
+button.add-p-btn{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px 10px;
+    color: #F1F1F1;
+    color: black;
+}
+
+p.criar-p-header{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    margin-bottom: 50px;
+    margin-top: 0px;
+}
+
+button.add-p-btn:hover{
+    background-color: #333;
+    color: white;
+}
+
+.produtos .span {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color:#405061;
+    line-height: 1em;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    min-width: 16px;
+    text-align: right;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+
+  button.delete {
+    left: 294px;
+    top: -50px;
+    background-color: gray !important;
+    color: white;
+  }
+
+  .produtos a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    width: 250px;
+  }
+  
+  .produtos a:hover {
+    color:#607D8B;
+  }
+
+  .produtos {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .produtos li {
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EEE;
+    margin: .5em;
+    text-align: center;
+    padding: .3em 0;
+    height: 1.8em;
+    border-radius: 4px;
+  }
+  
+  .produtos li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+

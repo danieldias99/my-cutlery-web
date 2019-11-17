@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MDP.Models.ClassesDeDominio;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
 
 namespace MDP
 {
@@ -27,8 +28,26 @@ namespace MDP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MDPContext>(opt => opt.UseSqlServer("Server=localhost\\SQLEXPRESS02;Database=ME;Trusted_Connection=True;"));
+            //services.AddDbContext<LAPR5DBContext>(opt => opt.UseSqlServer("Server=localhost;Database=master;Trusted_Connection=True;"));
+            services.AddDbContext<MDPContext>(opt => opt.UseSqlServer("Server=localhost\\LAPR5_3DD_019;Database=ME;Trusted_Connection=True;"));
+
+            //services.AddDbContext<LAPR5DBContext>(opt => opt.UseInMemoryDatabase("todoList"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc()
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("IT3Client",
+                b =>
+                {
+                    b.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,8 +63,9 @@ namespace MDP
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseCors("IT3Client");
         }
     }
 }

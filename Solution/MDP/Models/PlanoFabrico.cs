@@ -1,5 +1,4 @@
 using MDP.Models.Shared;
-using MDP.Models.ValueObjects;
 using MDP.Models.DTO;
 
 namespace MDP.Models

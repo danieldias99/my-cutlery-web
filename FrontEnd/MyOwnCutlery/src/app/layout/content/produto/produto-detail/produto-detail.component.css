@@ -1,0 +1,35 @@
+.produto{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  label {
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+      width: 25em;
+      margin: .5em 0;
+      color: black;
+      font-weight: bold;
+    }
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      height: 2em;
+      font-size: 1em;
+      padding-left: .4em;
+    }
+    button {
+      font-family: Arial, Helvetica, sans-serif;
+      margin-top: 20px;
+      background-color: #eee;
+      padding: 5px 10px;
+      cursor: pointer;
+      cursor: hand;
+    }
+    button:hover {
+      background-color: #cfd8dc;
+    }
+    button:disabled {
+      background-color: #eee;
+      color: #ccc;
+      cursor: auto;
+    }
+  

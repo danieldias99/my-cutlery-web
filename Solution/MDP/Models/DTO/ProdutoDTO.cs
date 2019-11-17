@@ -1,6 +1,6 @@
-using MDF.Models.ValueObjects;
+using MDP.Models.Shared;
 
-namespace MDF.Models.DTO
+namespace MDP.Models.DTO
 {
 
     public class ProdutoDTO

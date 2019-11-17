@@ -1,8 +1,8 @@
-using MDF.Models.Shared;
-using MDF.Models.ValueObjects;
-using MDF.Models.DTO;
+using MDP.Models.Shared;
+using MDP.Models.ValueObjects;
+using MDP.Models.DTO;
 
-namespace MDF.Models
+namespace MDP.Models
 {
     public class Produto : Entity, IAggregateRoot
     {
@@ -17,6 +17,12 @@ namespace MDF.Models
         {
             this.Id = id;
             this.informacaoProduto = nomeProduto;
+        }
+
+        public Produto(long id, string nomeProduto, string descricaoProduto)
+        {
+            this.Id = id;
+            this.informacaoProduto = new InfoProduto(nomeProduto, descricaoProduto);
         }
 
         public ProdutoDTO toDTO()

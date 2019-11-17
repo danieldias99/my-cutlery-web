@@ -15,7 +15,6 @@ namespace MDF.Models.ClassesDeDominio
         public DbSet<Maquina> Maquinas { get; set; }
         public DbSet<LinhaProducao> LinhasProducao { get; set; }
         public DbSet<LinhaProducaoMaquinas> LinhaProducaoMaquinas { get; set; }
-        public DbSet<Produto> Produtos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -71,13 +70,6 @@ namespace MDF.Models.ClassesDeDominio
                 .HasOne(lpm => lpm.linhaProducao)
                 .WithMany(c => c.maquinas)
                 .HasForeignKey(lpm => lpm.id_linhaProducao);
-
-            //Produto
-            modelBuilder.Entity<Produto>().HasKey(f => f.Id);
-            modelBuilder.Entity<Produto>().Property(f => f.Id).ValueGeneratedNever();
-
-            modelBuilder.Entity<Produto>().OwnsOne(f => f.informacaoProduto);
-
         }
 
     }

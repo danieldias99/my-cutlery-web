@@ -16,6 +16,8 @@ import { MaquinaComponent } from './layout/content/maquina/maquina.component';
 import { MaquinaDetailComponent } from './layout/content/maquina/maquina-detail/maquina-detail.component';
 import { LinhaProducaoComponent } from './layout/content/linha-producao/linha-producao.component';
 import { LinhaProducaoDetailComponent } from './layout/content/linha-producao/linha-producao-detail/linha-producao-detail.component';
+import { ProdutoComponent } from './layout/content/produto/produto.component';
+import { ProdutoDetailComponent } from './layout/content/produto/produto-detail/produto-detail.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LinhaProducaoDetailComponent } from './layout/content/linha-producao/li
     MaquinaComponent,
     MaquinaDetailComponent,
     LinhaProducaoComponent,
-    LinhaProducaoDetailComponent
+    LinhaProducaoDetailComponent,
+    ProdutoComponent,
+    ProdutoDetailComponent
   ],
   imports: [
     BrowserModule,

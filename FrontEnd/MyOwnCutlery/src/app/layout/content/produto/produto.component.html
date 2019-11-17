@@ -1,0 +1,32 @@
+<div *ngIf="statusMessage; else noError">
+    <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+    <div class="criar-p-align" align="center">
+        <form>
+            <h2>Criar Produto</h2>
+            ID Produto:
+            <input #idProduto type="text"><br><br>
+            Nome da Produto:
+            <input #nome type="text" id="ex3"><br><br>
+            Descrição da Produto:
+            <input #descricao type="text" id="ex2"><br><br>
+            <button class="add-p-btn"
+                (click)="addProduto(idProduto.value, nome.value, descricao.value); idProduto.value=''; nome.value='';descricao.value=''">Submeter</button>
+            &nbsp;
+            <button class="add-p-btn" (click)="goBack()">Back</button>
+        </form>
+    </div>
+
+    <div class="produtos" align="center">
+        <h2>Produtos Disponíveis:</h2>
+        <li *ngFor="let p of allProdutos" value="{{p.id}}">
+            <a routerLink="/produto-detail/{{p.id}}">
+                <span class="Badge">{{p.nomeProduto}}</span>
+            </a>
+            <button class="delete" title="delete Produto" (click)="delete(p)">x</button>
+        </li>
+    </div>
+
+</ng-template>

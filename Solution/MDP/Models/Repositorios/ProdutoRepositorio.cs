@@ -1,10 +1,12 @@
-using MDF.Models.ClassesDeDominio;
-using MDF.Models.DTO;
+using MDP.Models.ClassesDeDominio;
+using MDP.Models.DTO;
+using MDP.Models;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
-namespace MDF.Models.Repositorios
+namespace MDP.Models.Repositorios
 {
 
 
@@ -12,9 +14,9 @@ namespace MDF.Models.Repositorios
     public class ProdutoRepositorio
     {
 
-        private readonly MDFContext _context;
+        private readonly MDPContext _context;
 
-        public ProdutoRepositorio(MDFContext context)
+        public ProdutoRepositorio(MDPContext context)
         {
             _context = context;
         }
@@ -23,6 +25,11 @@ namespace MDF.Models.Repositorios
         {
             var Produto = await _context.Produtos.FindAsync(id);
             return Produto.toDTO();
+        }
+
+        public async Task<ActionResult<List<Produto>>> getAllProdutos()
+        {
+            return await _context.Produtos.ToListAsync();
         }
 
         public void addProduto(Produto newProduto)
@@ -36,8 +43,7 @@ namespace MDF.Models.Repositorios
             var current_produto = await _context.Produtos.FindAsync(update_produto.Id);
             current_produto.informacaoProduto = update_produto.informacaoProduto;
             _context.Entry(current_produto).State = EntityState.Modified;
-            _context.Entry(current_produto).State = EntityState.Detached;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         public async void deleteProduto(long id)
@@ -45,7 +51,7 @@ namespace MDF.Models.Repositorios
             var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
             _context.Entry(produto).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

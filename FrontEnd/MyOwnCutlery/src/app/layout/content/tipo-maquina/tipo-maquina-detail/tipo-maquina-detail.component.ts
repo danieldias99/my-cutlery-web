@@ -4,9 +4,7 @@ import { Location } from '@angular/common';
 
 import { TipoMaquina } from 'src/app/core/models/tipo-maquina.model';
 import { TipoMaquinaService } from 'src/app/core/services/tipo-maquina/tipo-maquina.service';
-import { MessageLogService } from 'src/app/core/services/MessageLog/message-log.service';
 import { Operacao } from 'src/app/core/models/operacao.model';
-import { TiposMaquinaOperacao } from 'src/app/core/models/tipos-maquina-operacao.model';
 import { OperacaoService } from 'src/app/core/services/operacao/operacao.service';
 
 

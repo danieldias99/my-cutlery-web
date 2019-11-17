@@ -1,0 +1,52 @@
+<div *ngIf="statusMessage; else noError">
+    <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+    <div class="criar-m-align" align="center">
+        <form>
+            <h2>Criar Máquina</h2>
+            ID Máquina:
+            <input #idMaquina type="text"><br><br>
+            Nome da Máquina:
+            <input #nome type="text" id="ex2"><br><br>
+            Posição Na Linha de Produção
+            <input #posicao type="text"><br><br>
+            <div class="ass-m-div">
+                <div class="tiposMaquina">
+                    Tipo Máquinas Disponíveis:
+                    <li *ngFor="let tm of allTiposMaquina" value="{{tm.id}}">
+                        <span class="Badge" (click)="assOperacaoTipoMaquina(op.id)">{{tm.descricaoTipoMaquina}}</span>
+                    </li>
+                </div>
+            </div>
+            Tipo Máquina Associada:
+            <input #id_tipoMaquina type="text"><br><br>
+            <!--<li *ngFor="let op of operacoesAssociadas" value="{{op.id}}">
+                        <a>
+                            <span class="Badge" (click)=deleteAssOperacaoTipoMaquina(op.id)>{{op.descricaoOperacao}}</span>
+                        </a>
+                    </li>-->
+            <div>
+                <form>
+                    <button class="add-m-btn"
+                        (click)="addMaquina(idMaquina.value, nome.value, posicao.value, id_tipoMaquina.value); idMaquina.value=''; nome.value=''; posicao.value=''; id_tipoMaquina.value=''">Submeter</button>
+                    &nbsp;
+                    <button class="add-m-btn" (click)="goBack()">Back</button>
+                </form>
+            </div>
+
+            <div class="maquinas" align="center">
+                <form>
+                    <h2>Máquinas Disponíveis:</h2>
+                    <li *ngFor="let m of allMaquinas" value="{{m.id}}">
+                        <a routerLink="/maquina-detail/{{m.id}}">
+                            <span class="Badge">{{m.nomeMaquina}}</span>
+                        </a>
+                        <button class="delete" title="Delete Tipo Máquina" (click)="delete(m)">x</button>
+                    </li>
+                </form>
+            </div>
+        </form>
+    </div>
+</ng-template>

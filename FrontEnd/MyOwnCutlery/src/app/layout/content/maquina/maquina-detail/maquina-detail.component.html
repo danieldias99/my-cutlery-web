@@ -1,0 +1,28 @@
+<div *ngIf="maquina" align="center">
+    <h2>{{maquina.descricaomaquina | uppercase}} Detalhes</h2>
+    <div><span>ID Máquina: </span>{{maquina.id}}</div>
+    <div>
+        <label>Nome Máquina:
+            <input [(ngModel)]="maquina.nomeMaquina" />
+        </label>
+        <br>
+        <label>Posição Linha Producao Máquina:
+            <input [(ngModel)]="maquina.posicaoLinhaProducao" />
+        </label>
+        <br>
+        <div class="ass-opp-div-r">
+            <div class="tiposmaquina">
+                Tipo Máquina Disponíveis:
+                <li *ngFor="let tm of tiposMaquinaAll" value="{{tm.id}}">
+                    <span class="Badge" (click)="assOperacaomaquina(tm.id)">{{tm.descricaoTipoMaquina}}</span>
+                </li>
+            </div>
+        </div>
+        <label>Tipo Máquina Associada:
+            <input #id_tipoMaquina type="text">
+        </label><br><br>
+    </div>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <button (click)="save()">Save</button>
+</div>

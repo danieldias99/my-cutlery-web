@@ -27,6 +27,11 @@ namespace MDF.Models.Repositorios
             return maquina;
         }
 
+        public async Task<ActionResult<List<Maquina>>> getAllMaquinas()
+        {
+            return await _context.Maquinas.ToListAsync();
+        }
+
         public void setLinhasProducaoMaquina(Maquina maquina)
         {
             var all_linhas = _context.LinhaProducaoMaquinas;
@@ -59,7 +64,7 @@ namespace MDF.Models.Repositorios
             var Maquina = await _context.Maquinas.FindAsync(id);
             _context.Maquinas.Remove(Maquina);
             _context.Entry(Maquina).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

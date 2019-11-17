@@ -5,11 +5,14 @@ using MDF.Models;
 using MDF.Models.DTO;
 using MDF.Models.Repositorios;
 using MDF.Models.ValueObjects;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Cors;
 
 namespace MDF.Controllers
 {
 
     [Route("api/Maquina")]
+    [EnableCors("IT3Client")]
     [ApiController]
     public class MaquinaController : ControllerBase
     {
@@ -36,27 +39,45 @@ namespace MDF.Controllers
             return Maquina.Value.toDTO();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Maquina>> postMaquina(Maquina newMaquina)
+        
+        // GET: api/TipoMaquina/
+        [HttpGet]
+        public async Task<ActionResult<List<MaquinaDTO>>> GetAllTipoMaquina()
         {
-            var tipoMaquina = await repositorioTipoMaquina.getTipoMaquinaById(newMaquina.id_tipoMaquina);
-            newMaquina.tipoMaquina = tipoMaquina.Value;
-            repositorioMaquina.addMaquina(newMaquina);
-            return CreatedAtAction(nameof(getMaquina), new Maquina { nomeMaquina = newMaquina.nomeMaquina }, newMaquina);
+            List<MaquinaDTO> listaMaquinasDTO = obterListaMaquinasDTO((await repositorioMaquina.getAllMaquinas()).Value);
+            return listaMaquinasDTO;
+        }
+
+        private List<MaquinaDTO> obterListaMaquinasDTO(List<Maquina> listaMaquinas)
+        {
+            List<MaquinaDTO> listaMaquinasDTO = new List<MaquinaDTO>();
+            foreach (Maquina maquina in listaMaquinas)
+            {
+                listaMaquinasDTO.Add(maquina.toDTO());
+            }
+            return listaMaquinasDTO;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Maquina>> postMaquina(MaquinaDTO newMaquina)
+        {
+            var tipo_maquina = await repositorioTipoMaquina.getTipoMaquinaById(newMaquina.id_tipoMaquina);
+            repositorioMaquina.addMaquina(new Maquina(newMaquina.Id, newMaquina.nomeMaquina, newMaquina.posicaoLinhaProducao, newMaquina.id_tipoMaquina, tipo_maquina.Value));
+            return CreatedAtAction(nameof(getMaquina), new Maquina { nomeMaquina = new NomeMaquina(newMaquina.nomeMaquina) }, newMaquina);
         }
 
         // PUT: api/Todo/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMaquina(long id, Maquina update_maquina)
+        [HttpPut()]
+        public async Task<IActionResult> PutMaquina(MaquinaDTO update_maquina)
         {
-            var maquina = (await repositorioMaquina.getMaquinaById(id)).Value;
+            var maquina = (await repositorioMaquina.getMaquinaById(update_maquina.Id)).Value;
             if (maquina == null)
             {
                 return NotFound("A máquina escolhida não existe!");
             }
 
-            maquina.nomeMaquina = update_maquina.nomeMaquina;
-            maquina.posicaoLinhaProducao = update_maquina.posicaoLinhaProducao;
+            maquina.nomeMaquina = new NomeMaquina(update_maquina.nomeMaquina);
+            maquina.posicaoLinhaProducao = new PosicaoNaLinhaProducao(update_maquina.posicaoLinhaProducao);
 
             var tipoMaquina = (await repositorioTipoMaquina.getTipoMaquinaById(update_maquina.id_tipoMaquina)).Value;
             if (tipoMaquina == null)
@@ -71,7 +92,8 @@ namespace MDF.Controllers
 
             await repositorioMaquina.updateMaquina(maquina);
 
-            return Ok("Maquina Atualizada com sucesso!");
+            //return Ok("Maquina Atualizada com sucesso!");
+            return NoContent();
         }
 
         // DELETE: api/Maquina/5

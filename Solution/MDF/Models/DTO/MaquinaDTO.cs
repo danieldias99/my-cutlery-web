@@ -9,18 +9,28 @@ namespace MDF.Models.DTO
     {
 
         public long Id { get; set; }
-        public NomeMaquina nomeMaquina { get; set; }
-        public PosicaoNaLinhaProducao posicaoLinhaProducao { get; set; }
-        public TipoMaquina tipoMaquina { get; set; }
+        public string nomeMaquina { get; set; }
+        public int posicaoLinhaProducao { get; set; }
+        public long id_tipoMaquina { get; set; }
         public ICollection<LinhaProducaoMaquinas> linhasProducao { get; set; }
 
+        public MaquinaDTO() { }
 
-        public MaquinaDTO(long Id, NomeMaquina nomeMaquina, PosicaoNaLinhaProducao posicaoLinhaProducao, TipoMaquina tipoMaquina, ICollection<LinhaProducaoMaquinas> linhasProducao)
+        public MaquinaDTO(long Id, NomeMaquina nomeMaquina, PosicaoNaLinhaProducao posicaoLinhaProducao, long tipoMaquina, ICollection<LinhaProducaoMaquinas> linhasProducao)
+        {
+            this.Id = Id;
+            this.nomeMaquina = nomeMaquina.nomeMaquina;
+            this.posicaoLinhaProducao = posicaoLinhaProducao.posicaoNaLinhaProducao;
+            this.id_tipoMaquina = tipoMaquina;
+            this.linhasProducao = linhasProducao;
+        }
+
+        public MaquinaDTO(long Id, string nomeMaquina, int posicaoLinhaProducao, long tipoMaquina, ICollection<LinhaProducaoMaquinas> linhasProducao)
         {
             this.Id = Id;
             this.nomeMaquina = nomeMaquina;
             this.posicaoLinhaProducao = posicaoLinhaProducao;
-            this.tipoMaquina = tipoMaquina;
+            this.id_tipoMaquina = tipoMaquina;
             this.linhasProducao = linhasProducao;
         }
     }

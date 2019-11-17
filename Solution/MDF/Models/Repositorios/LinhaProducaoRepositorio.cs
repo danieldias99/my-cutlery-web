@@ -1,10 +1,9 @@
 using MDF.Models.ClassesDeDominio;
-using MDF.Models.DTO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MDF.Associations;
 using Microsoft.EntityFrameworkCore;
-using System;
+using System.Collections.Generic;
 
 namespace MDF.Models.Repositorios
 {
@@ -19,17 +18,20 @@ namespace MDF.Models.Repositorios
             _context = context;
         }
 
-        public async Task<ActionResult<LinhaProducaoDTO>> getLinhaProducaoById(long id)
+        public async Task<ActionResult<LinhaProducao>> getLinhaProducaoById(long id)
         {
             var linhaOp = await _context.LinhasProducao.FindAsync(id);
             setMaquinaLinhaProducao(linhaOp);
-            return linhaOp.toDTO();
+            return linhaOp;
         }
 
+        public async Task<ActionResult<List<LinhaProducao>>> getAllLinhasProducao()
+        {
+            return await _context.LinhasProducao.ToListAsync();
+        }
 
         public void addLinhaProducao(LinhaProducao newLinhaProducao)
         {
-            setMaquinaLinhaProducao(newLinhaProducao);
             _context.LinhasProducao.Add(newLinhaProducao);
             _context.SaveChanges();
         }
@@ -40,7 +42,7 @@ namespace MDF.Models.Repositorios
 
             foreach (LinhaProducaoMaquinas linha in all_linhasProducao)
             {
-                if (linha.id_linhaProducao == linhaProducao.Id)
+                if (linha.id_linhaProducao == linhaProducao.id)
                 {
                     linha.maquina = _context.Maquinas.Find(linha.id_maquina);
                     linhaProducao.addMaquina(linha);
@@ -48,13 +50,10 @@ namespace MDF.Models.Repositorios
             }
         }
 
-        public async void updateLinhaProducao(LinhaProducao update_linha)
+        public void updateLinhaProducao(LinhaProducao update_linha)
         {
-            var current_linha = await _context.LinhasProducao.FindAsync(update_linha.Id);
-            current_linha.maquinas = update_linha.maquinas;
-            _context.Entry(current_linha).State = EntityState.Modified;
-            _context.Entry(current_linha).State = EntityState.Detached;
-            await _context.SaveChangesAsync();
+            _context.Entry(update_linha).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public async void deleteLinhaProducao(long id)
@@ -62,7 +61,7 @@ namespace MDF.Models.Repositorios
             var linha = await _context.LinhasProducao.FindAsync(id);
             _context.LinhasProducao.Remove(linha);
             _context.Entry(linha).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
     }
 }

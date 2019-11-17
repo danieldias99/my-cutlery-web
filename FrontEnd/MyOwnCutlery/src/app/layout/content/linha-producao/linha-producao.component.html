@@ -1,0 +1,49 @@
+<div *ngIf="statusMessage; else noError">
+    <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+    <div class="criar-lp-align" align="center">
+        <form>
+            <h2>Criar Linha de Produção</h2>
+            id Linha de Produção:
+            <input #idLinha type="text"><br><br>
+            <br><br>
+            <div class="ass-m-div-r">
+                <div class="maquinas">
+                    Máquinas Disponíveis:
+                    <li *ngFor="let m of allMaquinas" value="{{m.id}}">
+                        <span class="Badge" (click)="assMaquinaLinhaProducao(m.id)">{{m.nomeMaquina}}</span>
+                    </li>
+                </div>
+            </div>
+            <div class="ass-m-div-l">
+                <div class="maquinas">
+                    Máquinas Associadas:
+                    <li *ngFor="let m of maquinasAssociadas" value="{{m.id}}">
+                        <a>
+                            <span class="Badge" (click)=deleteAssMaquinaLinhaProducao(m.id)>{{m.nomeMaquina}}</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+            <form>
+                <button class="add-lp-btn" (click)="addLinhaProducao(idLinha.value); idLinha.value=''">Submeter</button>
+                &nbsp;
+                <button class="add-lp-btn" (click)="goBack()">Back</button>
+            </form>
+
+            <div class="linhasproducao" align="center">
+                <form>
+                    <h2>Linha de Produçãos Disponíveis:</h2>
+                    <li *ngFor="let lp of allLinhasProducao" value="{{lp.id}}">
+                        <a routerLink="/linha-producao-detail/{{lp.id}}">
+                            <span class="Badge">{{lp.id}}</span>
+                        </a>
+                        <button class="delete" title="Delete Tipo Linha de Produção" (click)="delete(lp)">x</button>
+                    </li>
+                </form>
+            </div>
+        </form>
+    </div>
+</ng-template>

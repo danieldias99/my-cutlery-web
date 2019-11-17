@@ -8,6 +8,8 @@ import { TipoMaquinaComponent } from './layout/content/tipo-maquina/tipo-maquina
 import { TipoMaquinaDetailComponent } from './layout/content/tipo-maquina/tipo-maquina-detail/tipo-maquina-detail.component';
 import { MaquinaComponent } from './layout/content/maquina/maquina.component';
 import { MaquinaDetailComponent } from './layout/content/maquina/maquina-detail/maquina-detail.component';
+import { LinhaProducaoComponent } from './layout/content/linha-producao/linha-producao.component';
+import { LinhaProducaoDetailComponent } from './layout/content/linha-producao/linha-producao-detail/linha-producao-detail.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'tipos-maquina', component: TipoMaquinaComponent },
   { path: 'tipo-maquina-detail/:id_tipoMaquina', component: TipoMaquinaDetailComponent },
   { path: 'maquinas', component: MaquinaComponent },
-  { path: 'maquina-detail/:id_maquina', component: MaquinaDetailComponent }
+  { path: 'maquina-detail/:id_maquina', component: MaquinaDetailComponent },
+  { path: 'linhas-producao', component: LinhaProducaoComponent },
+  { path: 'linha-producao-detail/:id', component: LinhaProducaoDetailComponent }
 ];
 
 @NgModule({

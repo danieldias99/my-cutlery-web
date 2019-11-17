@@ -57,8 +57,8 @@ namespace MDF.Models.ClassesDeDominio
             modelBuilder.Entity<Maquina>().OwnsOne(b => b.posicaoLinhaProducao);
 
             //Linhas de Producao
-            modelBuilder.Entity<LinhaProducao>().HasKey(d => d.Id);
-            modelBuilder.Entity<LinhaProducao>().Property(d => d.Id).ValueGeneratedNever();
+            modelBuilder.Entity<LinhaProducao>().HasKey(d => d.id);
+            modelBuilder.Entity<LinhaProducao>().Property(d => d.id).ValueGeneratedNever();
 
             //Linha Producao Maquina
             modelBuilder.Entity<LinhaProducaoMaquinas>()

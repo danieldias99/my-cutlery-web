@@ -1,0 +1,28 @@
+<div *ngIf="linhaproducao" align= "center">
+    <h2>{{linhaproducao.id}} Detalhes</h2>
+    <div><span>Id_linhaproducao: </span>{{linhaproducao.id}}</div>
+    <div>
+        <br>
+        <div class="ass-m-div-r">
+            <div class="maquinas">
+                Operações Disponíveis:
+                <li *ngFor="let m of maquinasAll" value="{{m.id}}">
+                    <span class="Badge" (click)="assOperacaolinhaproducao(m.id)">{{m.nomeMaquina}}</span>
+                </li>
+            </div>
+        </div>
+        <div class="ass-m-div-l">
+            <div class="maquinas">
+                Operações Associadas:
+                <li *ngFor="let m of maquinasAssociadas" value="{{m.id}}">
+                    <a>
+                        <span class="Badge">{{m.nomeMaquina}}</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <button (click)="save()">Save</button>
+</div>

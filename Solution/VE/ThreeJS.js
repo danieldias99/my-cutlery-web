@@ -1,3 +1,4 @@
+
 var linhaTemp = [];
 var maquinasTemp = [];
 
@@ -100,16 +101,22 @@ var draw = function () {
     //balcao
     desenharBalcoes();
 }
+const loader = new THREE.TextureLoader();
 
 //funções de draw
 var walls = function (size_c, size_l, x, y, z, rotx, rotz, color_w) {
     var plane_geometry = new THREE.PlaneGeometry(size_c, size_l);
-    var material = new THREE.MeshBasicMaterial({ color: color_w, side: THREE.DoubleSide });
     plane_geometry.rotateX(rotx);
     plane_geometry.rotateZ(rotz);
     plane_geometry.translate(x, y, z);
-    var plane = new THREE.Mesh(plane_geometry, material);
-    scene.add(plane);
+
+
+    loader.load('https://st2.depositphotos.com/5625700/10333/i/950/depositphotos_103334684-stock-photo-white-wall-granulated-texture-grunge.jpg', (texture) => {
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
+        const cube = new THREE.Mesh(plane_geometry, material);
+        scene.add(cube);
+    });
+
 }
 
 //Desenhar um balcao
@@ -170,16 +177,7 @@ var apagarLinha = function () {
     contTapetes--;
 }
 
-<<<<<<< HEAD
-    /*contTapetesNovo = contTapetes - 1;
-    contTapetes = 0;
 
-    var i;
-    for (i = 0; i < contTapetesNovo; i++) {
-        desenhaLinha();
-    }*/
-=======
-//Desenhar maquina - widget
 var contTapetesPreenchidos = 0;
 var contMaquinas = 0;
 var contMaquinasTotal = 0;
@@ -228,13 +226,9 @@ var apagarMaquina = function () {
     }else{
         contMaquinas--;
     }
->>>>>>> 2b288abc343671e6644ae8d59af1f8509ccee001
 }
 
-desenhaLinha();
-contTapetes++;
-desenhaLinha();
-apagarLinha();
+
 
 var set_camera_init = function () {
     camera.position.z = 100;

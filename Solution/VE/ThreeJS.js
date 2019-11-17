@@ -52,7 +52,7 @@ function onButtonClickIMP(event) {
 
 //botao luminosidade
 function onButtonClickLuminosidade(event) {
-    //método da luminosidade
+  if (luzAcesa.value % 2 != 0) acenderLuz(); else apagarLuz();
 }
 
 var scene;
@@ -176,8 +176,20 @@ var apagarLinha = function () {
     scene.remove(linhaP);
     contTapetes--;
 }
+<<<<<<< HEAD
 
 
+=======
+    /*contTapetesNovo = contTapetes - 1;
+    contTapetes = 0;
+
+    var i;
+    for (i = 0; i < contTapetesNovo; i++) {
+        desenhaLinha();
+    }*/
+
+//Desenhar maquina - widget
+>>>>>>> e04ad1125ff39a90d65454f4fd46dedb57c5734d
 var contTapetesPreenchidos = 0;
 var contMaquinas = 0;
 var contMaquinasTotal = 0;
@@ -188,7 +200,7 @@ var MACHINE_SPACE = 5.25;
 
 var desenhaMaquina = function (size_m, x, y, z) {
     var geometry_balcao = new THREE.BoxGeometry(size_m, size_m, size_m);
-    var material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    var material = new THREE.MeshLambertMaterial({ color: '#e70861' });
     geometry_balcao.translate(x, y, z);
     var maquina = new THREE.Mesh(geometry_balcao, material);
     scene.add(maquina);
@@ -214,6 +226,21 @@ var desenhaMaquinas = function () {
             contMaquinasTotal++;
     }
 }
+
+/* LUZ e todas as funções necessárias */
+let luzAmbiente = new THREE.AmbientLight(0xffffff, 5.0); // A luz
+let luzAcesa = {value: 1} // se luzAcesa for par está acesa se for impar não está
+
+let acenderLuz = () => {
+  scene.add(luzAmbiente);
+  luzAcesa.value++;
+}
+
+let apagarLuz = () => {
+  scene.remove(luzAmbiente);
+  luzAcesa.value++;
+}
+/* FIM DA LUZ */
 
 //Apagar uma maquina - widget
 var apagarMaquina = function () {

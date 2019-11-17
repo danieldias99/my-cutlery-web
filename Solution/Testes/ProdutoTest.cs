@@ -1,11 +1,10 @@
 using System;
-using MDF.Models;
-using MDF.Models.Shared;
-using MDF.Models.ValueObjects;
-using MDF.Models.DTO;
 using System.Collections.Generic;
-using MDF.Associations;
 using Xunit;
+using MDP.Models;
+using MDP.Models.Shared;
+using MDP.Models.ValueObjects;
+using MDP.Models.DTO;
 
 namespace Testes
 {
@@ -14,7 +13,7 @@ namespace Testes
         [Fact]
         public void ensureGetsAndSetsReturnCorrectly()
         {   
-           var infoProduto = new InfoProduto("testeInfo");
+           var infoProduto = new InfoProduto("testeInfo", "descricaoProduto");
            long Id = 1;
            var produto = new Produto(Id, infoProduto);
 

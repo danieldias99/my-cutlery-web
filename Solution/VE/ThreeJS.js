@@ -176,20 +176,9 @@ var apagarLinha = function () {
     scene.remove(linhaP);
     contTapetes--;
 }
-<<<<<<< HEAD
 
-
-=======
-    /*contTapetesNovo = contTapetes - 1;
-    contTapetes = 0;
-
-    var i;
-    for (i = 0; i < contTapetesNovo; i++) {
-        desenhaLinha();
-    }*/
 
 //Desenhar maquina - widget
->>>>>>> e04ad1125ff39a90d65454f4fd46dedb57c5734d
 var contTapetesPreenchidos = 0;
 var contMaquinas = 0;
 var contMaquinasTotal = 0;

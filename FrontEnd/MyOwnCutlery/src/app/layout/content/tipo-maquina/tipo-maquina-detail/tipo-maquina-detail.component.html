@@ -19,7 +19,7 @@
                 Operações Associadas:
                 <li *ngFor="let op of operacoesAssociadas" value="{{op.id}}">
                     <a>
-                        <span class="Badge">{{op.descricaoOperacao}}</span>
+                        <span class="Badge" (click)="deleteAssOperacaoTipoMaquina(op.id)">{{op.descricaoOperacao}}</span>
                     </a>
                 </li>
             </div>

@@ -53,7 +53,7 @@ export class CriarOperacaoComponent implements OnInit {
 
   delete(operacao: Operacao): void {
     this.allOperacoes = this.allOperacoes.filter(h => h !== operacao);
-    this.operacaoSrv.deleteOperacao(operacao.Id).subscribe(res => {
+    this.operacaoSrv.deleteOperacao(operacao.id).subscribe(res => {
       console.log(res);
     }, error => {
       console.log(error);

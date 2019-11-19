@@ -42,14 +42,14 @@ export class TipoMaquinaComponent implements OnInit {
   }
 
   assOperacaoTipoMaquina(Id: string) {
-    var operacao = this.allOperacoes.find(operacao => operacao.Id === Id);
-    this.allOperacoes = this.allOperacoes.filter(h => h.Id !== Id);
+    var operacao = this.allOperacoes.find(operacao => operacao.id === Id);
+    this.allOperacoes = this.allOperacoes.filter(h => h.id !== Id);
     this.operacoesAssociadas.push(operacao);
   }
 
   deleteAssOperacaoTipoMaquina(Id: string){
-    var operacao = this.operacoesAssociadas.find(operacao => operacao.Id === Id);
-    this.operacoesAssociadas = this.operacoesAssociadas.filter(h => h.Id !== Id);
+    var operacao = this.operacoesAssociadas.find(operacao => operacao.id === Id);
+    this.operacoesAssociadas = this.operacoesAssociadas.filter(h => h.id !== Id);
     this.allOperacoes.push(operacao);
   }
 
@@ -66,7 +66,7 @@ export class TipoMaquinaComponent implements OnInit {
 
     this.TipoMaquinaSrv.addTipoMaquina(new TipoMaquina(IdTipoMaquina, DescricaoTipoMaquina, this.operacoesAssociadas))
       .subscribe(
-        TipoMaquina => { this.allTiposMaquina.push(TipoMaquina); },
+        tipoMaquina => { this.allTiposMaquina.push(tipoMaquina); },
         error => { this.statusMessage = "Error: Service Unavailable"; }
       );
     this.operacoesAssociadas = new Array;

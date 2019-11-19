@@ -42,14 +42,14 @@ export class OperacaoService {
   /*Post add a new Operacao to the database*/
   addOperacao(operacao: Operacao): any {
     return this.httpClient.post(this.WebApiIt1url + 'Operacao', operacao, this.httpOptions).pipe(
-      tap(_ => this.log(`get operacao id=${operacao.Id}`)),
+      tap(_ => this.log(`get operacao id=${operacao.id}`)),
       catchError(this.handleError<Operacao>("addOpercao")));
   }
 
   /** PUT: update the Operacao on the server */
   updateOperacao(operacao: Operacao): Observable<any> {
     return this.httpClient.put(this.WebApiIt1url + 'Operacao' , operacao, this.httpOptions).pipe(
-      tap(_ => this.log(`updated operacao id=${operacao.Id}`)),
+      tap(_ => this.log(`updated operacao id=${operacao.id}`)),
       catchError(this.handleError<Operacao>('updateOperacao'))
     );
   }

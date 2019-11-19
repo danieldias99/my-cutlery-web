@@ -35,17 +35,36 @@ export class TipoMaquinaDetailComponent implements OnInit {
   getTipoMaquina(): void {
     const id = +this.route.snapshot.paramMap.get('id_tipoMaquina');
     this.tipoMaquinaService.getTipoMaquina(id)
-      .subscribe(tipoMaquinaResult => this.tipomaquina = tipoMaquinaResult,
+      .subscribe(tipoMaquinaResult => {
+      this.tipomaquina = tipoMaquinaResult;
+        this.operacoesAssociadas = this.tipomaquina.operacoes;
+        /*this.operacoesAll = this.operacoesAll.filter(function (item) {
+          return !this.tipomaquina.operacoes.includes(item);
+        })*/
+      },
         error => "Update Service Unavailable");
+    //this.operacoesAll.filter( f => this.operacoesAssociadas)
   }
-  
+
   private getOperacoesDisponiveis() {
     this.operacaoSrv.getOperacoes().subscribe(data => { console.log(data); this.operacoesAll = data },
-      error => { this.messageResponse = "Error: Service Unavailable" })
+      error => { this.messageResponse = "Error: Service Unavailable" });
+  }
+
+  assOperacaoTipoMaquina(Id: string) {
+    var operacao = this.operacoesAll.find(operacao => operacao.id === Id);
+    this.operacoesAll = this.operacoesAll.filter(h => h.id !== Id);
+    this.operacoesAssociadas.push(operacao);
+  }
+
+  deleteAssOperacaoTipoMaquina(Id: string) {
+    var operacao = this.operacoesAssociadas.find(operacao => operacao.id === Id);
+    this.operacoesAssociadas = this.operacoesAssociadas.filter(h => h.id !== Id);
+    this.operacoesAll.push(operacao);
   }
 
   save(): void {
-    this.tipoMaquinaService.updateTipoMaquina(this.tipomaquina)
+    this.tipoMaquinaService.updateTipoMaquina(new TipoMaquina(this.tipomaquina.id_tipoMaquina, this.tipomaquina.descricaoTipoMaquina, this.operacoesAssociadas))
       .subscribe(() => this.goBack(), error => "Update Service Unavailable");
   }
 

@@ -33,13 +33,20 @@ export class MaquinaDetailComponent implements OnInit {
   getMaquina(): void {
     const id = +this.route.snapshot.paramMap.get('id_maquina');
     this.maquinaSrv.getMaquina(id)
-      .subscribe(maquinaResult => this.maquina = maquinaResult,
+      .subscribe(maquinaResult => {
+        this.maquina = maquinaResult;
+        console.log(maquinaResult)
+      },
         error => "Update Service Unavailable");
   }
-  
+
   private getTiposMaquinaDisponiveis() {
     this.tipoMaquinaService.getTiposMaquina().subscribe(data => { console.log(data); this.tiposMaquinaAll = data },
       error => { this.messageResponse = "Error: Service Unavailable" })
+  }
+
+  assTipoMaquinaMaquina(id: string) {
+    this.maquina.id_tipoMaquina = id;
   }
 
   save(): void {

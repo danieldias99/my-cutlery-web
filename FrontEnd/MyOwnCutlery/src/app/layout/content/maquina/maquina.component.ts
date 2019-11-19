@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
@@ -17,6 +17,8 @@ export class MaquinaComponent implements OnInit {
   allTiposMaquina: TipoMaquina[];
   statusMessage: string;
 
+  @Input() id_tipoMaquina: string;
+
   constructor(private maquinaSrv: MaquinaService,
     private tipoMaquinaSrv: TipoMaquinaService,
     private route: ActivatedRoute,
@@ -25,6 +27,7 @@ export class MaquinaComponent implements OnInit {
   ngOnInit() {
     this.getMaquinas();
     this.getTiposMaquinaDisponiveis();
+    this.id_tipoMaquina = "null";
   }
 
   private getMaquinas(): void {
@@ -38,17 +41,9 @@ export class MaquinaComponent implements OnInit {
       error => { this.statusMessage = "Error: Service Unavailable" })
   }
 
-  /*assOperacaoTipoMaquina(Id: string) {
-    var operacao = this.allOperacoes.find(operacao => operacao.Id === Id);
-    this.allOperacoes = this.allOperacoes.filter(h => h.Id !== Id);
-    this.operacoesAssociadas.push(operacao);
+  assTipoMaquinaMaquina(id: string) {
+    this.id_tipoMaquina = id;
   }
- 
-  deleteAssOperacaoTipoMaquina(Id: string){
-    var operacao = this.operacoesAssociadas.find(operacao => operacao.Id === Id);
-    this.operacoesAssociadas = this.operacoesAssociadas.filter(h => h.Id !== Id);
-    this.allOperacoes.push(operacao);
-  }*/
 
   /**
    * Add Maquina to API MDF

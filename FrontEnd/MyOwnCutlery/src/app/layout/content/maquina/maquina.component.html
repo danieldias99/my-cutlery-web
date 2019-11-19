@@ -15,18 +15,13 @@
             <div class="ass-m-div">
                 <div class="tiposMaquina">
                     Tipo Máquinas Disponíveis:
-                    <li *ngFor="let tm of allTiposMaquina" value="{{tm.id}}">
-                        <span class="Badge" (click)="assOperacaoTipoMaquina(op.id)">{{tm.descricaoTipoMaquina}}</span>
+                    <li *ngFor="let tm of allTiposMaquina" value="{{tm.id_tipoMaquina}}">
+                        <span class="Badge" (click)="assTipoMaquinaMaquina(tm.id_tipoMaquina)">{{tm.descricaoTipoMaquina}}</span>
                     </li>
                 </div>
             </div>
             Tipo Máquina Associada:
-            <input #id_tipoMaquina type="text"><br><br>
-            <!--<li *ngFor="let op of operacoesAssociadas" value="{{op.id}}">
-                        <a>
-                            <span class="Badge" (click)=deleteAssOperacaoTipoMaquina(op.id)>{{op.descricaoOperacao}}</span>
-                        </a>
-                    </li>-->
+            <input readonly="readonly" [ngModel]="id_tipoMaquina" type="text"><br><br>
             <div>
                 <form>
                     <button class="add-m-btn"

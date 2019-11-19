@@ -1,5 +1,5 @@
 <div *ngIf="maquina" align="center">
-    <h2>{{maquina.descricaomaquina | uppercase}} Detalhes</h2>
+    <h2>{{maquina.nomeMaquina | uppercase}} Detalhes</h2>
     <div><span>ID Máquina: </span>{{maquina.id}}</div>
     <div>
         <label>Nome Máquina:
@@ -13,13 +13,14 @@
         <div class="ass-opp-div-r">
             <div class="tiposmaquina">
                 Tipo Máquina Disponíveis:
-                <li *ngFor="let tm of tiposMaquinaAll" value="{{tm.id}}">
-                    <span class="Badge" (click)="assOperacaomaquina(tm.id)">{{tm.descricaoTipoMaquina}}</span>
+                <li *ngFor="let tm of tiposMaquinaAll" value="{{tm.id_tipoMaquina}}">
+                    <span class="Badge"
+                        (click)="assTipoMaquinaMaquina(tm.id_tipoMaquina)">{{tm.descricaoTipoMaquina}}</span>
                 </li>
             </div>
         </div>
         <label>Tipo Máquina Associada:
-            <input #id_tipoMaquina type="text">
+            <input readonly="readonly" [(ngModel)]="maquina.id_tipoMaquina" name="something">
         </label><br><br>
     </div>
     <button (click)="goBack()">Back</button>

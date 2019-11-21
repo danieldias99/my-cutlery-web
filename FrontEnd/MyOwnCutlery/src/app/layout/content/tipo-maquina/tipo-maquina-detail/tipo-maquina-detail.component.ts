@@ -38,12 +38,8 @@ export class TipoMaquinaDetailComponent implements OnInit {
       .subscribe(tipoMaquinaResult => {
       this.tipomaquina = tipoMaquinaResult;
         this.operacoesAssociadas = this.tipomaquina.operacoes;
-        /*this.operacoesAll = this.operacoesAll.filter(function (item) {
-          return !this.tipomaquina.operacoes.includes(item);
-        })*/
       },
         error => "Update Service Unavailable");
-    //this.operacoesAll.filter( f => this.operacoesAssociadas)
   }
 
   private getOperacoesDisponiveis() {

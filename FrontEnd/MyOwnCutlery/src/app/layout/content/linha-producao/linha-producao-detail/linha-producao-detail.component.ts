@@ -26,29 +26,29 @@ export class LinhaProducaoDetailComponent implements OnInit {
     private maquinaSrv: MaquinaService,
     private location: Location) { }
 
-    ngOnInit() {
-      this.getLinhaProducao();
-      this.getMaquinasDisponiveis();
-    }
-  
-    getLinhaProducao(): void {
-      const id = +this.route.snapshot.paramMap.get('id');
-      this.linhaProducaoService.getLinhaProducao(id)
-        .subscribe(linhaProducaoResult => this.linhaproducao = linhaProducaoResult,
-          error => "Update Service Unavailable");
-    }
-    
-    private getMaquinasDisponiveis() {
-      this.maquinaSrv.getMaquinas().subscribe(data => { console.log(data); this.maquinasAssociadas = data },
-        error => { this.messageResponse = "Error: Service Unavailable" })
-    }
-  
-    save(): void {
-      this.linhaProducaoService.updateLinhaProducao(this.linhaproducao)
-        .subscribe(() => this.goBack(), error => "Update Service Unavailable");
-    }
-  
-    goBack(): void {
-      this.location.back();
-    }
+  ngOnInit() {
+    this.getLinhaProducao();
+    this.getMaquinasDisponiveis();
+  }
+
+  getLinhaProducao(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.linhaProducaoService.getLinhaProducao(id)
+      .subscribe(linhaProducaoResult => { this.linhaproducao = linhaProducaoResult; console.log(linhaProducaoResult); this.maquinasAssociadas = this.linhaproducao.maquinas },
+        error => "Update Service Unavailable");
+  }
+
+  private getMaquinasDisponiveis() {
+    this.maquinaSrv.getMaquinas().subscribe(data => { console.log(data); this.maquinasAll = data },
+      error => { this.messageResponse = "Error: Service Unavailable" })
+  }
+
+  save(): void {
+    this.linhaProducaoService.updateLinhaProducao(this.linhaproducao)
+      .subscribe(() => this.goBack(), error => "Update Service Unavailable");
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

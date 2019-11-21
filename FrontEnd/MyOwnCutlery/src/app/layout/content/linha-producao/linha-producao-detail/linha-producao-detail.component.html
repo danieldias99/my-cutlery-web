@@ -5,15 +5,15 @@
         <br>
         <div class="ass-m-div-r">
             <div class="maquinas">
-                Operações Disponíveis:
+                Máquinas Disponíveis:
                 <li *ngFor="let m of maquinasAll" value="{{m.id}}">
-                    <span class="Badge" (click)="assOperacaolinhaproducao(m.id)">{{m.nomeMaquina}}</span>
+                    <span class="Badge" (click)="assOperacaoLinhaProducao(m.id)">{{m.nomeMaquina}}</span>
                 </li>
             </div>
         </div>
         <div class="ass-m-div-l">
             <div class="maquinas">
-                Operações Associadas:
+                Máquinas Associadas:
                 <li *ngFor="let m of maquinasAssociadas" value="{{m.id}}">
                     <a>
                         <span class="Badge">{{m.nomeMaquina}}</span>

@@ -1,0 +1,35 @@
+image: node:12.13.0 # we need node image to run our angular application in 
+clone: # help to clone our source here
+  depth: full
+pipelines: # We set up all the pipeline or actions beneath 
+  default: # here most always trigger before any other pipeline 
+    - step:
+        script:
+          - echo "This script runs on all branches that don't have any specific pipeline assigned in 'branches'." 
+
+  branches: # This is branch specific configuration, we can set for different branches and different actions when we push codes
+    master:
+      - step:
+          name: test, e2e, build --prod
+          script: 
+            - npm install -g @angular/cli 
+            - npm install
+            - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' && apt-get update && apt-get install -y google-chrome-stable xvfb procps
+            - npm run test:ci
+            - npm run e2e:ci
+            - ng build --prod
+      - step:
+          name: Create artifact
+          script:
+            - tar czfv application.tgz ./*.* src/
+          artifacts:
+            - application.tgz
+      - step:
+          name: Deploy to production
+          deployment: production
+          script:
+            - pipe: atlassian/heroku-deploy:0.1.1
+              variables:
+                HEROKU_API_KEY: $HEROKU_API_KEY
+                HEROKU_APP_NAME: $HEROKU_APP_NAME
+                ZIP_FILE: "application.tgz"

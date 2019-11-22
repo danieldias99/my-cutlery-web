@@ -9,9 +9,24 @@ clone:
 pipelines:
   default:
     - step:
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - npm install
-          - echo "Build complete. Deploying..."
-          - git push https://git.heroku.com/murmuring-temple-45412.git master
+        name: Build and test
+        image: maven:3
+        caches: 
+          - maven
+        script:
+          - mvn -B clean verify
+    - step:
+        name: Create artifact
+        script:
+          - tar czfv application.tgz pom.xml src/
+        artifacts:
+          - application.tgz
+    - step:
+        name: Deploy to production
+        deployment: production
+        script:
+          - pipe: atlassian/heroku-deploy:0.1.1
+            variables:
+              HEROKU_API_KEY: $HEROKU_KEY
+              HEROKU_APP_NAME: $HEROKU_DEPLOY
+              ZIP_FILE: "application.tgz"

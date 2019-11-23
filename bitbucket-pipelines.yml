@@ -30,6 +30,6 @@ pipelines: # We set up all the pipeline or actions beneath
           script:
             - pipe: atlassian/heroku-deploy:0.1.1
               variables:
-                HEROKU_API_KEY: $HEROKU_API_KEY
-                HEROKU_APP_NAME: $HEROKU_APP_NAME
+                HEROKU_API_KEY: $HEROKU_KEY
+                HEROKU_APP_NAME: $HEROKU_DEPLOY
                 ZIP_FILE: "application.tgz"

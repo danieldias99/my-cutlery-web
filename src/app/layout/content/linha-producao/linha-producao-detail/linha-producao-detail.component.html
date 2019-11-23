@@ -7,7 +7,7 @@
             <div class="maquinas">
                 Máquinas Disponíveis:
                 <li *ngFor="let m of maquinasAll" value="{{m.id}}">
-                    <span class="Badge" (click)="assOperacaoLinhaProducao(m.id)">{{m.nomeMaquina}}</span>
+                    <span class="Badge">{{m.nomeMaquina}}</span>
                 </li>
             </div>
         </div>

@@ -1,28 +1,27 @@
-﻿# Projeto de LAPR5 2019/2020 do Grupo 3DD_019
+# MyOwnCutlery
 
-A edição de 2019/2020 de Laboratório Projecto 5 (LAPR5) da Licenciatura em Engenharia Informática do ISEP
-irá funcionar num modo de Project Based Learning (PBL) funcionando como um único projecto integrador de
-todas as unidades curriculares (UC) do 5º semestre, sendo executado durante o período lectivo do semestre
-em simultâneo por todas as unidades curriculares: ALGAV, ARQSI, ASIST, SGRAI e GESTA
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
-# 1. Constituição do Grupo de Trabalho ###
+## Development server
 
-O grupo de trabalho é constituído pelo estudantes identificados na tabela seguinte.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-| Aluno Nr.	   | Nome do Aluno		    |
-|--------------|------------------------------|
-| **[1150503](/docs/1150503/)**  | Gonçalo Fonseca	           |
-| **[1161071](/docs/1161071/)**  | José Marques                |
-| **[1170785](/docs/1170785/)**  | Ana Mata	                   |
-| **[1170790](/docs/1170790/)**  | Daniel Dias                 |
+## Code scaffolding
 
-# 2. Distribuição de Funcionalidades ###
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-A distribuição de requisitos/funcionalidades ao longo do período de desenvolvimento do projeto pelos elementos do grupo de trabalho realizou-se conforme descrito na tabela seguinte.
+## Build
 
-| Aluno Nr.	| Sprint A | Sprint B | Sprint C | Sprint D |
-|------------|----------|----------|----------|---------|
-| **1150503** | [UC02](/docs/1150503/UC02), [UC10](/docs/1150503/UC10), [UC11](/docs/1150503/UC11) | | | |
-| **1161071** | [UC05](/docs/1161071/UC05), [UC12](/docs/1161071/UC12), [UC13](/docs/1161071/UC13) | | | |
-| **1170785** | [UC03](/docs/1170785/UC03), [UC06](/docs/1170785/UC06), [UC08](/docs/1170785/UC08), [UC09](/docs/1170785/UC09) | | | |
-| **1170790** | [UC01](/docs/1170790/UC01), [UC04](/docs/1170790/UC04), [UC07](/docs/1170790/UC07) | | | |
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

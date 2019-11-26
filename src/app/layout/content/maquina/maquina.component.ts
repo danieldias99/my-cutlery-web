@@ -15,9 +15,8 @@ export class MaquinaComponent implements OnInit {
 
   allMaquinas: Maquina[];
   allTiposMaquina: TipoMaquina[];
+  id_tipoMaquina: string;
   statusMessage: string;
-
-  @Input() id_tipoMaquina: string;
 
   constructor(private maquinaSrv: MaquinaService,
     private tipoMaquinaSrv: TipoMaquinaService,
@@ -27,7 +26,6 @@ export class MaquinaComponent implements OnInit {
   ngOnInit() {
     this.getMaquinas();
     this.getTiposMaquinaDisponiveis();
-    this.id_tipoMaquina = "null";
   }
 
   private getMaquinas(): void {
@@ -50,13 +48,13 @@ export class MaquinaComponent implements OnInit {
    * @param Id_maquina Id of an operation
    * @param nomeMaquina brief description what the operation is about
    */
-  addMaquina(Id_maquina: number, nomeMaquina: string, posicaoMaquinaNaLinha: string, id_tipoMaquina: string): void {
+  addMaquina(Id_maquina: number, nomeMaquina: string, marcaMaquina: string, modeloMaquina: string, x: string, y: string, id_tipoMaquina: string): void {
     nomeMaquina = nomeMaquina.trim();
     if (!Id_maquina) {
       return;
     }
 
-    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, posicaoMaquinaNaLinha, id_tipoMaquina))
+    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, id_tipoMaquina))
       .subscribe(
         maquina => { this.allMaquinas.push(maquina); },
         error => { this.statusMessage = "Error: Service Unavailable"; }

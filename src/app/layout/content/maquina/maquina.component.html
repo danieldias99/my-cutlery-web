@@ -10,23 +10,32 @@
             <input #idMaquina type="text"><br><br>
             Nome da Máquina:
             <input #nome type="text" id="ex2"><br><br>
+            Marca da Máquina:
+            <input #marca type="text" id="ex3"><br><br>
+            Modelo da Máquina:
+            <input #modelo type="text" id="ex4"><br><br>
             Posição Na Linha de Produção
-            <input #posicao type="text"><br><br>
+            <br><br>
+            Coordenada x
+            <input #x type="text">
+            Coordenada y
+            <input #y type="text">
+            <br><br>
             <div class="ass-m-div">
                 <div class="tiposMaquina">
                     Tipo Máquinas Disponíveis:
                     <li *ngFor="let tm of allTiposMaquina" value="{{tm.id_tipoMaquina}}">
-                        <span class="Badge" (click)="assTipoMaquinaMaquina(tm.id_tipoMaquina)">{{tm.descricaoTipoMaquina}}</span>
+                        <span class="Badge" (click)="assTipoMaquinaMaquina(tm.id_tipoMaquina); id_tipoMaquina.value=tm.id_tipoMaquina">{{tm.descricaoTipoMaquina}}</span>
                     </li>
                 </div>
             </div>
             Tipo Máquina Associada:
-            <input [ngModel]="id_tipoMaquina" type="text"><br><br>
+            <input #id_tipoMaquina type="text" readonly><br><br>
             <div>
                 <form>
-                    <!--<button class="add-m-btn"
-                        (click)="addMaquina(idMaquina.value, nome.value, posicao.value, id_tipoMaquina.value); idMaquina.value=''; nome.value=''; posicao.value=''; id_tipoMaquina.value=''">Submeter</button>
-                    &nbsp;-->
+                    <button class="add-m-btn"
+                        (click)="addMaquina(idMaquina.value, nome.value, marca.value, modelo.value, x.value, y.value, id_tipoMaquina.value); idMaquina.value=''; nome.value=''; x.value=''; y.value=''; id_tipoMaquina.value=''">Submeter</button>
+                    &nbsp;
                     <button class="add-m-btn" (click)="goBack()">Back</button>
                 </form>
             </div>

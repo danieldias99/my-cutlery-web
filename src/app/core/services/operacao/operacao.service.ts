@@ -12,7 +12,8 @@ import { MessageLogService } from '../MessageLog/message-log.service';
 })
 export class OperacaoService {
 
-  private WebApiIt1url = 'http://localhost:5000/api/';
+  //private WebApiIt1url = 'http://localhost:5000/api/';
+  private WebApiIt1url = 'https://mdf-azure.azurewebsites.net/api/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

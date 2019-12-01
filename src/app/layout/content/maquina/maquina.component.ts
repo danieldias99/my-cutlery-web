@@ -5,6 +5,8 @@ import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 import { Maquina } from 'src/app/core/models/maquina.model';
 import { TipoMaquina } from 'src/app/core/models/tipo-maquina.model';
 import { TipoMaquinaService } from 'src/app/core/services/tipo-maquina/tipo-maquina.service';
+import { LinhaProducao } from 'src/app/core/models/linha-producao';
+import { LinhaProducaoService } from 'src/app/core/services/linha-producao/linha-producao.service';
 
 @Component({
   selector: 'app-maquina',
@@ -15,17 +17,19 @@ export class MaquinaComponent implements OnInit {
 
   allMaquinas: Maquina[];
   allTiposMaquina: TipoMaquina[];
-  id_tipoMaquina: string;
+  allLinhasProducao: LinhaProducao[];
   statusMessage: string;
 
   constructor(private maquinaSrv: MaquinaService,
     private tipoMaquinaSrv: TipoMaquinaService,
+    private linhasProducaoSrv: LinhaProducaoService,
     private route: ActivatedRoute,
     private location: Location) { }
 
   ngOnInit() {
     this.getMaquinas();
     this.getTiposMaquinaDisponiveis();
+    this.getLinhasProducaoDisponiveis();
   }
 
   private getMaquinas(): void {
@@ -39,8 +43,9 @@ export class MaquinaComponent implements OnInit {
       error => { this.statusMessage = "Error: Service Unavailable" })
   }
 
-  assTipoMaquinaMaquina(id: string) {
-    this.id_tipoMaquina = id;
+  private getLinhasProducaoDisponiveis() {
+    this.linhasProducaoSrv.getLinhasProducao().subscribe(data => { console.log(data); this.allLinhasProducao = data },
+      error => { this.statusMessage = "Error: Service Unavailable" })
   }
 
   /**
@@ -48,13 +53,13 @@ export class MaquinaComponent implements OnInit {
    * @param Id_maquina Id of an operation
    * @param nomeMaquina brief description what the operation is about
    */
-  addMaquina(Id_maquina: number, nomeMaquina: string, marcaMaquina: string, modeloMaquina: string, x: string, y: string, id_tipoMaquina: string): void {
+  addMaquina(Id_maquina: number, nomeMaquina: string, marcaMaquina: string, modeloMaquina: string, x: string, y: string, posicaoRelativa :string, id_tipoMaquina: string,  id_linhaProducao: string): void {
     nomeMaquina = nomeMaquina.trim();
     if (!Id_maquina) {
       return;
     }
 
-    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, id_tipoMaquina))
+    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, posicaoRelativa, id_tipoMaquina, id_linhaProducao))
       .subscribe(
         maquina => { this.allMaquinas.push(maquina); },
         error => { this.statusMessage = "Error: Service Unavailable"; }

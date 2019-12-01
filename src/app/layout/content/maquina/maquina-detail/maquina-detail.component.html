@@ -17,13 +17,28 @@
         <label>Posição Linha Producao Máquina:
             <br>
             <br>
-            Coordenada x
+            Coordenada x:
             <input [(ngModel)]="maquina.x" />
             <br>
-            Coordenada y
+            Coordenada y:
             <input [(ngModel)]="maquina.y" />
         </label>
         <br>
+        <label>Posição Relativa na Linha de Produção:
+            <input [(ngModel)]="maquina.posicaoRelativa" />
+        </label>
+        <br>
+        <div class="ass-opp-div-r">
+            <div class="tiposmaquina">
+                Linhas Produção Disponíveis:
+                <li *ngFor="let lp of linhasProducaoAll" value="{{lp.id}}">
+                    <span class="Badge" (click)="assLinhaProducaoMaquina(lp.id)">{{lp.descricao}}</span>
+                </li>
+            </div>
+        </div>
+        <label>Linhas Produção Associada:
+            <input readonly="readonly" [(ngModel)]="maquina.id_linhaProducao" name="something">
+        </label><br><br>
         <div class="ass-opp-div-r">
             <div class="tiposmaquina">
                 Tipo Máquina Disponíveis:

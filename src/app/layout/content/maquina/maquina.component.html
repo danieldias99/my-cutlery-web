@@ -16,16 +16,29 @@
             <input #modelo type="text" id="ex4"><br><br>
             Posição Na Linha de Produção
             <br><br>
-            Coordenada x
-            <input #x type="text">
-            Coordenada y
-            <input #y type="text">
+            Coordenada x:
+            <input #x type="text"><br><br>
+            Coordenada y:
+            <input #y type="text"><br><br>
+            Posição Relativa na Linha de Produção:
+            <input #posicaoRelativa type="text">
             <br><br>
+            <div class="ass-m-div">
+                <div class="tiposMaquina">
+                    Linhas de Produção Disponíveis:
+                    <li *ngFor="let lp of allLinhasProducao" value="{{lp.id}}">
+                        <span class="Badge" (click)="id_linhaProducao.value=lp.id">{{lp.descricao}}</span>
+                    </li>
+                </div>
+            </div>
+            Linha Produção Associada:
+            <input #id_linhaProducao type="text" readonly><br><br>
             <div class="ass-m-div">
                 <div class="tiposMaquina">
                     Tipo Máquinas Disponíveis:
                     <li *ngFor="let tm of allTiposMaquina" value="{{tm.id_tipoMaquina}}">
-                        <span class="Badge" (click)="assTipoMaquinaMaquina(tm.id_tipoMaquina); id_tipoMaquina.value=tm.id_tipoMaquina">{{tm.descricaoTipoMaquina}}</span>
+                        <span class="Badge"
+                            (click)="id_tipoMaquina.value=tm.id_tipoMaquina">{{tm.descricaoTipoMaquina}}</span>
                     </li>
                 </div>
             </div>
@@ -34,7 +47,7 @@
             <div>
                 <form>
                     <button class="add-m-btn"
-                        (click)="addMaquina(idMaquina.value, nome.value, marca.value, modelo.value, x.value, y.value, id_tipoMaquina.value); idMaquina.value=''; nome.value=''; x.value=''; y.value=''; id_tipoMaquina.value=''">Submeter</button>
+                        (click)="addMaquina(idMaquina.value, nome.value, marca.value, modelo.value, x.value, y.value, posicaoRelativa.value, id_tipoMaquina.value, id_linhaProducao.value); idMaquina.value=''; nome.value=''; marca.value=''; modelo.value=''; x.value=''; y.value='';posicaoRelativa.value='';id_tipoMaquina.value='';id_linhaProducao.value=''">Submeter</button>
                     &nbsp;
                     <button class="add-m-btn" (click)="goBack()">Back</button>
                 </form>

@@ -1,6 +1,29 @@
-<div *ngIf="linhaproducao" align= "center">
-    <h2>{{linhaproducao.id}} Detalhes</h2>
+<div *ngIf="linhaproducao" align="center">
+    <h2>{{linhaproducao.descricao}} Detalhes</h2>
     <div><span>Id_linhaproducao: </span>{{linhaproducao.id}}</div>
+    <label>Descrição:
+        <input [(ngModel)]="linhaproducao.descricao" />
+    </label>
+    <br>
+    <label>Posição em x:
+        <input [(ngModel)]="linhaproducao.posicao_x" />
+    </label>
+    <br>
+    <label>Posição em y:
+        <input [(ngModel)]="linhaproducao.posicao_y" />
+    </label>
+    <br>
+    <label>Orientação:
+        <input [(ngModel)]="linhaproducao.orientacao" />
+    </label>
+    <br>
+    <label>Comprimento:
+        <input [(ngModel)]="linhaproducao.comprimento" />
+    </label>
+    <br>
+    <label>Largura:
+        <input [(ngModel)]="linhaproducao.largura" />
+    </label>
     <div>
         <br>
         <div class="ass-m-div-r">

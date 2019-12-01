@@ -6,39 +6,36 @@
     <div class="criar-lp-align" align="center">
         <form>
             <h2>Criar Linha de Produção</h2>
-            id Linha de Produção:
+            ID Linha de Produção:
             <input #idLinha type="text"><br><br>
+            Descrição:
+            <input #descricao type="text"><br><br>
+            Posição da Linha de Produção
             <br><br>
-            <div class="ass-m-div-r">
-                <div class="maquinas">
-                    Máquinas Disponíveis:
-                    <li *ngFor="let m of allMaquinas" value="{{m.id}}">
-                        <span class="Badge" (click)="assMaquinaLinhaProducao(m.id)">{{m.nomeMaquina}}</span>
-                    </li>
-                </div>
-            </div>
-            <div class="ass-m-div-l">
-                <div class="maquinas">
-                    Máquinas Associadas:
-                    <li *ngFor="let m of maquinasAssociadas" value="{{m.id}}">
-                        <a>
-                            <span class="Badge" (click)=deleteAssMaquinaLinhaProducao(m.id)>{{m.nomeMaquina}}</span>
-                        </a>
-                    </li>
-                </div>
-            </div>
+            Coordenada x:
+            <input #posicao_x type="text"><br><br>
+            Coordenada y:
+            <input #posicao_y type="text"><br><br>
+            Orientação:
+            <input #orientacao type="text"><br><br>
+            Dimensões da Linha de Produção
+            <br><br>
+            Comprimento:
+            <input #comprimento type="text"><br><br>
+            Largura:
+            <input #largura type="text"><br><br>
             <form>
-                <button class="add-lp-btn" (click)="addLinhaProducao(idLinha.value); idLinha.value=''">Submeter</button>
+                <button class="add-lp-btn"
+                    (click)="addLinhaProducao(idLinha.value, descricao.value, posicao_x.value, posicao_y.value, orientacao.value, comprimento.value, largura.value); idLinha.value='';descricao.value=''; posicao_x.value=''; posicao_y.value=''; orientacao.value=''; comprimento.value=''; largura.value=''">Submeter</button>
                 &nbsp;
                 <button class="add-lp-btn" (click)="goBack()">Back</button>
             </form>
-
             <div class="linhasproducao" align="center">
                 <form>
                     <h2>Linha de Produçãos Disponíveis:</h2>
                     <li *ngFor="let lp of allLinhasProducao" value="{{lp.id}}">
                         <a routerLink="/linha-producao-detail/{{lp.id}}">
-                            <span class="Badge">{{lp.id}}</span>
+                            <span class="Badge">{{lp.descricao}}</span>
                         </a>
                         <button class="delete" title="Delete Tipo Linha de Produção" (click)="delete(lp)">x</button>
                     </li>

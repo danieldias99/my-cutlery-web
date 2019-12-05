@@ -12,7 +12,7 @@ import { LinhaProducaoComponent } from './layout/content/linha-producao/linha-pr
 import { LinhaProducaoDetailComponent } from './layout/content/linha-producao/linha-producao-detail/linha-producao-detail.component';
 import { ProdutoComponent } from './layout/content/produto/produto.component';
 import { ProdutoDetailComponent } from './layout/content/produto/produto-detail/produto-detail.component';
-
+import { VisualizacaoComponent } from './layout/content/visualizacao/visualizacao.component'
 
 const routes: Routes = [
   { path: 'criar-operacao', component: CriarOperacaoComponent },
@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'linhas-producao', component: LinhaProducaoComponent },
   { path: 'linha-producao-detail/:id', component: LinhaProducaoDetailComponent },
   { path: 'produtos', component: ProdutoComponent },
-  { path: 'produto-detail/:id', component: ProdutoDetailComponent }
+  { path: 'produto-detail/:id', component: ProdutoDetailComponent },
+  { path: 'visualizacao-execucao', component: VisualizacaoComponent }
 ];
 
 @NgModule({

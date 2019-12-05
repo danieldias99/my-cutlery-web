@@ -12,7 +12,7 @@ import * as THREE from '../../../../assets/ve/threeBaseComponents/three.js';
 })
 export class VisualizacaoComponent implements OnInit {
 
-  public scene: THREE.Scene;
+  private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
   private controls: THREE.OrbitControls;

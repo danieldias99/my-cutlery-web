@@ -13,10 +13,13 @@ import { LinhaProducaoDetailComponent } from './layout/content/linha-producao/li
 import { ProdutoComponent } from './layout/content/produto/produto.component';
 import { ProdutoDetailComponent } from './layout/content/produto/produto-detail/produto-detail.component';
 import { VisualizacaoComponent } from './layout/content/visualizacao/visualizacao.component'
+import { MainContentComponent } from './layout/content/main-content/main-content.component';
+import { RegistarUtilizadorComponent } from './layout/content/registar-utilizador/registar-utilizador.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/main-content', pathMatch: 'full' },
+  { path: 'main-content', component: MainContentComponent },
   { path: 'criar-operacao', component: CriarOperacaoComponent },
-  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'operacao-detail/:id', component: OperacaoDetailComponent },
   { path: 'tipos-maquina', component: TipoMaquinaComponent },
   { path: 'tipo-maquina-detail/:id_tipoMaquina', component: TipoMaquinaDetailComponent },
@@ -26,7 +29,8 @@ const routes: Routes = [
   { path: 'linha-producao-detail/:id', component: LinhaProducaoDetailComponent },
   { path: 'produtos', component: ProdutoComponent },
   { path: 'produto-detail/:id', component: ProdutoDetailComponent },
-  { path: 'visualizacao-execucao', component: VisualizacaoComponent }
+  { path: 'visualizacao-execucao', component: VisualizacaoComponent },
+  { path: 'registo-utilizador', component: RegistarUtilizadorComponent },
 ];
 
 @NgModule({

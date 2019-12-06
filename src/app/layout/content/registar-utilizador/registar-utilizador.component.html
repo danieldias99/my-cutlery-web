@@ -1,0 +1,105 @@
+<div class="container" style="padding-top: 50px; padding-bottom: 50px; width: 100%">
+    <div class="row">
+        <div class="col-md-4 py-5 bg-primary text-white text-center ">
+            <div class=" ">
+                <div class="card-body">
+                    <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:50%">
+                    <h2 class="py-3">Registo</h2>
+                    <p>Comece agora a fazer as suas encomendas, criando uma conta na MyOwnCutlery. </p>
+                    <p>Fácil e rápido.</p>
+                </div>
+            </div>
+        </div>
+        <form class="form-horizontal" role="form" style="padding-top: 50px;">
+            <div class="form-group">
+                <label for="nome" class="col-sm-3 control-label">Nome Completo</label>
+                <div class="col-sm-9">
+                    <input #nome type="text" id="nome" placeholder="Nome Completo" class="form-control" autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email </label>
+                <div class="col-sm-9">
+                    <input #email type="email" id="email" placeholder="Email" class="form-control" name="email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-9">
+                    <input #password type="password" id="password" placeholder="Password" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Confirma Password</label>
+                <div class="col-sm-9">
+                    <input #passwordConf type="password" id="passwordConf" placeholder="Password" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber" class="col-sm-3 control-label">Telemóvel</label>
+                <div class="col-sm-9">
+                    <input #telemovel type="phoneNumber" id="phoneNumber" placeholder="Telemóvel" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="morada" class="col-sm-3 control-label">Morada</label>
+                <div class="col-sm-9">
+                    <input #morada type="text" id="morada" placeholder="Morada" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="codigo_postal" class="col-sm-3 control-label">Código-Postal</label>
+                <div class="col-sm-9">
+                    <input #cod_postal type="text" id="codigo_postal" placeholder="Código Postal" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Local de entrega</label>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                Loja <input type="radio" name="radAnswer1" id="lojaRadio" value="Loja"
+                                    (change)=radioChangeHandlerModoEntrega($event)>
+                            </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                Domicílio <input type="radio" name="radAnswer1" value="Casa"
+                                    (change)=radioChangeHandlerModoEntrega($event)>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Método de pagamento preferencial</label>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                Dinheiro <input type="radio" name="radAnswer2" value="Dinheiro"
+                                    (change)=radioChangeHandlerMetodoPagamento($event)>
+                            </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                Cartão <input type="radio" name="radAnswer2" value="Cartão"
+                                    (change)=radioChangeHandlerMetodoPagamento($event)>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nif" class="col-sm-3 control-label">Número de Indentificação Fiscal</label>
+                <div class="col-sm-9">
+                    <input #nif type="text" id="nif" placeholder="NIF" class="form-control" autofocus>
+                </div>
+            </div>
+            <button type="submit"
+                (click)="registar(nif.value, nome.value, email.value, password.value, passwordConf.value, telemovel.value, morada.value, cod_postal.value)"
+                class="btn btn-primary btn-block">Submeter</button>
+        </form> <!-- /form -->
+    </div>
+</div> <!-- ./container -->

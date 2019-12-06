@@ -1,4 +1,4 @@
-<div class="sidenav">
+<!--<div class="sidenav">
     <button class="dropdown-btn">Registos
         <i class="fa fa-caret-down"></i>
     </button>
@@ -11,4 +11,49 @@
         <a>Encomendas</a> 
         <a routerLink= "/visualizacao-execucao">Visualização da Execução</a>
     </div>
+</div>-->
+
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a><b>Registos</b></a>
+            </li>
+            <div class="dropdown-container">
+                <li>
+                    <a routerLink="/criar-operacao">Operações</a>
+                </li>
+                <li>
+                    <a routerLink="/tipos-maquina">Tipos de Máquina</a>
+                </li>
+                <li>
+                    <a routerLink="/maquinas">Máquinas</a>
+                </li>
+                <li>
+                    <a routerLink="/linhas-producao">Linhas de Produção</a>
+                </li>
+                <li>
+                    <a routerLink="/produtos">Produtos</a>
+                </li>
+                <li>
+                    <a>Encomendas</a>
+                </li>
+                <li>
+                    <a>Clientes</a>
+                </li>
+            </div>
+            <li class="sidebar-brand">
+                <a><b>Visualização</b></a>
+            </li>
+            <div class="dropdown-container">
+                <li>
+                    <a routerLink="/visualizacao-execucao">Visualização da Fábrica</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
 </div>
+<!-- /#wrapper -->

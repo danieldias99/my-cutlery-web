@@ -1,56 +1,133 @@
-/* Fixed sidenav, full height */
-.sidenav {
-    font-family: Arial, Helvetica, sans-serif;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #F1F1F1;
-    overflow-x: hidden;
-    text-align: center;
-  }
-  
-  /* Style the sidenav links and the dropdown button */
-  .sidenav a, .dropdown-btn {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #333;
-    display: block;
-    background: none;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+ body {
+  overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+  padding-left: 250px;
+}
+
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 0;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #000;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 20px;
+  line-height: 60px;
+  border-bottom: 1px solid white;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+@media(min-width:768px) {
+  #wrapper {
+      padding-left: 250px;
   }
 
-  .dropdown-btn{
-    float: left;
-    border: 1px solid #333;
+  #wrapper.toggled {
+      padding-left: 0;
   }
-  
- /* On mouse-over */
- /* .sidenav a:hover, .dropdown-btn:hover {
-    color: white;
-  } */
-  
-  /* Add an active class to the active dropdown button */
-  .active {
-    background-color: #333;
-    color: white;
+
+  #sidebar-wrapper {
+      width: 250px;
   }
-  
-  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-  .dropdown-container {
-    font-family: Arial, Helvetica, sans-serif;
-    display: none;
-    background-color: rgb(204, 204, 204);
-    padding-left: 8px;
+
+  #wrapper.toggled #sidebar-wrapper {
+      width: 0;
   }
-  
-  /* Optional: Style the caret down icon */
-  .fa-caret-down {
-    float: right;
-    padding-right: 8px;
+
+  #page-content-wrapper {
+      padding: 20px;
+      position: relative;
   }
+
+  #wrapper.toggled #page-content-wrapper {
+      position: relative;
+      margin-right: 0;
+  }
+}

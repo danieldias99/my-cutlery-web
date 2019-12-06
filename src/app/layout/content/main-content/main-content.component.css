@@ -1,0 +1,46 @@
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: "middle";
+    width: 40%;
+  }
+
+.registo {
+    text-align: center;
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.registo:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
+}
+  #wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  
+  #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+  }
+  
+  @media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+  
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+  
+  }

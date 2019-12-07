@@ -1,0 +1,21 @@
+<div *ngIf="statusMessage; else noError">
+  <div class="errorMsg">{{statusMessage}}</div>
+</div>
+
+<ng-template #noError>
+  <div class="criar-c-align" align="center">
+    <form>
+      <div style="padding-bottom: 50px;">
+          <input #seach (input)="filter(seach.value)" class="form-control" type="text" placeholder="Procurar" aria-label="Search" autofocus>
+      </div>
+      <div class="clientes" align="center">
+        <form>
+          <h2>Clientes</h2>
+          <li *ngFor="let cliente of allClientesFilter" value="{{cliente.nr_idCivil}}">
+            <span class="Badge">{{cliente.nome}}</span>
+          </li>
+        </form>
+      </div>
+    </form>
+  </div>
+</ng-template>

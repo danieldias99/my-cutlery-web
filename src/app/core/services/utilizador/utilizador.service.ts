@@ -4,6 +4,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { MessageLogService } from '../MessageLog/message-log.service';
 import { Cliente } from '../../models/cliente';
 import { Observable } from 'rxjs';
+import { Utilizador } from '../../models/utilizador';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,11 @@ export class UtilizadorService {
     return this.httpClient.post(this.WebApiIt1url + 'cliente', cliente, this.httpOptions).pipe(
       tap(_ => this.log(`post cliente Id=${cliente.nome}`)),
       catchError(this.handleError<Cliente>("AddUser")));
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.httpClient.get(this.WebApiIt1url + 'cliente').pipe(map(this.extractData),
+      catchError(this.handleError<Cliente>(`getTiposMaquina`)));
   }
 
   private extractData(res: Response) {

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { CriarOperacaoComponent } from './layout/content/criar-operacao/criar-operacao.component';
-import { FooterComponent } from './layout/footer/footer.component';
 import { OperacaoDetailComponent } from './layout/content/criar-operacao/operacao-detail/operacao-detail.component';
 import { TipoMaquinaComponent } from './layout/content/tipo-maquina/tipo-maquina.component';
 import { TipoMaquinaDetailComponent } from './layout/content/tipo-maquina/tipo-maquina-detail/tipo-maquina-detail.component';
@@ -21,6 +20,8 @@ import { ProdutoDetailComponent } from './layout/content/produto/produto-detail/
 import { VisualizacaoComponent } from './layout/content/visualizacao/visualizacao.component';
 import { MainContentComponent } from './layout/content/main-content/main-content.component';
 import { RegistarUtilizadorComponent } from './layout/content/registar-utilizador/registar-utilizador.component';
+import { ConsultarClientesComponent } from './layout/content/consultar-clientes/consultar-clientes.component';
+import { ConsultarClienteComponent } from './layout/content/consultar-clientes/consultar-cliente/consultar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,6 @@ import { RegistarUtilizadorComponent } from './layout/content/registar-utilizado
     HeaderComponent,
     SidebarComponent,
     CriarOperacaoComponent,
-    FooterComponent,
     OperacaoDetailComponent,
     TipoMaquinaComponent,
     TipoMaquinaDetailComponent,
@@ -40,7 +40,8 @@ import { RegistarUtilizadorComponent } from './layout/content/registar-utilizado
     ProdutoDetailComponent,
     VisualizacaoComponent,
     MainContentComponent,
-    RegistarUtilizadorComponent
+    RegistarUtilizadorComponent,
+    ConsultarClientesComponent,
   ],
   imports: [
     BrowserModule,

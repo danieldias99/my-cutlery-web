@@ -1,0 +1,69 @@
+div.errorMsg{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 15em;
+    color: red;
+}
+
+div.criar-c-align {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40em;
+    margin-top: 50px;
+}
+
+.clientes .span {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.8em 0.7em 0 0.7em;
+    background-color:#405061;
+    line-height: 1em;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    min-width: 16px;
+    text-align: right;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+
+.clientes a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    width: 250px;
+    text-align: center;
+  }
+  
+.clientes a:hover {
+    color:#607D8B;
+  }
+
+.clientes {
+    font-family: Arial, Helvetica, sans-serif;
+    list-style-type: none;
+    width: 15em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.clientes li {
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 3em;
+    width: 20em;
+    border-radius: 4px;
+  }
+  
+.clientes li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }

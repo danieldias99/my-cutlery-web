@@ -15,6 +15,8 @@ import { ProdutoDetailComponent } from './layout/content/produto/produto-detail/
 import { VisualizacaoComponent } from './layout/content/visualizacao/visualizacao.component'
 import { MainContentComponent } from './layout/content/main-content/main-content.component';
 import { RegistarUtilizadorComponent } from './layout/content/registar-utilizador/registar-utilizador.component';
+import { ConsultarClientesComponent } from './layout/content/consultar-clientes/consultar-clientes.component';
+import { ConsultarClienteComponent } from './layout/content/consultar-clientes/consultar-cliente/consultar-cliente.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main-content', pathMatch: 'full' },
@@ -31,6 +33,7 @@ const routes: Routes = [
   { path: 'produto-detail/:id', component: ProdutoDetailComponent },
   { path: 'visualizacao-execucao', component: VisualizacaoComponent },
   { path: 'registo-utilizador', component: RegistarUtilizadorComponent },
+  { path: 'clientes', component: ConsultarClientesComponent },
 ];
 
 @NgModule({

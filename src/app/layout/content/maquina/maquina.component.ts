@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 import { Maquina } from 'src/app/core/models/maquina.model';
@@ -23,7 +23,7 @@ export class MaquinaComponent implements OnInit {
   constructor(private maquinaSrv: MaquinaService,
     private tipoMaquinaSrv: TipoMaquinaService,
     private linhasProducaoSrv: LinhaProducaoService,
-    private route: ActivatedRoute,
+    private route: Router,
     private location: Location) { }
 
   ngOnInit() {
@@ -61,7 +61,10 @@ export class MaquinaComponent implements OnInit {
 
     this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, posicaoRelativa, id_tipoMaquina, id_linhaProducao))
       .subscribe(
-        maquina => { this.allMaquinas.push(maquina); },
+        maquina => { 
+          this.allMaquinas.push(maquina); 
+          this.route.navigate(['/visualizacao-execucao']);
+        },
         error => { this.statusMessage = "Error: Service Unavailable"; }
       );
     this.getTiposMaquinaDisponiveis();

@@ -7,6 +7,8 @@ import * as THREE from '../../../../assets/ve/threeBaseComponents/three.js';
 import { LinhaProducaoService } from 'src/app/core/services/linha-producao/linha-producao.service';
 import { LinhaProducao } from 'src/app/core/models/linha-producao';
 import { Router } from '@angular/router';
+import { Maquina } from 'src/app/core/models/maquina.model';
+import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 
 
 
@@ -31,20 +33,30 @@ export class VisualizacaoComponent implements OnInit {
   private contTapetesTotal = 10;
   private COMPRIMENTO_TAPETE = 50;
   private LARGURA_TAPETE = 5;
-
-  allLinhasProducao: LinhaProducao[];
-  allLinhasProducaoDESENHO: any[];
-  statusMessage: string;
+  private allLinhasProducao: LinhaProducao[];
+  private allLinhasProducaoDESENHO: any[];
+  private statusMessage: string;
+  private allMaquinas: Maquina[];
+  private maquinasDESENHO: any[];
+  private contTapetesPreenchidos = 0;
+  private contMaquinas = 0;
+  private contMaquinasTotal = 0;
+  private TAMANHO_MAQUINA = 4.5;
+  private MACHINE_SPACE = 8;
+  private LARGURA_FABRICA = 40;
 
   //private : THREE.Mesh;
-  constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService) { 
+  constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService,
+    private maquinaSrv: MaquinaService) {
     this.allLinhasProducaoDESENHO = new Array();
+    this.maquinasDESENHO = new Array();
   }
 
   ngOnInit() {
     this.init();
     this.luz();
     this.getLinhasProducao();
+    this.getMaquinas();
   }
 
   init() {
@@ -209,4 +221,115 @@ export class VisualizacaoComponent implements OnInit {
     });
   }
 
+  //------------------------------------------Maquina--------------------------------------------------
+  //botao criar maquina
+  criarMaquina(): void {
+    var c = document.getElementsByTagName("canvas");
+    c[0].parentNode.removeChild(c[0]);
+    this.router.navigate(['/maquinas']);
+    if (this.contTapetesPreenchidos <= this.contTapetesTotal && this.contTapetesPreenchidos < this.contTapetes && this.contTapetes != 0) {
+      this.desenhaMaquinas();
+    } else if (this.contTapetes == 0) {
+      alert("Não existem linhas de produção criadas, logo não é possível acrescentar máquinas. Crie uma linha de produção primeiro!");
+    } else {
+      alert("Não é possivel criar mais máquinas!");
+    }
+  }
+
+  //botao eliminar maquina
+  apagarMaquina(): void {
+    if (this.contMaquinasTotal > 0) {
+      this.apagarMqn();
+    } else {
+      alert("Não existe nenhuma máquina!");
+    }
+  }
+
+  private getMaquinas(): void {
+    this.maquinaSrv.getMaquinas().subscribe(
+      data => {
+        console.log(data);
+        this.allMaquinas = data;
+        this.allMaquinas.forEach(element => {
+          this.desenhaMaquinas();
+        })
+      },
+      error => { this.statusMessage = "Error: Service Unavailable" });
+  }
+
+  private desenhaMaquina(size_m, x, y, z) {
+    var geometry_balcao = new THREE.BoxGeometry(size_m, size_m, size_m);
+    var material = new THREE.MeshLambertMaterial({ color: '#e70861' });
+    geometry_balcao.translate(x, y, z);
+    var maquina = new THREE.Mesh(geometry_balcao, material);
+    var geometry_retangulo = new THREE.BoxGeometry(1, 12, 1);
+    geometry_retangulo.translate(x, y + 4, z - 2);
+    var retangulo = new THREE.Mesh(geometry_retangulo, material);
+    this.scene.add(retangulo);
+    var geometry_retangulo1 = new THREE.BoxGeometry(1, 1, 3);
+    geometry_retangulo1.translate(x, y + 10, z - 1);
+    var retangulo1 = new THREE.Mesh(geometry_retangulo1, material);
+    this.scene.add(retangulo1);
+    var geometry_cone = new THREE.ConeBufferGeometry(2, 4, 6);
+    geometry_cone.rotateZ((Math.PI / 2) - 5);
+    geometry_cone.rotateY(Math.PI / 2);
+    geometry_cone.translate(x, y + 8, z + 0.5);
+    var cone = new THREE.Mesh(geometry_cone, material);
+    this.scene.add(cone);
+    this.scene.add(maquina);
+    this.maquinasDESENHO.push(maquina);
+    this.maquinasDESENHO.push(retangulo);
+    this.maquinasDESENHO.push(retangulo1);
+    this.maquinasDESENHO.push(cone);
+  }
+
+  private desenhaMaquinas() {
+    switch (this.contMaquinas) {
+      case 0:
+        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //primeiras maquinas
+        this.contMaquinas++;
+        this.contMaquinasTotal++;
+        break;
+      case 1:
+        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //segundas maquinas
+        this.contMaquinas++;
+        this.contMaquinasTotal++;
+        break;
+      default:
+        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2));// terceiras maquinas
+        this.contTapetesPreenchidos++;
+        this.contMaquinas = 0;
+        this.contMaquinasTotal++;
+    }
+  }
+
+  //Apagar uma maquina - widget
+  private apagarMqn() {
+    var maquina = this.maquinasDESENHO.pop();
+    var mqn = this.allMaquinas.pop();
+    var r = this.maquinasDESENHO.pop();
+    var re = this.maquinasDESENHO.pop();
+    var ret = this.maquinasDESENHO.pop();
+    this.deleteMqn(mqn);
+    this.scene.remove(maquina);
+    this.scene.remove(r);
+    this.scene.remove(re);
+    this.scene.remove(ret);
+    this.contMaquinasTotal--;
+    if (this.contMaquinas == 0) {
+      this.contMaquinas = 2;
+      this.contTapetesPreenchidos--;
+    } else {
+      this.contMaquinas--;
+    }
+  }
+
+  private deleteMqn(maquina: Maquina): void {
+    this.allMaquinas = this.allMaquinas.filter(h => h !== maquina);
+    this.maquinaSrv.deleteMaquina(maquina.id).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error);
+    });
+  }
 }

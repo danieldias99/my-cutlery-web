@@ -37,6 +37,13 @@ export class UtilizadorService {
       catchError(this.handleError<Cliente>(`getTiposMaquina`)));
   }
 
+  /** GET LinhaProducao by n_idCivil. Will 404 if n_idCivil not found */
+  getUser(n_idCivil: number): Observable<any> {
+    return this.httpClient.get(this.WebApiIt1url + 'cliente/' + `${n_idCivil}`).
+      pipe(tap(_ => this.log(`get LinhaProducao n_idCivil=${n_idCivil}`)),
+        catchError(this.handleError<Utilizador>(`getLinhaProducao n_idCivil=${n_idCivil}`)));
+  }
+
   signIn(encript: EncriptPackage) {
     return this.httpClient.post(this.WebApiIt1url + 'cliente/signIn', encript, this.httpOptions)
       .pipe(tap(_ => this.log('signIn of user with email=' + `${encript.email}`)),

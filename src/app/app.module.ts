@@ -21,6 +21,8 @@ import { VisualizacaoComponent } from './layout/content/visualizacao/visualizaca
 import { MainContentComponent } from './layout/content/main-content/main-content.component';
 import { RegistarUtilizadorComponent } from './layout/content/registar-utilizador/registar-utilizador.component';
 import { ConsultarClientesComponent } from './layout/content/consultar-clientes/consultar-clientes.component';
+import { ConsultarClienteComponent } from './layout/content/consultar-clientes/consultar-cliente/consultar-cliente.component';
+import { SessaoComponent } from './layout/content/sessao/sessao.component';
 import { LoginComponent } from './layout/content/login/login.component';
 
 @NgModule({
@@ -42,6 +44,8 @@ import { LoginComponent } from './layout/content/login/login.component';
     MainContentComponent,
     RegistarUtilizadorComponent,
     ConsultarClientesComponent,
+    ConsultarClienteComponent,
+    SessaoComponent,
     LoginComponent
   ],
   imports: [

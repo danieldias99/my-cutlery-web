@@ -1,0 +1,22 @@
+<div *ngIf="cliente" align="center">
+    <h2>{{cliente.nome}} Detalhes</h2>
+    <div><span>NIF: </span>{{cliente.nr_idCivil}}</div>
+    <label>Nome:
+        <input [(ngModel)]="cliente.nome" />
+    </label>
+    <label>Endereço:
+        <input [(ngModel)]="cliente.email" />
+    </label>
+    <br>
+    <div><span>Telemovel: </span>{{cliente.nr_telemovel}}</div>
+    <br><br>
+    <div><span>Morada: </span>{{cliente.morada}}</div>
+    <br><br>
+    <div><span>Método de Pagamento: </span>{{cliente.metodo_pagamento}}</div>
+    <br><br>
+    <div><span>Modo de Entrega: </span>{{cliente.modo_entrega}}</div>
+    <br>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <!--<button (click)="save()">Save</button>-->
+</div>

@@ -44,6 +44,7 @@ export class VisualizacaoComponent implements OnInit {
   private TAMANHO_MAQUINA = 4.5;
   private MACHINE_SPACE = 8;
   private LARGURA_FABRICA = 40;
+  private texturaTapete: THREE.TextureLoader;
 
   //private : THREE.Mesh;
   constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService,
@@ -64,7 +65,6 @@ export class VisualizacaoComponent implements OnInit {
     this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
     this.renderer = new THREE.WebGLRenderer();
     this.scene.add(this.camera);
-    this.scene.add(new THREE.AxisHelper(20));
 
     this.camera.position.set(0, 0, 0);
     this.camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -78,6 +78,8 @@ export class VisualizacaoComponent implements OnInit {
     this.camera.position.y = 20;
 
     var controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+
+    this.texturaTapete = new THREE.TextureLoader().load("../../../../assets/ve/importedModels/TexturaLinha/linha.png");
 
     let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
     let source = '../../../../assets/ve/importedModels/warehouse/scene.gltf'; // resource url
@@ -107,6 +109,7 @@ export class VisualizacaoComponent implements OnInit {
 
     (function render() {
       requestAnimationFrame(render);
+      self.texturaTapete.offset.x += 0.01;
       self.renderer.render(self.scene, self.camera);
     }());
 
@@ -194,10 +197,13 @@ export class VisualizacaoComponent implements OnInit {
 
   private desenhaLinhaF(comprimento, largura, altura, posicaoLinhaZ, posicaoLinhaX) {
     var geometry_linha = new THREE.BoxGeometry(comprimento, largura, altura);
-    var material = new THREE.MeshLambertMaterial({ color: '#089972' });
     geometry_linha.rotateX(Math.PI / 2);
     var descZ = -60 + (8 + (posicaoLinhaZ * largura) + largura / 2);
     geometry_linha.translate(posicaoLinhaX, 1, descZ);
+    this.texturaTapete.wrapS = THREE.RepeatWrapping;
+    this.texturaTapete.wrapT = THREE.RepeatWrapping;
+    this.texturaTapete.repeat.set(6, 1);
+    const material = new THREE.MeshLambertMaterial({ map: this.texturaTapete });
     var linha = new THREE.Mesh(geometry_linha, material);
     this.scene.add(linha);
     this.allLinhasProducaoDESENHO.push(linha);

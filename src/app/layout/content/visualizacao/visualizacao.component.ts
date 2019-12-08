@@ -31,11 +31,15 @@ export class VisualizacaoComponent implements OnInit {
   private contTapetesTotal = 10;
   private COMPRIMENTO_TAPETE = 50;
   private LARGURA_TAPETE = 5;
+
   allLinhasProducao: LinhaProducao[];
+  allLinhasProducaoDESENHO: any[];
   statusMessage: string;
 
   //private : THREE.Mesh;
-  constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService) { }
+  constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService) { 
+    this.allLinhasProducaoDESENHO = new Array();
+  }
 
   ngOnInit() {
     this.init();
@@ -150,14 +154,23 @@ export class VisualizacaoComponent implements OnInit {
     }
   }
 
-private getLinhasProducao(): void {
+  //botao eliminar linha producao
+  eliminarLinha() {
+    if (this.contTapetes > 0) {
+      this.apagarLinha();
+    } else {
+      alert("Não existe nenhuma linha de produção!");
+    }
+  }
+
+  private getLinhasProducao(): void {
     this.linhaProducaoSrv.getLinhasProducao().subscribe(
       data => {
         console.log(data);
         this.allLinhasProducao = data;
-        for (let i = 0; i < this.allLinhasProducao.length; i++) {
+        this.allLinhasProducao.forEach(element => {
           this.desenhaLinha();
-        }
+        });
       },
       error => { this.statusMessage = "Error: Service Unavailable" });
   }
@@ -175,7 +188,25 @@ private getLinhasProducao(): void {
     geometry_linha.translate(posicaoLinhaX, 1, descZ);
     var linha = new THREE.Mesh(geometry_linha, material);
     this.scene.add(linha);
-    this.allLinhasProducao.push(linha);
+    this.allLinhasProducaoDESENHO.push(linha);
+  }
+
+  //Apagar um tapete/linha - widget
+  private apagarLinha() {
+    var linhaP = this.allLinhasProducao.pop();
+    var linhaPR = this.allLinhasProducaoDESENHO.pop();
+    this.scene.remove(linhaPR);
+    this.contTapetes--;
+    this.delete(linhaP);
+  }
+
+  private delete(LinhaProducao: LinhaProducao): void {
+    this.allLinhasProducao = this.allLinhasProducao.filter(h => h !== LinhaProducao);
+    this.linhaProducaoSrv.deleteLinhaProducao(LinhaProducao.id).subscribe(res => {
+      console.log(res);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

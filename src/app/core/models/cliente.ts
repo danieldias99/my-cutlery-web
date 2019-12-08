@@ -7,7 +7,6 @@ export class Cliente extends Utilizador {
     modo_entrega: String;
     morada: String;
     cod_postal: String;
-    isAdmin: Boolean;
 
     constructor(nr_idCivil: String, nome: String, email: String, password: String, nr_telemovel: String, metodo_pagamento: String, modo_entrega: String, morada: String, cod_postal: String) {
         super(nr_idCivil, nome, email, password);
@@ -16,6 +15,5 @@ export class Cliente extends Utilizador {
         this.modo_entrega = modo_entrega;
         this.morada = morada;
         this.cod_postal = cod_postal;
-        this.isAdmin = false;
     }
 }

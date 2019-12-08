@@ -1,0 +1,126 @@
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+    padding: 2rem;
+}
+
+.form-signin {
+    width: 100%;
+}
+
+.form-signin .btn {
+    font-size: 80%;
+    border-radius: 5rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+}
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-label-group input {
+    border-radius: 50rem;
+}
+
+.form-label-group>input, .form-label-group>label {
+    padding: var(--input-padding-y) var(--input-padding-x);
+    height: 40px;
+}
+
+.form-label-group>label {
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+    height: 50px;
+}
+
+.form-label-group input:-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+    color: transparent;
+}
+
+.form-label-group input::placeholder {
+    color: transparent;
+}
+
+.button-submit-group {
+    border-radius: 5rem;
+    color: #fff;
+    background-color: lightgray;
+    border-color: black;
+}
+
+.button-submit-group:hover {
+    background-color: darkgray;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (1 / 15));
+    padding-bottom: calc(var(--input-padding-y) / 15);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+    padding-top: calc(var(--input-padding-y) / 15);
+    padding-bottom: calc(var(--input-padding-y) / 15);
+    font-size: 12px;
+    color: #777;
+    top: .0001px
+}
+
+a {
+    color: #0000ff;
+}
+
+a:link {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0000ff;
+    text-decoration: underline;
+    cursor: pointer;
+}

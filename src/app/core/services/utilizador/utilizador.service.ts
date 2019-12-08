@@ -5,6 +5,7 @@ import { MessageLogService } from '../MessageLog/message-log.service';
 import { Cliente } from '../../models/cliente';
 import { Observable } from 'rxjs';
 import { Utilizador } from '../../models/utilizador';
+import { EncriptPackage } from '../../models/EncriptPackage';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,12 @@ export class UtilizadorService {
       catchError(this.handleError<Cliente>(`getTiposMaquina`)));
   }
 
+  signIn(encript: EncriptPackage) {
+    return this.httpClient.post(this.WebApiIt1url + 'cliente/signIn', encript, this.httpOptions)
+      .pipe(tap(_ => this.log('signIn of user with email=' + `${encript.email}`)),
+        catchError(this.handleError<Utilizador>('signIn of user with email=' + `${encript.email}`)));
+  }
+
   private extractData(res: Response) {
     return res || {};
   }
@@ -50,7 +57,7 @@ export class UtilizadorService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      console.log(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.statusText}`);

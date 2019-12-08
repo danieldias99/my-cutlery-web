@@ -17,6 +17,8 @@ import { MainContentComponent } from './layout/content/main-content/main-content
 import { RegistarUtilizadorComponent } from './layout/content/registar-utilizador/registar-utilizador.component';
 import { ConsultarClientesComponent } from './layout/content/consultar-clientes/consultar-clientes.component';
 import { ConsultarClienteComponent } from './layout/content/consultar-clientes/consultar-cliente/consultar-cliente.component';
+import { LoginComponent } from './layout/content/login/login.component';
+import { SessaoComponent } from './layout/content/sessao/sessao.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main-content', pathMatch: 'full' },
@@ -34,6 +36,9 @@ const routes: Routes = [
   { path: 'visualizacao-execucao', component: VisualizacaoComponent },
   { path: 'registo-utilizador', component: RegistarUtilizadorComponent },
   { path: 'clientes', component: ConsultarClientesComponent },
+  { path: 'cliente-detail/:id', component: ConsultarClienteComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'sessao/:id', component: SessaoComponent }
 ];
 
 @NgModule({

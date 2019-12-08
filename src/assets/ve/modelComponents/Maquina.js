@@ -1,4 +1,4 @@
-import * as THREE from '../threeBaseComponents/three.js';
+/*import * as THREE from '../threeBaseComponents/three.js';
 import {contTapetes, contTapetesTotal, LARGURA_TAPETE} from './Linha.js';
 
 //Desenhar maquina - widget
@@ -73,4 +73,4 @@ var apagarMaquina = function () {
     }else{
         contMaquinas--;
     }
-}
+}*/

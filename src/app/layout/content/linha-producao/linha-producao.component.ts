@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { LinhaProducaoService } from 'src/app/core/services/linha-producao/linha-producao.service';
@@ -16,7 +16,7 @@ export class LinhaProducaoComponent implements OnInit {
   statusMessage: string;
 
   constructor(private linhaProducaoSrv: LinhaProducaoService,
-    private route: ActivatedRoute,
+    private route: Router,
     private location: Location) { }
 
   ngOnInit() {
@@ -41,7 +41,10 @@ export class LinhaProducaoComponent implements OnInit {
 
     this.linhaProducaoSrv.addLinhaProducao(new LinhaProducao(IdLinhaProducao, descricao, posicao_x, posicao_y, orientacao, comprimento, largura))
       .subscribe(
-        LinhaProducao => { this.allLinhasProducao.push(LinhaProducao); },
+        LinhaProducao => {
+          this.allLinhasProducao.push(LinhaProducao);
+          this.route.navigate(['/visualizacao-execucao']);
+        },
         error => { this.statusMessage = "Error: Service Unavailable"; }
       );
   }

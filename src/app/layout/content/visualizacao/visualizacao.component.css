@@ -1,7 +1,12 @@
 .ui {
     position: relative;
+    margin-left: 255px;
+}
+
+.ai{
+    position: relative; 
 }
 
 button {
-    margin: 20px;
+    margin: 10px;
 }

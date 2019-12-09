@@ -125,6 +125,19 @@ export class VisualizacaoComponent implements OnInit {
     }
   }
 
+  /* Console.log for hovering */
+  hover(): void {
+    console.log("hovered");
+  }
+
+  hoverLeft(): void {
+    console.log("hover left");
+  }
+
+  clicky(): void {
+    console.log("clicked")
+  }
+
   luz() {
     this.pointLight = new THREE.PointLight(0xffffff, 0.5, 100000);
     this.pointLight3 = new THREE.PointLight(0xffffff, 0.5, 100000);

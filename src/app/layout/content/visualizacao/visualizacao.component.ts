@@ -194,8 +194,57 @@ export class VisualizacaoComponent implements OnInit {
       requestAnimationFrame(render);
       self.texturaTapete.offset.x += 0.01;
       const time = 0.5;
+
+      const objectPicked = self.pickHelper.pick(self.pickPosition, self.scene, self.camera, time);
+
+      self.renderer.render(self.scene, self.camera);
+
+      if (objectPicked !== undefined && objectPicked.type === 'Mesh') {
+
+        var index = self.allLinhasProducaoDESENHO.findIndex(i => i === objectPicked);
+
+
+        const objectBD = self.allLinhasProducao[index];
+
+        console.log(objectBD);
+
+        self.showToolTipLinhas(objectBD, objectPicked);
+
+      } else {
+        self.hideToolTip();
+      }
     }());
 
+  }
+
+  showToolTipLinhas(objectBD, objectPicked) {
+    this.MENSSAGEM = this.toInfoToolTipStringLinhas(objectBD);
+    var d = document.getElementById('tooltip');
+    d.style.position = "absolute";
+    d.style.color = 'white';
+    d.style.background = 'grey';
+    d.style.opacity = '1';
+    d.style.left = objectPicked.x + 'px';
+    d.style.top = objectPicked.y + 'px';
+  }
+
+  toInfoToolTipStringLinhas(objectBD): String {
+    var maquinasS;
+    objectBD.maquinas.forEach(element => {
+      maquinasS = maquinasS + element.nomeMaquina + "; ";
+    });
+    return "Descrição: " + objectBD.descricao + "; "
+      + "Coordenada x: " + objectBD.posicao_x + "; "
+      + "Coordenada y: " + objectBD.posicao_y + "; "
+      + "Orientação: " + objectBD.orientacao + "; "
+      + "Comprimento: " + objectBD.comprimento + "; "
+      + "Largura: " + objectBD.largura + "; "
+      + "Maquinas: " + maquinasS
+  }
+
+  hideToolTip() {
+    var d = document.getElementById('tooltip');
+    d.style.opacity = '0';
   }
 
   //-----------------------------------------Luminosidade------------------------------------------------------

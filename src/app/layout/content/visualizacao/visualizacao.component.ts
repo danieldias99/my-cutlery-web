@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import '../../../../assets/ve/threeBaseComponents/GLTFLoader';
 import '../../../../assets/ve/threeBaseComponents/OrbitControls';
@@ -9,7 +9,7 @@ import { LinhaProducao } from 'src/app/core/models/linha-producao';
 import { Router } from '@angular/router';
 import { Maquina } from 'src/app/core/models/maquina.model';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
-
+import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper'
 
 
 @Component({
@@ -19,7 +19,9 @@ import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 })
 export class VisualizacaoComponent implements OnInit {
 
-  public scene: THREE.Scene;
+  @Input() MENSSAGEM;
+
+  private scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
   private controls: THREE.OrbitControls;
@@ -33,8 +35,8 @@ export class VisualizacaoComponent implements OnInit {
   private contTapetesTotal = 10;
   private COMPRIMENTO_TAPETE = 50;
   private LARGURA_TAPETE = 5;
-  private allLinhasProducao: LinhaProducao[];
-  private allLinhasProducaoDESENHO: any[];
+  public allLinhasProducao: LinhaProducao[];
+  public allLinhasProducaoDESENHO: THREE.Mech[];
   private statusMessage: string;
   private allMaquinas: Maquina[];
   private maquinasDESENHO: any[];
@@ -45,6 +47,9 @@ export class VisualizacaoComponent implements OnInit {
   private MACHINE_SPACE = 8;
   private LARGURA_FABRICA = 40;
   private texturaTapete: THREE.TextureLoader;
+  private canvas: any;
+  private pickPosition;
+  private pickHelper;
 
   //private : THREE.Mesh;
   constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService,
@@ -54,31 +59,28 @@ export class VisualizacaoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.init();
+    this.main();
     this.luz();
-    this.getLinhasProducao();
-    this.getMaquinas();
+
   }
 
-  init() {
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
-    this.renderer = new THREE.WebGLRenderer();
-    this.scene.add(this.camera);
+  main() {
+    const canvas = document.querySelector('#c');
+    const renderer = new THREE.WebGLRenderer({ canvas });
 
-    this.camera.position.set(0, 0, 0);
-    this.camera.lookAt(new THREE.Vector3(0, 0, 0));
-    this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.camera.updateProjectionMatrix();
+    const fov = 60;
+    const aspect = 2;  // the canvas default
+    const near = 0.1;
+    const far = 200;
+    const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.z = 100;
+    camera.position.y = 20;
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(this.renderer.domElement);
+    const scene = new THREE.Scene();
+    scene.add(camera);
 
-    this.camera.position.z = 100;
-    this.camera.position.y = 20;
-
-    var controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-
+    //Draw Fabrica
     this.texturaTapete = new THREE.TextureLoader().load("../../../../assets/ve/importedModels/TexturaLinha/linha.png");
 
     let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
@@ -88,19 +90,100 @@ export class VisualizacaoComponent implements OnInit {
       model.scale.set(0.1, 0.1, 0.1);
       model.position.set(-40, 0, 80);
       console.log(model);
-      this.scene.add(model);
+      scene.add(model);
     }; // called to load resource
     let loadingBuffer = (timer) => {
       console.log((timer.loaded / timer.total * 100) + '% loaded');
     } // called while loading
     let loaderError = (error) => {
-      console.log('Error happened');
+      console.log('Error happened: ' + error);
     } // When error is found
     let warehousePosition = new THREE.Vector3(0, 0, 0);
     gltfLoader.load(source, gltf => onLoad(gltf, warehousePosition), loadingBuffer, loaderError);
 
-    this.render();
+    this.getLinhasProducao();
+    this.getMaquinas();
 
+    function resizeRendererToDisplaySize(renderer) {
+      const canvas = renderer.domElement;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      const needResize = canvas.width !== width || canvas.height !== height;
+      if (needResize) {
+        renderer.setSize(width, height, false);
+      }
+      return needResize;
+    }
+
+    const pickPosition = { x: 0, y: 0 };
+    const pickHelper = new PickHelper();
+    clearPickPosition();
+
+    function render(time) {
+
+      time *= 0.001;  // convert to seconds;
+
+      if (resizeRendererToDisplaySize(renderer)) {
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+      }
+
+      //cameraPole.rotation.y = time * .1;
+
+      //const objectPicked = pickHelper.pick(pickPosition, scene, camera, time);
+
+      renderer.render(scene, camera);
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+
+    function getCanvasRelativePosition(event) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: event.clientX - rect.left,
+        y: event.clientY - rect.top,
+      };
+    }
+
+    function setPickPosition(event) {
+      const pos = getCanvasRelativePosition(event);
+      pickPosition.x = (pos.x / canvas.clientWidth) * 2 - 1;
+      pickPosition.y = (pos.y / canvas.clientHeight) * -2 + 1;  // note we flip Y
+    }
+
+    function clearPickPosition() {
+      // unlike the mouse which always has a position
+      // if the user stops touching the screen we want
+      // to stop picking. For now we just pick a value
+      // unlikely to pick something
+      pickPosition.x = -100000;
+      pickPosition.y = -100000;
+    }
+    window.addEventListener('mousemove', setPickPosition);
+    window.addEventListener('mouseout', clearPickPosition);
+    window.addEventListener('mouseleave', clearPickPosition);
+
+    window.addEventListener('touchstart', (event) => {
+      // prevent the window from scrolling
+      event.preventDefault();
+      setPickPosition(event.touches[0]);
+    }, { passive: false });
+
+    window.addEventListener('touchmove', (event) => {
+      setPickPosition(event.touches[0]);
+    });
+
+    window.addEventListener('touchend', clearPickPosition);
+
+    this.scene = scene;
+    this.camera = camera;
+    this.renderer = renderer;
+    this.pickHelper = pickHelper;
+    this.pickPosition = pickPosition;
+
+    this.render();
   }
 
   render() {
@@ -110,7 +193,7 @@ export class VisualizacaoComponent implements OnInit {
     (function render() {
       requestAnimationFrame(render);
       self.texturaTapete.offset.x += 0.01;
-      self.renderer.render(self.scene, self.camera);
+      const time = 0.5;
     }());
 
   }
@@ -123,19 +206,6 @@ export class VisualizacaoComponent implements OnInit {
     } else {
       this.apagarLuz();
     }
-  }
-
-  /* Console.log for hovering */
-  hover(): void {
-    console.log("hovered");
-  }
-
-  hoverLeft(): void {
-    console.log("hover left");
-  }
-
-  clicky(): void {
-    console.log("clicked")
   }
 
   luz() {
@@ -167,6 +237,7 @@ export class VisualizacaoComponent implements OnInit {
 
     this.luzAcesa++;
   }
+
 
   //-------------------------------------------Linha de producao------------------------------------------------
 

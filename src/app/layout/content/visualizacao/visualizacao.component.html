@@ -1,16 +1,17 @@
 <div>
     <form>
-
-        <!--<script src="../linha-producao/linha-producao.component.ts"></script>
-        routerLink="/linhas-producao"-->
-
-        <button class="ui" (click)="criarLinha()" >Criar Linha de Produção</button>
+        <button class="ui" (click)="criarLinha()">Criar Linha de Produção</button>
         <button class="ai" (click)="criarMaquina()">Criar
             Máquina</button>
         <button class="ai" (click)="eliminarLinha()">Eliminar Linha Produção</button>
         <button class="ai" (click)="apagarMaquina()">Eliminar
             Máquina</button>
-        <button class="ai" (click)="luminosidade()" ng-mouseover="hover()">Luminosidade</button>
-        <button (mouseenter)="hover()" (mouseleave)="hoverLeft()" (click)="clicky()"> Increment (when mouse is over)</button>
+        <button class="ai" (click)="luminosidade()">Luminosidade</button>
     </form>
 </div>
+<div>
+    <div id='tooltip'>{{MENSSAGEM}}</div>
+</div>
+<canvas style="width: 1200px; height: 500px;" id="c">
+
+</canvas>

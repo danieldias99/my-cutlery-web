@@ -203,13 +203,22 @@ export class VisualizacaoComponent implements OnInit {
 
         var index = self.allLinhasProducaoDESENHO.findIndex(i => i === objectPicked);
 
+        if (index >= 0) {
 
-        const objectBD = self.allLinhasProducao[index];
+          const objectBD = self.allLinhasProducao[index];
 
-        console.log(objectBD);
+          console.log(objectBD);
 
-        self.showToolTipLinhas(objectBD, objectPicked);
+          self.showToolTipLinhas(objectBD, objectPicked);
+        } else {
+          index = self.maquinasDESENHO.findIndex(i => i === objectPicked);
 
+          const objectBD = self.allMaquinas[Math.floor(index / 4)];
+
+          console.log(objectBD);
+
+          self.showToolTipMaquinas(objectBD, objectPicked);
+        }
       } else {
         self.hideToolTip();
       }
@@ -240,6 +249,37 @@ export class VisualizacaoComponent implements OnInit {
       + "Comprimento: " + objectBD.comprimento + "; "
       + "Largura: " + objectBD.largura + "; "
       + "Maquinas: " + maquinasS
+  }
+
+  showToolTipMaquinas(objectBD, objectPicked) {
+    this.MENSSAGEM = this.toInfoToolTipStringMaquinas(objectBD);
+    var d = document.getElementById('tooltip');
+    d.style.position = "absolute";
+    d.style.color = 'white';
+    d.style.background = 'grey';
+    d.style.opacity = '1';
+    d.style.left = objectPicked.x + 'px';
+    d.style.top = objectPicked.y + 'px';
+  }
+
+  toInfoToolTipStringMaquinas(objectBD): String {
+    return "Nome: " + objectBD.nomeMaquina + "; "
+      + "Marca: " + objectBD.marcaMaquina + "; "
+      + "Modelo: " + objectBD.modeloMaquina + "; "
+      + "Coordenada x: " + objectBD.x + "; "
+      + "Coordenada y: " + objectBD.y + "; "
+      + "Posição Relativa: " + objectBD.posicaoRelativa + "; "
+      + "Tipo de Máquina: " + this.setTipoMaquina(objectBD.id_tipoMaquina) + "; "
+      + "Linha de Produção: " + objectBD.id_linhaProducao;
+  }
+
+  setTipoMaquina(id_tipoMaquina: string): string {
+    return "Furadora";
+    /*if (id_tipoMaquina === '1') {
+      return "Furadora";
+    } else {
+      return "Ainda a definir";
+    }*/
   }
 
   hideToolTip() {

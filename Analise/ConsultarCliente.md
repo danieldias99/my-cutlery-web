@@ -9,7 +9,7 @@
 - Configurador
 
     - É solicitado pelo Configurador consultar um cliente.
-    - É mostrado uma lista de todos os clientes em que o configurador pode filtrar pelo NIF.
+    - É mostrado uma lista de todos os clientes em que o configurador pode filtrar pelo email.
     - É mostrado apenas o nome do cliente selecionado.
 
 - Cliente

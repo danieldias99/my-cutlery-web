@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  signIn(email: String, password: String) {
+  signIn(email: string, password: string) {
     if (email === '' || password === '') {
       alert("Preencha todos os campos!");
       return
@@ -25,10 +25,12 @@ export class LoginComponent implements OnInit {
 
     this.userSrv.signIn(new EncriptPackage(email, password)).subscribe(
       data => {
-        console.log(data); 
-        this.router.navigate(['/sessao/' + data[0].nr_idCivil]);
+        console.log(data);
+        localStorage.setItem(data.message, data.token);
+        localStorage.setItem('UserLogged', email);
+        this.router.navigate(['/sessao']);
       },
-      error => { /*this.statusMessage = 'Erro'*/ alert("Email ou palavra-passe erradas!") });
+      error => { alert("Email ou palavra-passe erradas!") });
   }
 
 }

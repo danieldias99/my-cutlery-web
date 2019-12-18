@@ -1,0 +1,75 @@
+<div *ngIf="encomenda" align="center">
+    <h2>Detalhes Encomenda</h2>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="produtos" align="center">
+                        <h2>Produtos Disponíveis:</h2>
+                        <li *ngFor="let p of allProdutosFilter" value="{{p.id}}">
+                            <a (click)="chooseProduto(p)">
+                                <span class="Badge">{{p.nomeProduto}}</span>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <h2>Produtos</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th style="width: 150px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div><label>{{produtoSelecionado.nomeProduto}}</label></div>
+                                    </td>
+                                    <td>
+                                        <input #quantidade>
+                                    </td>
+                                    <td>
+                                        <button type="button"
+                                            (click)="addProdutoAoCarrinho(quantidade.value); quantidade.value=''"
+                                            class="btn btn-info add-new">Adicionar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr *ngFor="let produto of produtosEncomenda">
+                                    <td>{{produto.nomeProduto}}</td>
+                                    <td>{{produto.quantidade}}</td>
+                                    <td>
+                                        <a (click)="remProdutoAoCarrinho(produto.nomeProduto)" class="delete" title=""
+                                            data-toggle="tooltip" data-original-title="Delete">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br>
+                    <label>Data de Entrega:
+                        <input [(ngModel)]="encomenda.data_entrega" />
+                    </label>
+                    &nbsp;
+                    <label>Estado:
+                        <input [(ngModel)]="encomenda.estado" />
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="goBack()">Back</button>
+    &nbsp;
+    <button (click)="update()">Save</button>
+</div>

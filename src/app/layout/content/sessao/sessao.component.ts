@@ -16,7 +16,7 @@ export class SessaoComponent implements OnInit {
 
   @Input() currentUser: Cliente;
 
-  @Input() admin: Boolean;
+  @Input() admin: Boolean = false;
 
   encomendas: Encomenda[];
 
@@ -39,6 +39,7 @@ export class SessaoComponent implements OnInit {
           this.getEncomendas();
         } else {
           this.getEncomendasByCliente();
+          this.admin = false;
         }
         console.log(utilizadorResult);
       },
@@ -49,6 +50,7 @@ export class SessaoComponent implements OnInit {
     this.encomendaSrv.getEncomendasByUser()
       .subscribe(encomendasResult => {
         this.encomendas = encomendasResult;
+        this.encomendasFilter = encomendasResult;
         console.log(encomendasResult);
       },
         error => "Update Service Unavailable");

@@ -24,7 +24,8 @@
             </div>
             <div class="col-sm-4">
                 <div *ngIf="admin; else noAdmin">
-                    <input #toFilter (input)="filtrarEncomendas(toFilter.value)" placeholder="Procurar" style="width: 370px;">
+                    <input #toFilter (input)="filtrarEncomendas(toFilter.value)" placeholder="Procurar"
+                        style="width: 370px;">
                 </div>
                 <ng-template #noAdmin>
                     <button type="button" (click)="newEncomenda()" class="btn btn-info add-new">

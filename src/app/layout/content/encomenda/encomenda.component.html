@@ -60,9 +60,10 @@
                         <div class='col-sm-6'>
                             <div class="form-group">
                                 <input #data_entrega placeholder="Data de Entrega">
-                                <button style="float: right;" type="button"
-                                    (click)="newEncomenda(data_entrega.value)"
-                                    class="btn btn-info add-new"><i class="fa fa-plus"></i> Submeter</button>
+                                <button style="float: right;" type="button" (click)="newEncomenda(data_entrega.value)"
+                                    class="btn btn-info add-new">Submeter</button>
+                                <button style="float: right; margin-right: 30px;" type="button" (click)="back()"
+                                    class="btn btn-info add-new">Back</button>
                             </div>
                         </div>
                     </div>

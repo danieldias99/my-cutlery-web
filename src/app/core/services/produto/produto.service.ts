@@ -13,7 +13,7 @@ import { Produto } from '../../models/produto.model';
 export class ProdutoService {
 
   //private WebApiIt1url = 'http://localhost:5000/api/';
-  private WebApiIt1url = 'https://azure-mdp.azurewebsites.net/api/';
+  private WebApiIt1url = 'http://azure-mdp.azurewebsites.net/api/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

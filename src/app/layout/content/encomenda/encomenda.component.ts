@@ -5,6 +5,7 @@ import { Produto } from 'src/app/core/models/produto.model';
 import { EncomendaService } from 'src/app/core/services/encomenda/encomenda.service';
 import { ProdutoService } from 'src/app/core/services/produto/produto.service';
 import { ProdutoEncomenda } from 'src/app/core/models/produto-encomenda';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-encomenda',
@@ -23,6 +24,7 @@ export class EncomendaComponent implements OnInit {
 
   constructor(private encomendaSrv: EncomendaService,
     private produtoSrv: ProdutoService,
+    private location: Location,
     private router: Router) { }
 
   ngOnInit() {
@@ -70,6 +72,10 @@ export class EncomendaComponent implements OnInit {
       this.router.navigate(['/sessao']);
     });
 
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

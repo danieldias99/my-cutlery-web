@@ -1,17 +1,26 @@
-<div>
-    <form>
-        <button class="ui" (click)="criarLinha()">Criar Linha de Produção</button>
-        <button class="ai" (click)="criarMaquina()">Criar
-            Máquina</button>
-        <button class="ai" (click)="eliminarLinha()">Eliminar Linha Produção</button>
-        <button class="ai" (click)="apagarMaquina()">Eliminar
-            Máquina</button>
-        <button class="ai" (click)="luminosidade()">Luminosidade</button>
-    </form>
-</div>
-<div>
-    <div id='tooltip'>{{MENSSAGEM}}</div>
-</div>
-<canvas style="width: 1200px; height: 500px;" id="c">
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Visualização iterativa da Fábrica</h2>
+                <div>
+                    <form>
+                        <button class="ui" (click)="criarLinha()">Criar Linha de Produção</button>
+                        <button class="ai" (click)="criarMaquina()">Criar
+                            Máquina</button>
+                        <button class="ai" (click)="eliminarLinha()">Eliminar Linha Produção</button>
+                        <button class="ai" (click)="apagarMaquina()">Eliminar
+                            Máquina</button>
+                        <button class="ai" (click)="luminosidade()">Luminosidade</button>
+                    </form>
+                </div>
+                <div>
+                    <div id='tooltip'>{{MENSSAGEM}}</div>
+                </div>
+                <canvas style="width: 1600px; height: 800px;" id="c">
 
-</canvas>
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>

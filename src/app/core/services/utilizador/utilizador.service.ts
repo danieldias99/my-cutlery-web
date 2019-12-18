@@ -12,10 +12,13 @@ import { EncriptPackage } from '../../models/EncriptPackage';
 })
 export class UtilizadorService {
 
-  private WebApiIt1url = 'http://localhost:8000/api/';
+  private WebApiIt1url = 'http://localhost:5000/api/';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'x-access-token': localStorage.getItem('Token')
+    })
   };
 
   constructor(private httpClient: HttpClient,
@@ -33,21 +36,50 @@ export class UtilizadorService {
   }
 
   getAllUsers(): Observable<any> {
-    return this.httpClient.get(this.WebApiIt1url + 'cliente').pipe(map(this.extractData),
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token')
+    }
+    return this.httpClient.post(this.WebApiIt1url + 'cliente/getUsers', jsonBody).pipe(map(this.extractData),
       catchError(this.handleError<Cliente>(`getTiposMaquina`)));
   }
 
   /** GET LinhaProducao by n_idCivil. Will 404 if n_idCivil not found */
-  getUser(n_idCivil: number): Observable<any> {
-    return this.httpClient.get(this.WebApiIt1url + 'cliente/' + `${n_idCivil}`).
-      pipe(tap(_ => this.log(`get LinhaProducao n_idCivil=${n_idCivil}`)),
-        catchError(this.handleError<Utilizador>(`getLinhaProducao n_idCivil=${n_idCivil}`)));
+  getUser(): Observable<any> {
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token')
+    }
+    return this.httpClient.post(this.WebApiIt1url + `cliente/getUser`, jsonBody).
+      pipe(tap(_ => this.log(`get LinhaProducao n_idCivil=`)),
+        catchError(this.handleError<Utilizador>(`getLinhaProducao n_idCivil=`)));
   }
 
-  signIn(encript: EncriptPackage) {
-    return this.httpClient.post(this.WebApiIt1url + 'cliente/signIn', encript, this.httpOptions)
+  signIn(encript: EncriptPackage): any {
+    return this.httpClient.post(this.WebApiIt1url + 'cliente/signIn', encript)
       .pipe(tap(_ => this.log('signIn of user with email=' + `${encript.email}`)),
         catchError(this.handleError<Utilizador>('signIn of user with email=' + `${encript.email}`)));
+  }
+
+  update(nomeup: String, emailup: String, emailToSeach: String) {
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token'),
+      oldEmail: emailToSeach,
+      nomeNew: nomeup,
+      emailNew: emailup
+    }
+    return this.httpClient.patch(this.WebApiIt1url + 'cliente/updateCliente', jsonBody)
+      .pipe(tap(_ => this.log('update of user with email=' + `${emailup}`)),
+        catchError(this.handleError<Utilizador>('update of user with email=' + `${emailup}`)));
+  }
+
+  updateSelf(nomeup: String, emailup: String) {
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token'),
+      nomeNew: nomeup,
+      emailNew: emailup
+    }
+    return this.httpClient.patch(this.WebApiIt1url + 'cliente', jsonBody)
+      .pipe(tap(_ => this.log('update of user with email=' + `${emailup}`)),
+        catchError(this.handleError<Utilizador>('update of user with email=' + `${emailup}`)));
   }
 
   private extractData(res: Response) {

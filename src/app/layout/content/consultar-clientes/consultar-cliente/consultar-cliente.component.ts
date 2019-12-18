@@ -22,10 +22,19 @@ export class ConsultarClienteComponent implements OnInit {
   }
 
   fetchCliente() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.clienteSrv.getUser(id)
-      .subscribe(clienteResult => { this.cliente = clienteResult[0]; console.log(this.cliente); },
+    this.clienteSrv.getUser()
+      .subscribe(clienteResult => {
+        this.cliente = clienteResult;
+        console.log(this.cliente);
+      },
         error => "Update Service Unavailable");
+  }
+
+  save() {
+    this.clienteSrv.updateSelf(this.cliente.nome, this.cliente.email).subscribe(_ => {
+      this.goBack();
+    },
+      error => "Update Service Unavailable");
   }
 
   goBack(): void {

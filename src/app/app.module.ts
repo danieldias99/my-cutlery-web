@@ -24,6 +24,9 @@ import { ConsultarClientesComponent } from './layout/content/consultar-clientes/
 import { ConsultarClienteComponent } from './layout/content/consultar-clientes/consultar-cliente/consultar-cliente.component';
 import { SessaoComponent } from './layout/content/sessao/sessao.component';
 import { LoginComponent } from './layout/content/login/login.component';
+import { EncomendaComponent } from './layout/content/encomenda/encomenda.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EncomendaDetailComponent } from './layout/content/encomenda/encomenda-detail/encomenda-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +49,16 @@ import { LoginComponent } from './layout/content/login/login.component';
     ConsultarClientesComponent,
     ConsultarClienteComponent,
     SessaoComponent,
-    LoginComponent
+    LoginComponent,
+    EncomendaComponent,
+    EncomendaDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

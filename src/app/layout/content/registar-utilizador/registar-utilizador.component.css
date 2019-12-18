@@ -7,9 +7,16 @@ div.errorMsg{
     color: red;
 }
 
-body {
-    background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed;
-    background-size: cover;
+.termos {
+    text-align: center;
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.termos:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
 }
 
 .cod_postal{

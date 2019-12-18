@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cliente } from 'src/app/core/models/cliente';
 import { UtilizadorService } from 'src/app/core/services/utilizador/utilizador.service';
 
@@ -15,6 +15,10 @@ export class ConsultarClientesComponent implements OnInit {
 
   statusMessage: string;
 
+  @Input() cliente: Cliente = null;
+
+  newNomeEmptyFlag: boolean = false;
+
   constructor(private utilizadoSrv: UtilizadorService) { }
 
   ngOnInit() {
@@ -29,6 +33,32 @@ export class ConsultarClientesComponent implements OnInit {
   filter(seach) {
     this.allClientesFilter = this.allClientes;
     this.allClientesFilter = this.allClientes.filter(c => c.nome.toLowerCase().includes(seach));
-    console.log(this.allClientesFilter);
   }
+
+  validarNomeEmpty(newNome: String) {
+    if (newNome === '') {
+      this.newNomeEmptyFlag = true;
+      return
+    }
+    this.newNomeEmptyFlag = false;
+  }
+
+  edit(cliente: Cliente) {
+    this.cliente = cliente;
+  }
+
+  save(newNome: String, newEmail: String) {
+    if (newEmail === '' || newEmail === null) {
+      newEmail = this.cliente.email;
+    }
+
+    this.utilizadoSrv.update(newNome, newEmail, this.cliente.email)
+      .subscribe(_ => {
+        this.fetchClientes();
+        this.cliente === null;
+        alert("Cliente atualizado com sucesso!");
+      },
+        error => { this.statusMessage = 'Service Unavailable' });;
+  }
+
 }

@@ -6,6 +6,7 @@
     "start": "node server.js",
     "build": "ng build",
     "test": "cross-env TS_NODE_FILES=true mocha --exit --require ts-node/register --colors test/**/*.ts",
+    "coverage": "nyc npm run test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build --aot --prod"

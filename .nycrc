@@ -1,0 +1,41 @@
+{
+  "cache": false,
+  "check-coverage": false,
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "src/app/core/models/*.ts",
+    "src/app/core/models/*.model.ts"
+  ],
+  "exclude": [
+    "Analise/**",
+    "Diagramas/**",
+    "dist/**",
+    "e2e/**",
+    ".nyc_output/**",
+    "coverage/**",
+    "node_modules/**",
+    "**/*.d.ts",
+    "**/*.test.ts",
+    "**.js",
+    "**.ts",
+    "**.spec.json",
+    "**.app.json",
+    "**.json",
+    "README.md",
+    "**.yml",
+    ".gitignore",
+    ".editorconfig",
+    "browserlist",
+    "karma.conf.js"
+  ],
+  "sourceMap": true,
+  "reporter": [
+    "html",
+    "text",
+    "text-summary"
+  ],
+  "all": true,
+  "instrument": true
+}

@@ -78,11 +78,31 @@ export class ProdutoComponent implements OnInit {
       return;
     }
 
-    this.produtoSrv.addProduto(new Produto(IdProduto, nomeProduto, descricaoProduto, idPlanoFabrico, this.operacoesAssociadas))
+    var tempo_fabrico = this.setTempoFabrico();
+
+    this.produtoSrv.addProduto(new Produto(IdProduto, nomeProduto, descricaoProduto, idPlanoFabrico, this.operacoesAssociadas, tempo_fabrico))
       .subscribe(
         Produto => { this.allProdutos.push(Produto); },
         error => { this.statusMessage = "Error: Service Unavailable"; }
       );
+      
+  }
+
+  setTempoFabrico(): number {
+    var tempo = 0;
+    this.operacoesAssociadas.forEach(op_id => {
+      var operacao = this.allOperacoes.find(op => op.id === op_id);
+      tempo = tempo + this.toMinutos(operacao);
+    });
+    return tempo;
+  }
+
+  public toMinutos(operacao: Operacao): number {
+    var duracao = operacao.duracaoOperacao.split(':');
+    var horas = +duracao[0];
+    var min = +duracao[1];
+    var seg = +duracao[2];
+    return horas * 3600 + min * 60 + seg;
   }
 
   delete(produto: Produto): void {

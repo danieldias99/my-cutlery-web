@@ -8,10 +8,10 @@ export class Produto {
     descricaoProduto: string;
     planofabrico: PlanoFabrico;
 
-    constructor(id: string, nomeProduto: string, descricaoProduto: string, id_plano_fabrico: string, operacoes: string[]) {
+    constructor(id: string, nomeProduto: string, descricaoProduto: string, id_plano_fabrico: string, operacoes: string[], tempo_fabrico: number) {
         this.Id = id;
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
-        this.planofabrico = new PlanoFabrico(id_plano_fabrico, id, operacoes);
+        this.planofabrico = new PlanoFabrico(id_plano_fabrico, id, operacoes, tempo_fabrico);
     }
 }

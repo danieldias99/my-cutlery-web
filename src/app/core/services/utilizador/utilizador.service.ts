@@ -12,7 +12,8 @@ import { EncriptPackage } from '../../models/EncriptPackage';
 })
 export class UtilizadorService {
 
-  private WebApiIt1url = 'http://localhost:5000/api/';
+  //private WebApiIt1url = 'http://localhost:5000/api/';
+  private WebApiIt1url = 'https://whispering-bayou-26917.herokuapp.com/api/';
 
   httpOptions = {
     headers: new HttpHeaders({

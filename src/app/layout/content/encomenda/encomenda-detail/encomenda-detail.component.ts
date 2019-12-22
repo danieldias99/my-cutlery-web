@@ -36,7 +36,7 @@ export class EncomendaDetailComponent implements OnInit {
     this.getEncomenda();
     this.getProdutos();
     this.produtosEncomenda = new Array();
-    this.produtoSelecionado = new Produto('', '', '');
+    this.produtoSelecionado = new Produto('', '', '', '', []);
   }
 
   getEncomenda(): void {
@@ -84,7 +84,7 @@ export class EncomendaDetailComponent implements OnInit {
     }
     this.produtosEncomenda.push(new ProdutoEncomenda(this.produtoSelecionado.nomeProduto, quantidade));
     this.allProdutosFilter = this.allProdutosFilter.filter(h => h !== this.produtoSelecionado);
-    this.produtoSelecionado = new Produto('', '', '');
+    this.produtoSelecionado = new Produto('', '', '', '', []);
   }
 
   remProdutoAoCarrinho(nomeProduto: String) {

@@ -1,6 +1,5 @@
-<div *ngIf="produto" align= "center">
+<div *ngIf="produto" align="center">
     <h2>{{produto.nomeProduto | uppercase}} Detalhes</h2>
-    <div><span>id: </span>{{produto.id}}</div>
     <div>
         <label>Nome Produto:
             <input [(ngModel)]="produto.nomeProduto" placeholder="nomeProduto" />
@@ -8,6 +7,9 @@
         <br>
         <label>Descrição Produto:
             <input [(ngModel)]="produto.descricaoProduto" placeholder="descricaoProduto" />
+        </label>
+        <br>
+        <label>Plano Fabrico:
         </label>
     </div>
     <button (click)="goBack()">Back</button>

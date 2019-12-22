@@ -12,8 +12,33 @@
             <input #nome type="text" id="ex3"><br><br>
             Descrição da Produto:
             <input #descricao type="text" id="ex2"><br><br>
+            <h4>Plano Fabrico</h4>
+            ID Plano Fabrico:
+            <input #idPlanoFabrico type="text"><br><br>
+
+            <div class="ass-m-div">
+                <div class="planoFabrico">
+                    Operações Disponíveis:
+                    <li *ngFor="let op of allOperacoesToShow" value="{{op.id}}">
+                        <span class="Badge" (click)="assOperacaoPlanoFabrico(op.id)">{{op.descricaoOperacao}}</span>
+                    </li>
+                </div>
+            </div>
+
+            <div class="ass-m-div">
+                <div class="planoFabrico">
+                    Operações Associadas:
+                    <li *ngFor="let op of operacoesAssociadasToShow" value="{{op.id}}">
+                        <a>
+                            <span class="Badge" (click)=deleteAssOperacaoPlanoFabrico(op.id)>{{op.descricaoOperacao}}</span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+
+
             <button class="add-p-btn"
-                (click)="addProduto(idProduto.value, nome.value, descricao.value); idProduto.value=''; nome.value='';descricao.value=''">Submeter</button>
+                (click)="addProduto(idProduto.value, nome.value, descricao.value, idPlanoFabrico.value); idProduto.value=''; nome.value='';descricao.value='';idPlanoFabrico.value=''">Submeter</button>
             &nbsp;
             <button class="add-p-btn" (click)="goBack()">Back</button>
         </form>
@@ -25,7 +50,7 @@
             <a routerLink="/produto-detail/{{p.id}}">
                 <span class="Badge">{{p.nomeProduto}}</span>
             </a>
-            <button class="delete" title="delete Produto" (click)="delete(p)">x</button>
+            <!--<button class="delete" title="delete Produto" (click)="delete(p)">x</button>-->
         </li>
     </div>
 

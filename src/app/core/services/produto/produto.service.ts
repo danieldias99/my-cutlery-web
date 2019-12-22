@@ -12,8 +12,8 @@ import { Produto } from '../../models/produto.model';
 })
 export class ProdutoService {
 
-  //private WebApiIt1url = 'http://localhost:5000/api/';
-  private WebApiIt1url = 'http://azure-mdp.azurewebsites.net/api/';
+  private WebApiIt1url = 'http://localhost:5000/api/';
+  //private WebApiIt1url = 'http://azure-mdp.azurewebsites.net/api/';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -41,23 +41,23 @@ export class ProdutoService {
   }
 
   /*Post add a new Produto to the database*/
-  addProduto(Produto: Produto): any {
-    return this.httpClient.post(this.WebApiIt1url + 'Produto', Produto, this.httpOptions).pipe(
-      tap(_ => this.log(`get Produto id=${Produto.id}`)),
-      catchError(this.handleError<Produto>("addOpercao")));
+  addProduto(produto: Produto): any {
+    return this.httpClient.post(this.WebApiIt1url + 'Produto', produto, this.httpOptions).pipe(
+      tap(_ => this.log(`Post Produto`)),
+      catchError(this.handleError<Produto>("addProduto")));
   }
 
   /** PUT: update the Produto on the server */
   updateProduto(Produto: Produto): Observable<any> {
-    return this.httpClient.put(this.WebApiIt1url + 'Produto' , Produto, this.httpOptions).pipe(
-      tap(_ => this.log(`updated Produto id=${Produto.id}`)),
+    return this.httpClient.put(this.WebApiIt1url + 'Produto', Produto).pipe(
+      tap(_ => this.log(`Update Produto`)),
       catchError(this.handleError<Produto>('updateProduto'))
     );
   }
 
   /** DELETE: delete the Produto from the server */
   deleteProduto(id: string): Observable<any> {
-    return this.httpClient.delete(this.WebApiIt1url + 'Produto/' + `${id}`, this.httpOptions).pipe(
+    return this.httpClient.delete(this.WebApiIt1url + 'Produto/' + `${id}`).pipe(
       tap(_ => this.log(`deleted Produto id` + id)),
       catchError(this.handleError('deleteProduto'))
     );

@@ -30,7 +30,7 @@ export class EncomendaComponent implements OnInit {
   ngOnInit() {
     this.getProdutos();
     this.produtosEncomenda = new Array();
-    this.produtoSelecionado = new Produto('', '', '');
+    this.produtoSelecionado = new Produto('', '', '', '', []);
   }
 
   getProdutos() {
@@ -53,7 +53,7 @@ export class EncomendaComponent implements OnInit {
     }
     this.produtosEncomenda.push(new ProdutoEncomenda(this.produtoSelecionado.nomeProduto, quantidade));
     this.allProdutosFilter = this.allProdutosFilter.filter(h => h !== this.produtoSelecionado);
-    this.produtoSelecionado = new Produto('', '', '');
+    this.produtoSelecionado = new Produto('', '', '', '', []);
   }
 
   remProdutoAoCarrinho(nomeProduto: String) {

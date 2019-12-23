@@ -1,4 +1,4 @@
-import { Maquina } from '../src/app/core/models/maquina.model';
+import { Maquina } from '../../src/app/core/models/maquina.model';
 import { expect } from 'chai';
 
 // Maquina
@@ -13,7 +13,7 @@ let idTipoMaq: string = '2';
 let idLinhaProd: string = '3';
 let maquinaObj = new Maquina(idMaq, nomeMaquina, marcaMaquina, modeloMaquina, xMaquina, yMaquina, posicaoRelativa, idTipoMaq, idLinhaProd);
 
-it('maquinaTest', () => {
+it('Maquina Test', () => {
     expect(maquinaObj.id).to.eq(1);
     expect(maquinaObj.nomeMaquina).to.eq('maquinaTest');
     expect(maquinaObj.marcaMaquina).to.eq('marcaMaquina');

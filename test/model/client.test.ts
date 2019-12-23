@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Cliente } from '../src/app/core/models/cliente';
+import { Cliente } from '../../src/app/core/models/cliente';
 
 let nr_idCivil: String = '123456789';
 let nome: String = 'goncalo';
@@ -11,7 +11,7 @@ let modo_entrega: String = 'correios';
 let morada: String = 'matosas';
 let cod_postal: String = '4450';
 
-it('clientTest', () => {
+it('Cliente Test', () => {
         let clientObj = new Cliente(nr_idCivil, nome, email, password, nr_telemovel, metodo_pagamento, modo_entrega, morada, cod_postal);
         expect(clientObj.nr_idCivil).to.eq('123456789');
         expect(clientObj.nome).to.eq('goncalo');

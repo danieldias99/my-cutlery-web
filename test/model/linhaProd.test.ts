@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { LinhaProducao } from '../src/app/core/models/linha-producao';
+import { LinhaProducao } from '../../src/app/core/models/linha-producao';
 
 // Linha de producao
 let id: string = '123';
@@ -12,7 +12,7 @@ let largura: string = 'largura';
 let linhaProdObj = new LinhaProducao(id, descricao, posicao_x, posicao_y, orientacao, comprimento, largura);
 
 
-it('linhaProdTest', () => {
+it('Linha de Produção Test', () => {
     expect(linhaProdObj.id).to.eq('123');
     expect(linhaProdObj.descricao).to.eq('descricao');
     expect(linhaProdObj.posicao_x).to.eq('123');

@@ -9,8 +9,15 @@
             <input [(ngModel)]="produto.descricaoProduto" placeholder="descricaoProduto" />
         </label>
         <br>
-        <label>Plano Fabrico:
-        </label>
+        <label>Plano Fabrico:</label>
+        <div class="ass-m-div">
+            <div class="planoFabrico">
+                Operações Associadas:
+                <li *ngFor="let op of operacoesAssociadasToShow" value="{{op.id}}"> 
+                    <span class="Badge">{{op.descricaoOperacao}}</span>
+                </li>
+            </div>
+        </div>
     </div>
     <button (click)="goBack()">Back</button>
     &nbsp;

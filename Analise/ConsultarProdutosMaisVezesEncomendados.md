@@ -7,3 +7,8 @@
 - É solicitado a consulta dos produtos mais vezes encomendados.
 - É gerado a contabilização das encomendas para cada produto.
 - No final, é enviado a lista de todos os produtos e quantas vezes eles aparecem em encomendas, por ordem decrescente.
+
+
+## Design
+
+![consultar-produtos-mais-vezes-encomendados.png](ConsultarProdutosMaisVezesEncomendados.png)

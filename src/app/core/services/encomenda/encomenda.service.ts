@@ -46,6 +46,15 @@ export class EncomendaService {
         catchError(this.handleError<Encomenda>(`get Produtos Mais Encomendados`)));
   }
 
+  maisVezesEncomendado(): Observable<any> {
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token')
+    }
+    return this.httpClient.post(this.WebApiIt1url + 'encomenda/produtosMaisVezesEncomendados', jsonBody).
+      pipe(tap(_ => this.log(`get Produtos Mais Encomendados`)),
+        catchError(this.handleError<Encomenda>(`get Produtos Mais Encomendados`)));
+  }
+
   /** GET Encomendas by User. Will 404 if User not found */
   getEncomendasByUser(): Observable<any> {
     var jsonBody: {} = {

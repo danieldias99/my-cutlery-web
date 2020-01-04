@@ -26,4 +26,13 @@ export class CatalogoComponent implements OnInit {
       });
   }
 
+  maisVezesEncomendados() {
+    this.encomendaSrv.maisVezesEncomendado().subscribe(statisticsResult => {
+      this.stats = statisticsResult;
+    },
+      error => {
+        alert("Service Unavaiable");
+      });
+  }
+
 }

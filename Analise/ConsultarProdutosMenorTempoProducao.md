@@ -8,3 +8,5 @@
 - É gerado a contabilização dos tempos de produção para cada produto.
 - No final, é enviado a lista de todos os produtos e os tempos de produção, por ordem crescente.
 
+# Design
+![consultar-produtos-com-menor-tempo-fabrico.png](ConsultarProdutosComMenorTempoFabrico.png)

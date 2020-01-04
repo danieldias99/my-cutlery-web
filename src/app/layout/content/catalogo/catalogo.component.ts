@@ -35,4 +35,13 @@ export class CatalogoComponent implements OnInit {
       });
   }
 
+  menorTempoProducao() {
+    this.encomendaSrv.menorTempoProducao().subscribe(statisticsResult => {
+      this.stats = statisticsResult;
+    },
+      error => {
+        alert("Service Unavaiable");
+      });
+  }
+
 }

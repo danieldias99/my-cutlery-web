@@ -15,10 +15,10 @@
                 data-toggle="tab" href="#nav-mais-encomendados" role="tab" aria-controls="nav-mais-encomendados"
                 aria-selected="true">Mais
                 Encomendados</a>
-            <a (click)="maisVezesEncomendados()" class="nav-item nav-link" id="nav-mais-vezes-encomendados-tab" data-toggle="tab"
-                href="#nav-mais-vezes-encomendados" role="tab" aria-controls="nav-mais-vezes-encomendados"
-                aria-selected="false">Mais Vezes Encomendados</a>
-            <a class="nav-item nav-link" id="nav-menor-tempo-producao-tab" data-toggle="tab"
+            <a (click)="maisVezesEncomendados()" class="nav-item nav-link" id="nav-mais-vezes-encomendados-tab"
+                data-toggle="tab" href="#nav-mais-vezes-encomendados" role="tab"
+                aria-controls="nav-mais-vezes-encomendados" aria-selected="false">Mais Vezes Encomendados</a>
+            <a (click)="menorTempoProducao()" class="nav-item nav-link" id="nav-menor-tempo-producao-tab" data-toggle="tab"
                 href="#nav-menor-tempo-producao" role="tab" aria-controls="nav-menor-tempo-producao"
                 aria-selected="false">Com Menor Tempo de Produção</a>
         </div>
@@ -63,5 +63,22 @@
             </div>
         </div>
         <div class="tab-pane fade" id="nav-menor-tempo-producao" role="tabpanel"
-            aria-labelledby="nav-menor-tempo-producao-tab">...</div>
+            aria-labelledby="nav-menor-tempo-producao-tab">
+            <div class='table-wrapper'>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Produtos</th>
+                            <th>Stats</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stat of stats">
+                            <td>{{stat.nomeProduto}}</td>
+                            <td>{{stat.stati}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>

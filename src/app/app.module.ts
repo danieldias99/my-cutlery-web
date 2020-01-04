@@ -27,6 +27,7 @@ import { LoginComponent } from './layout/content/login/login.component';
 import { EncomendaComponent } from './layout/content/encomenda/encomenda.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EncomendaDetailComponent } from './layout/content/encomenda/encomenda-detail/encomenda-detail.component';
+import { CatalogoComponent } from './layout/content/catalogo/catalogo.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { EncomendaDetailComponent } from './layout/content/encomenda/encomenda-d
     SessaoComponent,
     LoginComponent,
     EncomendaComponent,
-    EncomendaDetailComponent
+    EncomendaDetailComponent,
+    CatalogoComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private clienteSrv: UtilizadorService) { }
 
   ngOnInit() {
-    this.fetchCurrentUser();
+    //this.fetchCurrentUser();
   }
 
   fetchCurrentUser() {

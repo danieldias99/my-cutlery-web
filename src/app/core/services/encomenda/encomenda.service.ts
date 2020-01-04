@@ -37,6 +37,15 @@ export class EncomendaService {
         catchError(this.handleError<Encomenda>(`getEncomendas`)));
   }
 
+  maisEncomendado(): Observable<any> {
+    var jsonBody: {} = {
+      token: localStorage.getItem('Token')
+    }
+    return this.httpClient.post(this.WebApiIt1url + 'encomenda/produtosMaisEncomendados', jsonBody).
+      pipe(tap(_ => this.log(`get Produtos Mais Encomendados`)),
+        catchError(this.handleError<Encomenda>(`get Produtos Mais Encomendados`)));
+  }
+
   /** GET Encomendas by User. Will 404 if User not found */
   getEncomendasByUser(): Observable<any> {
     var jsonBody: {} = {
@@ -50,12 +59,12 @@ export class EncomendaService {
   getEncomenda(id: String): Observable<any> {
     var jsonBody: {} = {
       token: localStorage.getItem('Token'),
-      _id : id
+      _id: id
     }
     console.log(jsonBody);
     return this.httpClient.post(this.WebApiIt1url + 'encomenda/getEncomenda', jsonBody).
-    pipe(tap(_ => this.log(`get Encomendas By User`)),
-      catchError(this.handleError<Encomenda>(`get Encomendas By User`)));
+      pipe(tap(_ => this.log(`get Encomendas By User`)),
+        catchError(this.handleError<Encomenda>(`get Encomendas By User`)));
   }
 
   addEncomenda(produtosEncomenda: ProdutoEncomenda[], data_entrega: String) {

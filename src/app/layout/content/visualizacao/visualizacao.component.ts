@@ -4,6 +4,7 @@ import '../../../../assets/ve/threeBaseComponents/GLTFLoader';
 import '../../../../assets/ve/threeBaseComponents/OrbitControls';
 
 import * as THREE from '../../../../assets/ve/threeBaseComponents/three.js';
+import Clock from '../../../../assets/ve/threeBaseComponents/Clock.js';
 import { LinhaProducaoService } from 'src/app/core/services/linha-producao/linha-producao.service';
 import { LinhaProducao } from 'src/app/core/models/linha-producao';
 import { Router } from '@angular/router';
@@ -23,7 +24,7 @@ export class VisualizacaoComponent implements OnInit {
 
   @Input() MENSSAGEM;
 
-  private scene: THREE.Scene;
+  public scene: THREE.Scene;
   private camera: THREE.PerspectiveCamera;
   private renderer: THREE.WebGLRenderer;
   private controls: THREE.OrbitControls;
@@ -42,6 +43,7 @@ export class VisualizacaoComponent implements OnInit {
   private statusMessage: string;
   private allMaquinas: Maquina[];
   private maquinasDESENHO: any[];
+  public produtosDESENHO: any[];
   private contMaquinasTotal = 0;
   private TAMANHO_MAQUINA = 4.5;
   private MACHINE_SPACE = 8;
@@ -50,6 +52,7 @@ export class VisualizacaoComponent implements OnInit {
   private canvas: any;
   private pickPosition;
   private pickHelper;
+  private timer: any;
 
   //private : THREE.Mesh;
   constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService,
@@ -57,6 +60,8 @@ export class VisualizacaoComponent implements OnInit {
     private planeamentoProducaoSrv: PlaneamentoProdutoService) {
     this.allLinhasProducaoDESENHO = new Array();
     this.maquinasDESENHO = new Array();
+    this.produtosDESENHO = new Array();
+    this.timer = new THREE.Clock();
   }
 
   ngOnInit() {
@@ -204,7 +209,7 @@ export class VisualizacaoComponent implements OnInit {
 
       self.renderer.render(self.scene, self.camera);
 
-      if (objectPicked !== undefined && objectPicked.type === 'Mesh') {
+      if (objectPicked !== undefined && objectPicked.type === 'Mesh' || objectPicked !== undefined && objectPicked.name === 'Scene') {
 
         var index = self.allLinhasProducaoDESENHO.findIndex(i => i === objectPicked);
 
@@ -218,7 +223,7 @@ export class VisualizacaoComponent implements OnInit {
         } else {
           index = self.maquinasDESENHO.findIndex(i => i === objectPicked);
 
-          const objectBD = self.allMaquinas[Math.floor(index / 4)];
+          const objectBD = self.allMaquinas[index];
 
           console.log(objectBD);
 
@@ -486,5 +491,76 @@ export class VisualizacaoComponent implements OnInit {
     });
   }
 
+  planeamentoProducao() {
+    var planeamento_producao = new PlaneamentoProducaoMock();
+
+    var time_to_go = 0;
+    planeamento_producao.tarefas.forEach(tarefa => {
+      console.log(this.timer.getDelta());
+      while (this.timer.oldTime < time_to_go) {
+        //loop infinito
+        this.timer.getDelta();
+      }
+
+      time_to_go = time_to_go + 3000;
+
+      var linha = this.allLinhasProducao.find(l => l.id == tarefa.linha);
+      var linhaIndex = this.allLinhasProducao.findIndex(l => l.id == tarefa.linha);
+      var maquina = linha.maquinas.find(m => m.id_tipoMaquina == tarefa.maquina);
+      var indexMaquina = 3 * (parseInt(maquina.posicaoRelativa) - 1) + linhaIndex;
+      var maquinaMesh = this.getMeshByIndex(indexMaquina);
+
+      if (tarefa.ferramenta == 'Furadora Mecanica') {
+        this.desenhaMaquina1('FuradoraMecanica1/FuradoraMecanica1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
+      } else if (tarefa.ferramenta == 'Furadora Laiser') {
+        this.desenhaMaquina1('FuradoraLaser1/FuradoraLaser1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
+      } else if (tarefa.ferramenta == 'Prensa Quadrada') {
+        this.desenhaMaquina1('EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
+      } else if (tarefa.ferramenta == 'Prensa Redonda') {
+        this.desenhaMaquina1('EsmagadoraRedonda1/EsmagadoraRedonda1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
+      } else if (tarefa.ferramenta == 'Aquecedor') {
+        this.desenhaMaquina1('Forno/Forno.gltf', maquinaMesh.position.x, maquinaMesh.position.y + 5, maquinaMesh.position.z, indexMaquina);
+      }
+
+      this.drawProduto(maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z);
+
+      this.scene.remove(maquinaMesh);
+
+    });
+  }
+
+  drawProduto(x, y, z) {
+    var geometry = new THREE.BoxGeometry(1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var cube = new THREE.Mesh(geometry, material);
+    cube.position.set(x, y + 4, z + 1);
+    this.scene.add(cube);
+    this.produtosDESENHO.push(cube);
+  }
+
+  getMeshByIndex(indexMaquina: number) {
+    return this.maquinasDESENHO[indexMaquina];
+  }
+
+  private desenhaMaquina1(path, x, y, z, index) {
+    let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
+    let source = '../../../../assets/ve/importedModels/Maquinas/' + path; // resource url
+    let onLoad = (gltf, position) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z - 1);
+      model.rotation.set(0, -20.40, 0);
+      console.log(model);
+      this.scene.add(model);
+      this.maquinasDESENHO[index] = model;
+    }; // called to load resource
+    let loadingBuffer = (timer) => {
+      console.log((timer.loaded / timer.total * 100) + '% loaded');
+    } // called while loading
+    let loaderError = (error) => {
+      console.log('Error happened: ' + error);
+    } // When error is found
+    let warehousePosition = new THREE.Vector3(0, 0, 0);
+    gltfLoader.load(source, gltf => onLoad(gltf, warehousePosition), loadingBuffer, loaderError);
+  }
 
 }

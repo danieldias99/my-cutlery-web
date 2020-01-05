@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 import { Maquina } from 'src/app/core/models/maquina.model';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper';
-import DragControls from 'three-dragcontrols/lib';
 
 
 @Component({

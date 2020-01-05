@@ -51,7 +51,12 @@
         <label>Tipo Máquina Associada:
             <input readonly="readonly" [(ngModel)]="maquina.id_tipoMaquina" name="something">
         </label><br><br>
+        <label>Estado:
+            <label><input readonly="readonly" type="text" value="{{estado}}" /></label>
+        </label>
     </div>
+    <button (click)="ativarDesativar(maquina.estado)">Ativar/Desativar</button>
+    <br>
     <button (click)="goBack()">Back</button>
     &nbsp;
     <button (click)="save()">Save</button>

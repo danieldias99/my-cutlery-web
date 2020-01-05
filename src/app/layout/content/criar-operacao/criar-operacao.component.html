@@ -12,8 +12,12 @@
             <input #descricao type="text" id="ex2"><br><br>
             Duração da Operação:
             <input #duracao type="text" id="ex3"><br><br>
+            Descrição da Ferramenta:
+            <input #idFerramenta type="text" id="ex4"><br><br>
+            Tempo SetUp da Ferramenta:
+            <input #duracaoFerramenta type="text" id="ex5"><br><br>
             <button class="add-opp-btn"
-                (click)="addOperacao(idOperacao.value, descricao.value, duracao.value); idOperacao.value=''; descricao.value='';duracao.value=''">Submeter</button>
+                (click)="addOperacao(idOperacao.value, descricao.value, duracao.value, idFerramenta.value, duracaoFerramenta.value); idOperacao.value=''; descricao.value='';duracao.value=''; idFerramenta.value=''; duracaoFerramenta.value=''">Submeter</button>
             &nbsp;
             <button class="add-opp-btn" (click)="goBack()">Back</button>
         </form>

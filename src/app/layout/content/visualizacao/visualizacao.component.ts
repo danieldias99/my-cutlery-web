@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { Maquina } from 'src/app/core/models/maquina.model';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper';
+import { PlaneamentoProdutoService } from 'src/app/core/services/planeamento-produto/planeamento-produto.service';
+import { PlaneamentoProducaoMock } from 'src/app/core/moks/PlaneamentoProducaoMock';
 
 
 @Component({
@@ -51,7 +53,8 @@ export class VisualizacaoComponent implements OnInit {
 
   //private : THREE.Mesh;
   constructor(private router: Router, private linhaProducaoSrv: LinhaProducaoService,
-    private maquinaSrv: MaquinaService) {
+    private maquinaSrv: MaquinaService,
+    private planeamentoProducaoSrv: PlaneamentoProdutoService) {
     this.allLinhasProducaoDESENHO = new Array();
     this.maquinasDESENHO = new Array();
   }
@@ -363,7 +366,7 @@ export class VisualizacaoComponent implements OnInit {
               console.log(dat);
               this.allMaquinas = dat;
               this.allMaquinas.forEach(element => {
-                this.desenhaMaquinas(element.posicaoRelativa, element.id_linhaProducao);
+                this.desenhaMaquinas(element, element.posicaoRelativa, element.id_linhaProducao);
               });
             },
             error => { this.statusMessage = "Error: Service Unavailable" });
@@ -427,51 +430,50 @@ export class VisualizacaoComponent implements OnInit {
     }
   }
 
-  private desenhaMaquina(size_m, x, y, z) {
-    var geometry_balcao = new THREE.BoxGeometry(size_m, size_m, size_m);
-    var material = new THREE.MeshLambertMaterial({ color: '#e70861' });
-    geometry_balcao.translate(x, y, z);
-    var maquina = new THREE.Mesh(geometry_balcao, material);
-    var geometry_retangulo = new THREE.BoxGeometry(1, 12, 1);
-    geometry_retangulo.translate(x, y + 4, z - 2);
-    var retangulo = new THREE.Mesh(geometry_retangulo, material);
-    this.scene.add(retangulo);
-    var geometry_retangulo1 = new THREE.BoxGeometry(1, 1, 3);
-    geometry_retangulo1.translate(x, y + 10, z - 1);
-    var retangulo1 = new THREE.Mesh(geometry_retangulo1, material);
-    this.scene.add(retangulo1);
-    var geometry_cone = new THREE.ConeBufferGeometry(2, 4, 6);
-    geometry_cone.rotateZ((Math.PI / 2) - 5);
-    geometry_cone.rotateY(Math.PI / 2);
-    geometry_cone.translate(x, y + 8, z + 0.5);
-    var cone = new THREE.Mesh(geometry_cone, material);
-    this.scene.add(cone);
-    this.scene.add(maquina);
-    this.maquinasDESENHO.push(maquina);
-    this.maquinasDESENHO.push(retangulo);
-    this.maquinasDESENHO.push(retangulo1);
-    this.maquinasDESENHO.push(cone);
+  private desenhaMaquina(path, x, y, z) {
+    let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
+    let source = '../../../../assets/ve/importedModels/Maquinas/' + path; // resource url
+    let onLoad = (gltf, position) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z - 1);
+      model.rotation.set(0, -20.40, 0);
+      console.log(model);
+      this.scene.add(model);
+      this.maquinasDESENHO.push(model);
+    }; // called to load resource
+    let loadingBuffer = (timer) => {
+      console.log((timer.loaded / timer.total * 100) + '% loaded');
+    } // called while loading
+    let loaderError = (error) => {
+      console.log('Error happened: ' + error);
+    } // When error is found
+    let warehousePosition = new THREE.Vector3(0, 0, 0);
+    gltfLoader.load(source, gltf => onLoad(gltf, warehousePosition), loadingBuffer, loaderError);
   }
 
-  private desenhaMaquinas(posicao, linhaProducao) {
+  private desenhaMaquinas(maquina: Maquina, posicao, linhaProducao) {
     var linha = this.allLinhasProducao.find(i => i.id === linhaProducao);
     var descZ = -60 + (8 + (parseInt(linha.posicao_y) * parseInt(linha.largura)) + parseInt(linha.largura) / 2);
-    this.desenhaMaquina(this.TAMANHO_MAQUINA, (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 1, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
-    this.contMaquinasTotal++;
+    if (maquina.id_tipoMaquina == "1") {
+      this.desenhaMaquina('FuradoraMecanica1/FuradoraMecanica1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+    } else if (maquina.id_tipoMaquina == "2") {
+      this.desenhaMaquina('EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+    } else if (maquina.id_tipoMaquina == "3") {
+      this.desenhaMaquina('Forno/Forno.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 6, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+    } else {
+      //Quadrado
+      alert('Sem modelo correspondente!');
     }
+
+    this.contMaquinasTotal++;
+  }
 
   //Apagar uma maquina - widget
   private apagarMqn() {
     var maquina = this.maquinasDESENHO.pop();
     var mqn = this.allMaquinas.pop();
-    var r = this.maquinasDESENHO.pop();
-    var re = this.maquinasDESENHO.pop();
-    var ret = this.maquinasDESENHO.pop();
     this.deleteMqn(mqn);
     this.scene.remove(maquina);
-    this.scene.remove(r);
-    this.scene.remove(re);
-    this.scene.remove(ret);
     this.contMaquinasTotal--;
   }
 
@@ -483,5 +485,6 @@ export class VisualizacaoComponent implements OnInit {
       console.log(error);
     });
   }
+
 
 }

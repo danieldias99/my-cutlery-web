@@ -364,7 +364,7 @@ export class VisualizacaoComponent implements OnInit {
               console.log(dat);
               this.allMaquinas = dat;
               this.allMaquinas.forEach(element => {
-                //this.desenhaMaquinas(element.posicaoRelativa, element.id_linhaProducao);
+                this.desenhaMaquinas(element.posicaoRelativa, element.id_linhaProducao);
               });
             },
             error => { this.statusMessage = "Error: Service Unavailable" });
@@ -454,24 +454,11 @@ export class VisualizacaoComponent implements OnInit {
     this.maquinasDESENHO.push(cone);
   }
 
-  private desenhaMaquinas() {
-    /*switch (this.contMaquinas) {
-      case 0:
-        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //primeiras maquinas
-        this.contMaquinas++;
-        this.contMaquinasTotal++;
-        break;
-      case 1:
-        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //segundas maquinas
-        //this.contMaquinas++;
-        this.contMaquinasTotal++;
-        break;
-      default:
-        this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2));// terceiras maquinas
-        this.contTapetesPreenchidos++;
-        this.contMaquinas = 0;
-        this.contMaquinasTotal++;
-    }*/
+  private desenhaMaquinas(posicao, linhaProducao) {
+    var linha = this.allLinhasProducao.find(i => i.id === linhaProducao);
+    var descZ = -60 + (8 + (parseInt(linha.posicao_y) * parseInt(linha.largura)) + parseInt(linha.largura) / 2);
+    this.desenhaMaquina(this.TAMANHO_MAQUINA, (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 1, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+    this.contMaquinasTotal++;
     }
 
   //Apagar uma maquina - widget

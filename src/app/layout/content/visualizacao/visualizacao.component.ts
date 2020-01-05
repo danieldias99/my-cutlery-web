@@ -9,7 +9,8 @@ import { LinhaProducao } from 'src/app/core/models/linha-producao';
 import { Router } from '@angular/router';
 import { Maquina } from 'src/app/core/models/maquina.model';
 import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
-import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper'
+import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper';
+import DragControls from 'three-dragcontrols/lib';
 
 
 @Component({
@@ -40,8 +41,6 @@ export class VisualizacaoComponent implements OnInit {
   private statusMessage: string;
   private allMaquinas: Maquina[];
   private maquinasDESENHO: any[];
-  private contTapetesPreenchidos = 0;
-  private contMaquinas = 0;
   private contMaquinasTotal = 0;
   private TAMANHO_MAQUINA = 4.5;
   private MACHINE_SPACE = 8;
@@ -77,6 +76,7 @@ export class VisualizacaoComponent implements OnInit {
     camera.position.y = 20;
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
+
     const scene = new THREE.Scene();
     scene.add(camera);
 
@@ -101,8 +101,7 @@ export class VisualizacaoComponent implements OnInit {
     let warehousePosition = new THREE.Vector3(0, 0, 0);
     gltfLoader.load(source, gltf => onLoad(gltf, warehousePosition), loadingBuffer, loaderError);
 
-    this.getLinhasProducao();
-    this.getMaquinas();
+    this.getLinhasMaquinas();
 
     function resizeRendererToDisplaySize(renderer) {
       const canvas = renderer.domElement;
@@ -161,9 +160,12 @@ export class VisualizacaoComponent implements OnInit {
       pickPosition.x = -100000;
       pickPosition.y = -100000;
     }
+
+
     window.addEventListener('mousemove', setPickPosition);
     window.addEventListener('mouseout', clearPickPosition);
     window.addEventListener('mouseleave', clearPickPosition);
+
 
     window.addEventListener('touchstart', (event) => {
       // prevent the window from scrolling
@@ -184,6 +186,7 @@ export class VisualizacaoComponent implements OnInit {
     this.pickPosition = pickPosition;
 
     this.render();
+
   }
 
   render() {
@@ -266,8 +269,6 @@ export class VisualizacaoComponent implements OnInit {
     return "Nome: " + objectBD.nomeMaquina + "; "
       + "Marca: " + objectBD.marcaMaquina + "; "
       + "Modelo: " + objectBD.modeloMaquina + "; "
-      + "Coordenada x: " + objectBD.x + "; "
-      + "Coordenada y: " + objectBD.y + "; "
       + "Posição Relativa: " + objectBD.posicaoRelativa + "; "
       + "Tipo de Máquina: " + this.setTipoMaquina(objectBD.id_tipoMaquina) + "; "
       + "Linha de Produção: " + objectBD.id_linhaProducao;
@@ -332,11 +333,10 @@ export class VisualizacaoComponent implements OnInit {
 
   //botao criar linha producao
   criarLinha() {
-    var c = document.getElementsByTagName("canvas");
-    c[0].parentNode.removeChild(c[0]);
-    this.router.navigate(['/linhas-producao']);
     if (this.contTapetes <= this.contTapetesTotal) {
-      this.desenhaLinha();
+      var c = document.getElementsByTagName("canvas");
+      c[0].parentNode.removeChild(c[0]);
+      this.router.navigate(['/linhas-producao']);
     } else {
       alert("Não é possivel criar mais linhas de produção!");
     }
@@ -351,21 +351,25 @@ export class VisualizacaoComponent implements OnInit {
     }
   }
 
-  private getLinhasProducao(): void {
+  private getLinhasMaquinas(): void {
     this.linhaProducaoSrv.getLinhasProducao().subscribe(
       data => {
         console.log(data);
         this.allLinhasProducao = data;
         this.allLinhasProducao.forEach(element => {
-          this.desenhaLinha();
-        });
+          this.desenhaLinhaF(element.comprimento, element.largura, 1, element.posicao_y, element.posicao_x);
+        }),
+          this.maquinaSrv.getMaquinas().subscribe(
+            dat => {
+              console.log(dat);
+              this.allMaquinas = dat;
+              this.allMaquinas.forEach(element => {
+                //this.desenhaMaquinas(element.posicaoRelativa, element.id_linhaProducao);
+              });
+            },
+            error => { this.statusMessage = "Error: Service Unavailable" });
       },
       error => { this.statusMessage = "Error: Service Unavailable" });
-  }
-
-  private desenhaLinha() {
-    this.desenhaLinhaF(this.COMPRIMENTO_TAPETE, this.LARGURA_TAPETE, 1, 2 * this.contTapetes, 0);
-    this.contTapetes++;
   }
 
   private desenhaLinhaF(comprimento, largura, altura, posicaoLinhaZ, posicaoLinhaX) {
@@ -380,6 +384,7 @@ export class VisualizacaoComponent implements OnInit {
     var linha = new THREE.Mesh(geometry_linha, material);
     this.scene.add(linha);
     this.allLinhasProducaoDESENHO.push(linha);
+    this.contTapetes++;
   }
 
   //Apagar um tapete/linha - widget
@@ -403,11 +408,10 @@ export class VisualizacaoComponent implements OnInit {
   //------------------------------------------Maquina--------------------------------------------------
   //botao criar maquina
   criarMaquina(): void {
-    var c = document.getElementsByTagName("canvas");
-    c[0].parentNode.removeChild(c[0]);
-    this.router.navigate(['/maquinas']);
-    if (this.contTapetesPreenchidos <= this.contTapetesTotal && this.contTapetesPreenchidos < this.contTapetes && this.contTapetes != 0) {
-      this.desenhaMaquinas();
+    if (this.contTapetes != 0) {
+      var c = document.getElementsByTagName("canvas");
+      c[0].parentNode.removeChild(c[0]);
+      this.router.navigate(['/maquinas']);
     } else if (this.contTapetes == 0) {
       alert("Não existem linhas de produção criadas, logo não é possível acrescentar máquinas. Crie uma linha de produção primeiro!");
     } else {
@@ -422,18 +426,6 @@ export class VisualizacaoComponent implements OnInit {
     } else {
       alert("Não existe nenhuma máquina!");
     }
-  }
-
-  private getMaquinas(): void {
-    this.maquinaSrv.getMaquinas().subscribe(
-      data => {
-        console.log(data);
-        this.allMaquinas = data;
-        this.allMaquinas.forEach(element => {
-          this.desenhaMaquinas();
-        })
-      },
-      error => { this.statusMessage = "Error: Service Unavailable" });
   }
 
   private desenhaMaquina(size_m, x, y, z) {
@@ -463,7 +455,7 @@ export class VisualizacaoComponent implements OnInit {
   }
 
   private desenhaMaquinas() {
-    switch (this.contMaquinas) {
+    /*switch (this.contMaquinas) {
       case 0:
         this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //primeiras maquinas
         this.contMaquinas++;
@@ -471,7 +463,7 @@ export class VisualizacaoComponent implements OnInit {
         break;
       case 1:
         this.desenhaMaquina(this.TAMANHO_MAQUINA, - this.LARGURA_FABRICA / 2 + (this.MACHINE_SPACE + (this.contMaquinas * (this.TAMANHO_MAQUINA + this.MACHINE_SPACE))), 1, - 80 + this.LARGURA_FABRICA / 2 + (8 + (2 * this.contTapetesPreenchidos * this.LARGURA_TAPETE) - this.TAMANHO_MAQUINA / 2)); //segundas maquinas
-        this.contMaquinas++;
+        //this.contMaquinas++;
         this.contMaquinasTotal++;
         break;
       default:
@@ -479,8 +471,8 @@ export class VisualizacaoComponent implements OnInit {
         this.contTapetesPreenchidos++;
         this.contMaquinas = 0;
         this.contMaquinasTotal++;
+    }*/
     }
-  }
 
   //Apagar uma maquina - widget
   private apagarMqn() {
@@ -495,12 +487,6 @@ export class VisualizacaoComponent implements OnInit {
     this.scene.remove(re);
     this.scene.remove(ret);
     this.contMaquinasTotal--;
-    if (this.contMaquinas == 0) {
-      this.contMaquinas = 2;
-      this.contTapetesPreenchidos--;
-    } else {
-      this.contMaquinas--;
-    }
   }
 
   private deleteMqn(maquina: Maquina): void {
@@ -511,4 +497,5 @@ export class VisualizacaoComponent implements OnInit {
       console.log(error);
     });
   }
+
 }

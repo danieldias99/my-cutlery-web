@@ -1,0 +1,16 @@
+<div id="wrapper">
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Centro de Configuração de Autorizações</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <textarea>{{config}}</textarea>
+    <form>
+        <input #comando (keyup.enter)="actionAuth(comando.value); comando.value=''">
+    </form>
+</div>

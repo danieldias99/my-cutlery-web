@@ -22,6 +22,7 @@ import { SessaoComponent } from './layout/content/sessao/sessao.component';
 import { EncomendaComponent } from './layout/content/encomenda/encomenda.component';
 import { EncomendaDetailComponent } from './layout/content/encomenda/encomenda-detail/encomenda-detail.component';
 import { CatalogoComponent } from './layout/content/catalogo/catalogo.component';
+import { ConfiguracaoComponent } from './layout/content/configuracao/configuracao.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main-content', pathMatch: 'full' },
@@ -44,7 +45,8 @@ const routes: Routes = [
   { path: 'sessao', component: SessaoComponent },
   { path: 'encomenda', component: EncomendaComponent },
   { path: 'encomenda-detail/:id', component: EncomendaDetailComponent },
-  { path: 'catalogo', component: CatalogoComponent }
+  { path: 'catalogo', component: CatalogoComponent },
+  { path: 'configuracao', component: ConfiguracaoComponent }
 ];
 
 @NgModule({

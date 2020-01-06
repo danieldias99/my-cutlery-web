@@ -8,8 +8,9 @@ export class Maquina {
     posicaoRelativa: string;
     id_tipoMaquina: string;
     id_linhaProducao: string;
+    estado : boolean;
 
-    constructor(id: number, nomeMaquina: string, marcaMaquina: string, modeloMaquina: string, x: string, y: string, posicaoRelativa: string, id_tipoMaquina: string, id_linhaProducao: string) {
+    constructor(id: number, nomeMaquina: string, marcaMaquina: string, modeloMaquina: string, x: string, y: string, posicaoRelativa: string, id_tipoMaquina: string, id_linhaProducao: string, estado : boolean) {
         this.id = id;
         this.nomeMaquina = nomeMaquina;
         this.marcaMaquina = marcaMaquina;
@@ -19,5 +20,6 @@ export class Maquina {
         this.posicaoRelativa = posicaoRelativa;
         this.id_tipoMaquina = id_tipoMaquina;
         this.id_linhaProducao = id_linhaProducao;
+        this.estado = estado;
     }
 }

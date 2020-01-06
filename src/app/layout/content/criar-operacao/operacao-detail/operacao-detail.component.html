@@ -1,6 +1,5 @@
 <div *ngIf="operacao" align= "center">
     <h2>{{operacao.descricaoOperacao | uppercase}} Detalhes</h2>
-    <div><span>id: </span>{{operacao.id}}</div>
     <div>
         <label>Descrição Operação:
             <input [(ngModel)]="operacao.descricaoOperacao" placeholder="descricao" />
@@ -8,6 +7,14 @@
         <br>
         <label>Duração Operação:
             <input [(ngModel)]="operacao.duracaoOperacao" placeholder="duracao" />
+        </label>
+        <br>
+        <label>Descricao Ferramenta:
+            <input [(ngModel)]="operacao.id_ferramenta" placeholder="descricaoFerramenta" />
+        </label>
+        <br>
+        <label>Tempo SetUp da Ferramenta:
+            <input [(ngModel)]="operacao.duracaoFerramenta" placeholder="duracaoFerramenta" />
         </label>
     </div>
     <button (click)="goBack()">Back</button>

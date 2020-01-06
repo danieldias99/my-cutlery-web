@@ -37,14 +37,16 @@ export class CriarOperacaoComponent implements OnInit {
    * @param IdOperacao Id of an operation
    * @param DescricaoOperacao brief description what the operation is about
    */
-  addOperacao(IdOperacao: string, DescricaoOperacao: string, DuracaoOperacao: string): void {
+  addOperacao(IdOperacao: string, DescricaoOperacao: string, DuracaoOperacao: string, IdFerramenta: string, DuracaoFerramenta : string): void {
     DescricaoOperacao = DescricaoOperacao.trim();
     DuracaoOperacao = DuracaoOperacao.trim();
+    IdFerramenta = IdFerramenta.trim();
+    DuracaoFerramenta = DuracaoFerramenta.trim();
     if (!IdOperacao) {
       return;
     }
 
-    this.operacaoSrv.addOperacao(new Operacao(IdOperacao, DescricaoOperacao, DuracaoOperacao))
+    this.operacaoSrv.addOperacao(new Operacao(IdOperacao, DescricaoOperacao, DuracaoOperacao, IdFerramenta, DuracaoFerramenta))
       .subscribe(
         operacao => { this.allOperacoes.push(operacao); },
         error => { this.statusMessage = "Error: Service Unavailable"; }

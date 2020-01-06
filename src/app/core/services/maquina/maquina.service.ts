@@ -52,6 +52,22 @@ export class MaquinaService {
     );
   }
 
+   /** PUT: update the Maquina on the server */
+   ativarEstado(Maquina: Maquina): Observable<any> {
+    return this.httpClient.put(this.WebApiIt1url + 'Maquina/' + `ativar`, Maquina, this.httpOptions).pipe(
+      tap(_ => this.log(`updated Maquina id=${Maquina.id}`)),
+      catchError(this.handleError<Maquina>('updateMaquina'))
+    );
+  }
+
+  /** PUT: update the Maquina on the server */
+  desativarEstado(Maquina: Maquina): Observable<any> {
+    return this.httpClient.put(this.WebApiIt1url + 'Maquina/' + `desativar`, Maquina, this.httpOptions).pipe(
+      tap(_ => this.log(`updated Maquina id=${Maquina.id}`)),
+      catchError(this.handleError<Maquina>('updateMaquina'))
+    );
+  }
+
   /** DELETE: delete the Maquina from the server */
   deleteMaquina(id: number): Observable<any> {
     return this.httpClient.delete(this.WebApiIt1url + 'Maquina/' + `${id}`, this.httpOptions).pipe(

@@ -17,6 +17,7 @@ import { LinhaProducao } from 'src/app/core/models/linha-producao';
 export class MaquinaDetailComponent implements OnInit {
 
   @Input() maquina: Maquina;
+  @Input() estado: string;
 
   tiposMaquinaAll: TipoMaquina[];
   linhasProducaoAll: LinhaProducao[];
@@ -39,6 +40,11 @@ export class MaquinaDetailComponent implements OnInit {
     this.maquinaSrv.getMaquina(id)
       .subscribe(maquinaResult => {
         this.maquina = maquinaResult;
+        if(this.maquina.estado === true){
+          this.estado = "Ligada";
+        }else{
+          this.estado = "Desligada";
+        }
         console.log(maquinaResult)
       },
         error => "Update Service Unavailable");
@@ -60,6 +66,16 @@ export class MaquinaDetailComponent implements OnInit {
 
   assLinhaProducaoMaquina(id: string) {
     this.maquina.id_linhaProducao = id;
+  }
+
+  ativarDesativar(estado : boolean) : void{
+    if(estado === true){
+      this.maquinaSrv.desativarEstado(this.maquina).subscribe(() => this.estado = "Desligada",error => "Update Service Unavailable");
+      //metodo de replaneamento do plano de producao
+    }else if(estado === false){
+      this.maquinaSrv.ativarEstado(this.maquina).subscribe(() => this.estado = "Ligada",error => "Update Service Unavailable");
+      //metodo de replaneamento do plano de producao
+    }
   }
 
   save(): void {

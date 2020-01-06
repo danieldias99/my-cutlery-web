@@ -59,7 +59,7 @@ export class MaquinaComponent implements OnInit {
       return;
     }
 
-    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, posicaoRelativa, id_tipoMaquina, id_linhaProducao))
+    this.maquinaSrv.addMaquina(new Maquina(Id_maquina, nomeMaquina, marcaMaquina, modeloMaquina, x, y, posicaoRelativa, id_tipoMaquina, id_linhaProducao, true))
       .subscribe(
         maquina => { 
           this.allMaquinas.push(maquina); 

@@ -11,7 +11,8 @@ let yMaquina: string = 'yMaquina';
 let posicaoRelativa: string = 'posicaoMaquina';
 let idTipoMaq: string = '2';
 let idLinhaProd: string = '3';
-let maquinaObj = new Maquina(idMaq, nomeMaquina, marcaMaquina, modeloMaquina, xMaquina, yMaquina, posicaoRelativa, idTipoMaq, idLinhaProd);
+let estado: boolean = true;
+let maquinaObj = new Maquina(idMaq, nomeMaquina, marcaMaquina, modeloMaquina, xMaquina, yMaquina, posicaoRelativa, idTipoMaq, idLinhaProd, estado);
 
 it('Maquina Test', () => {
     expect(maquinaObj.id).to.eq(1);
@@ -23,4 +24,6 @@ it('Maquina Test', () => {
     expect(maquinaObj.posicaoRelativa).to.eq('posicaoMaquina');
     expect(maquinaObj.id_linhaProducao).to.eq('3');
     expect(maquinaObj.id_tipoMaquina).to.eq('2');
+    expect(maquinaObj.estado).to.eq(true);
+
 })

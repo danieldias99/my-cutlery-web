@@ -7,7 +7,9 @@ import { Produto } from '../../src/app/core/models/produto.model';
 let id: string = '123';
 let descricao: string = 'goncalo';
 let duracao: string = 'duracao';
-let operacaoObj = new Operacao(id, descricao, duracao);
+let id_ferramenta: string = '2';
+let duracaoFerramenta: string = '20';
+let operacaoObj = new Operacao(id, descricao, duracao, id_ferramenta, duracaoFerramenta);
 
 // Array Operação
 let operacaoArray = new Array();

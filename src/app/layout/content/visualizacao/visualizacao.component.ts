@@ -450,6 +450,13 @@ export class VisualizacaoComponent implements OnInit {
   private apagarLinha() {
     var linhaP = this.allLinhasProducao.pop();
     var linhaPR = this.allLinhasProducaoDESENHO.pop();
+    var storg1 = this.storages.filter(i => i.id_linha == linhaP.id);
+    var maquinasLinha = this.maquinas.filter(m => m.maquina.id_linhaProducao == linhaP.id);
+    maquinasLinha.forEach(element => {
+      this.scene.remove(element.mesh);
+    });
+    this.scene.remove(storg1[0].mesh);
+    this.scene.remove(storg1[1].mesh);
     this.scene.remove(linhaPR);
     this.contTapetes--;
     this.delete(linhaP);
@@ -521,16 +528,17 @@ export class VisualizacaoComponent implements OnInit {
       //Quadrado
       alert('Sem modelo correspondente!');
     }
-
     this.contMaquinasTotal++;
   }
 
   //Apagar uma maquina - widget
   private apagarMqn() {
-    var maquina = this.maquinasDESENHO.pop();
+    var maquina = this.maquinasDESENHO[this.contMaquinasTotal - 1];
+    var maquina2 = this.maquinas.find(i => i.mesh === maquina);
     var mqn = this.allMaquinas.pop();
+    console.log(maquina);
     this.deleteMqn(mqn);
-    this.scene.remove(maquina);
+    this.scene.remove(maquina2.mesh.parent);
     this.contMaquinasTotal--;
   }
 
@@ -603,8 +611,6 @@ export class VisualizacaoComponent implements OnInit {
 
     function spot(product, spotOn) {
       var machine = self.maquinas.find(m => m.maquina.id == product.maquina.id);
-      var mesh = self.maquinasDESENHO.find(m => m.uuid == machine.mesh.uuid);
-      self.scene.remove(mesh);
       self.scene.remove(machine.mesh);
       if (spotOn) {
         self.scene.add(product.mesh);

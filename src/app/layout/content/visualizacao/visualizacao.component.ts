@@ -13,6 +13,9 @@ import { MaquinaService } from 'src/app/core/services/maquina/maquina.service';
 import { PickHelper } from '../../../../assets/ve/auxiliars/PickHelper';
 import { PlaneamentoProdutoService } from 'src/app/core/services/planeamento-produto/planeamento-produto.service';
 import { PlaneamentoProducaoMock } from 'src/app/core/moks/PlaneamentoProducaoMock';
+import { Product } from 'src/assets/ve/auxiliars/Product';
+import { Storage } from 'src/assets/ve/auxiliars/Storage';
+import { Machine } from 'src/assets/ve/auxiliars/Machine';
 
 
 @Component({
@@ -43,7 +46,9 @@ export class VisualizacaoComponent implements OnInit {
   private statusMessage: string;
   private allMaquinas: Maquina[];
   private maquinasDESENHO: any[];
-  public produtosDESENHO: any[];
+  private maquinas: Machine[];
+  public produtosDESENHO: Product[];
+  private storages: Storage[];
   private contMaquinasTotal = 0;
   private TAMANHO_MAQUINA = 4.5;
   private MACHINE_SPACE = 8;
@@ -61,6 +66,8 @@ export class VisualizacaoComponent implements OnInit {
     this.allLinhasProducaoDESENHO = new Array();
     this.maquinasDESENHO = new Array();
     this.produtosDESENHO = new Array();
+    this.storages = new Array();
+    this.maquinas = new Array();
     this.timer = new THREE.Clock();
   }
 
@@ -191,7 +198,7 @@ export class VisualizacaoComponent implements OnInit {
     this.renderer = renderer;
     this.pickHelper = pickHelper;
     this.pickPosition = pickPosition;
-
+    this.timer = new THREE.Clock();
     this.render();
 
   }
@@ -209,31 +216,54 @@ export class VisualizacaoComponent implements OnInit {
 
       self.renderer.render(self.scene, self.camera);
 
-      if (objectPicked !== undefined && objectPicked.type === 'Mesh' || objectPicked !== undefined && objectPicked.name === 'Scene') {
+      if (objectPicked !== undefined && objectPicked.type === 'Mesh') {
 
-        var index = self.allLinhasProducaoDESENHO.findIndex(i => i === objectPicked);
+        var indexL = self.allLinhasProducaoDESENHO.findIndex(i => i === objectPicked);
+        var indexM = self.maquinas.findIndex(i => i.mesh.uuid === objectPicked.parent.uuid);
+        var indexS = self.storages.findIndex(i => i.mesh === objectPicked.parent);
 
-        if (index >= 0) {
-
-          const objectBD = self.allLinhasProducao[index];
-
-          console.log(objectBD);
-
+        if (indexL >= 0) {
+          const objectBD = self.allLinhasProducao[indexL];
           self.showToolTipLinhas(objectBD, objectPicked);
-        } else {
-          index = self.maquinasDESENHO.findIndex(i => i === objectPicked);
-
-          const objectBD = self.allMaquinas[index];
-
-          console.log(objectBD);
-
-          self.showToolTipMaquinas(objectBD, objectPicked);
+        } else if (indexM >= 0) {
+          const objectBD = self.maquinas[indexM];
+          self.showToolTipMaquinas(objectBD.maquina, objectPicked);
+        } else if (indexS >= 0) {
+          const objectBD = self.storages[indexS];
+          self.showToolTipStorage(objectBD, objectPicked);
         }
       } else {
         self.hideToolTip();
       }
     }());
 
+  }
+
+  showToolTipStorage(objectBD, objectPicked) {
+    this.MENSSAGEM = this.toInfoToolTipStringStorage(objectBD);
+    var d = document.getElementById('tooltip');
+    d.style.position = "absolute";
+    d.style.color = 'white';
+    d.style.background = 'grey';
+    d.style.opacity = '1';
+    d.style.left = objectPicked.x + 'px';
+    d.style.top = objectPicked.y + 'px';
+  }
+
+  toInfoToolTipStringStorage(objectBD) {
+    if (objectBD.tipo == 'MA') {
+      var produtosEQuantidades = "";
+      var ant = '0';
+      objectBD.inside.forEach(produtoAcabado => {
+        var atual = produtoAcabado.tag;
+        if (atual !== ant) {
+          ant = atual;
+          var cont = objectBD.inside.filter(i => i.tag === produtoAcabado.tag).length;
+          produtosEQuantidades = produtosEQuantidades + "Produto: " + produtoAcabado.tag + " - " + cont + "; ";
+        }
+      });
+      return "Storage -> " + produtosEQuantidades;
+    }
   }
 
   showToolTipLinhas(objectBD, objectPicked) {
@@ -282,12 +312,13 @@ export class VisualizacaoComponent implements OnInit {
   }
 
   setTipoMaquina(id_tipoMaquina: string): string {
-    return "Furadora";
-    /*if (id_tipoMaquina === '1') {
+    if (id_tipoMaquina === '1') {
       return "Furadora";
-    } else {
-      return "Ainda a definir";
-    }*/
+    } else if (id_tipoMaquina === '2') {
+      return "Esmagadora";
+    } else if (id_tipoMaquina === '3') {
+      return "Frono";
+    }
   }
 
   hideToolTip() {
@@ -392,6 +423,27 @@ export class VisualizacaoComponent implements OnInit {
     this.scene.add(linha);
     this.allLinhasProducaoDESENHO.push(linha);
     this.contTapetes++;
+    this.desenhaStorage(comprimento + 6, descZ, posicaoLinhaX, linha, 'MA');
+    this.desenhaStorage(-comprimento - 6, descZ, posicaoLinhaX, linha, 'MP');
+  }
+
+  desenhaStorage(comprimento, posicaoLinhaZ, posicaoLinhaX, linha, tipo) {
+    let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
+    let source = '../../../../assets/ve/importedModels/Storage/caixa.gltf'; // resource url
+    let onLoad = (gltf, position) => {
+      const model = gltf.scene;
+      model.position.set(posicaoLinhaX + comprimento / 2, 3, posicaoLinhaZ);
+      this.scene.add(model);
+      this.storages.push(new Storage(tipo, model, linha, this.allLinhasProducao[this.allLinhasProducaoDESENHO.findIndex(i => i.uuid == linha.uuid)]));
+    }; // called to load resource
+    let loadingBuffer = (timer) => {
+      console.log((timer.loaded / timer.total * 100) + '% loaded');
+    } // called while loading
+    let loaderError = (error) => {
+      console.log('Error happened: ' + error);
+    } // When error is found
+    let warehousePosition = new THREE.Vector3(0, 0, 0);
+    gltfLoader.load(source, gltf => onLoad(gltf, warehousePosition), loadingBuffer, loaderError);
   }
 
   //Apagar um tapete/linha - widget
@@ -435,16 +487,16 @@ export class VisualizacaoComponent implements OnInit {
     }
   }
 
-  private desenhaMaquina(path, x, y, z) {
+  private desenhaMaquina(maquina, path, x, y, z) {
     let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
     let source = '../../../../assets/ve/importedModels/Maquinas/' + path; // resource url
     let onLoad = (gltf, position) => {
       const model = gltf.scene;
       model.position.set(x, y, z - 1);
       model.rotation.set(0, -20.40, 0);
-      console.log(model);
       this.scene.add(model);
       this.maquinasDESENHO.push(model);
+      this.maquinas.push(new Machine(maquina, model));
     }; // called to load resource
     let loadingBuffer = (timer) => {
       console.log((timer.loaded / timer.total * 100) + '% loaded');
@@ -460,11 +512,11 @@ export class VisualizacaoComponent implements OnInit {
     var linha = this.allLinhasProducao.find(i => i.id === linhaProducao);
     var descZ = -60 + (8 + (parseInt(linha.posicao_y) * parseInt(linha.largura)) + parseInt(linha.largura) / 2);
     if (maquina.id_tipoMaquina == "1") {
-      this.desenhaMaquina('FuradoraMecanica1/FuradoraMecanica1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+      this.desenhaMaquina(maquina, 'FuradoraMecanica1/FuradoraMecanica1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
     } else if (maquina.id_tipoMaquina == "2") {
-      this.desenhaMaquina('EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+      this.desenhaMaquina(maquina, 'EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
     } else if (maquina.id_tipoMaquina == "3") {
-      this.desenhaMaquina('Forno/Forno.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 6, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
+      this.desenhaMaquina(maquina, 'Forno/Forno.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 8, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2);
     } else {
       //Quadrado
       alert('Sem modelo correspondente!');
@@ -493,65 +545,150 @@ export class VisualizacaoComponent implements OnInit {
 
   planeamentoProducao() {
     var planeamento_producao = new PlaneamentoProducaoMock();
-
-    var time_to_go = 0;
     planeamento_producao.tarefas.forEach(tarefa => {
-      console.log(this.timer.getDelta());
-      while (this.timer.oldTime < time_to_go) {
-        //loop infinito
-        this.timer.getDelta();
-      }
 
-      time_to_go = time_to_go + 3000;
+      var machine = this.maquinas.find(m => m.maquina.id_tipoMaquina == tarefa.maquina && m.maquina.id_linhaProducao == tarefa.linha);
+      var indexMaquina = this.maquinasDESENHO.findIndex(m => m.uuid == machine.mesh.uuid);
 
       var linha = this.allLinhasProducao.find(l => l.id == tarefa.linha);
-      var linhaIndex = this.allLinhasProducao.findIndex(l => l.id == tarefa.linha);
-      var maquina = linha.maquinas.find(m => m.id_tipoMaquina == tarefa.maquina);
-      var indexMaquina = 3 * (parseInt(maquina.posicaoRelativa) - 1) + linhaIndex;
-      var maquinaMesh = this.getMeshByIndex(indexMaquina);
-
-      if (tarefa.ferramenta == 'Furadora Mecanica') {
-        this.desenhaMaquina1('FuradoraMecanica1/FuradoraMecanica1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
-      } else if (tarefa.ferramenta == 'Furadora Laiser') {
-        this.desenhaMaquina1('FuradoraLaser1/FuradoraLaser1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
-      } else if (tarefa.ferramenta == 'Prensa Quadrada') {
-        this.desenhaMaquina1('EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
-      } else if (tarefa.ferramenta == 'Prensa Redonda') {
-        this.desenhaMaquina1('EsmagadoraRedonda1/EsmagadoraRedonda1.gltf', maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z, indexMaquina);
-      } else if (tarefa.ferramenta == 'Aquecedor') {
-        this.desenhaMaquina1('Forno/Forno.gltf', maquinaMesh.position.x, maquinaMesh.position.y + 5, maquinaMesh.position.z, indexMaquina);
-      }
-
-      this.drawProduto(maquinaMesh.position.x, maquinaMesh.position.y, maquinaMesh.position.z);
-
-      this.scene.remove(maquinaMesh);
-
+      this.desenharMaquina1(machine.maquina, machine.maquina.posicaoRelativa, linha, tarefa, indexMaquina);
+      this.drawProduto(tarefa.produto, tarefa.tempo_execucao, machine.maquina, tarefa, linha, machine.mesh.position.x, machine.mesh.position.y, machine.mesh.position.z);
     });
+    this.anima();
   }
 
-  drawProduto(x, y, z) {
+  anima() {
+    let self: VisualizacaoComponent = this;
+
+    var time = 0;
+    var antLinha = '0';
+    var temposLinhas = new Array(self.allLinhasProducao.length);
+
+    for (var i = 0; i < temposLinhas.length; i++) {
+      temposLinhas[i] = 0;
+    }
+
+    this.produtosDESENHO.forEach(product => {
+      if (product.tarefa.linha !== antLinha && time != 0) {
+        var indexAnt = self.allLinhasProducao.findIndex(i => i.id = antLinha);
+        var indexNow = self.allLinhasProducao.findIndex(i => i.id = product.tarefa.linha);
+        if (product.tarefa.linha == '2') {
+          indexNow = 1;
+        }
+        if (antLinha == '2') {
+          indexAnt = 1;
+        }
+        if (product.tarefa.linha == '1') {
+          indexNow = 0;
+        }
+        if (antLinha == '1') {
+          indexAnt = 0;
+        }
+        if (product.tarefa.linha == '3') {
+          indexNow = 2;
+        }
+        if (antLinha == '3') {
+          indexAnt = 2;
+        }
+        temposLinhas[indexAnt] = time;
+        time = temposLinhas[indexNow];
+      }
+      window.setTimeout(function () { spot(product, true) }, time);
+      time += product.tempo_exec * 1000;
+      window.setTimeout(function () { spot(product, false) }, time);
+      antLinha = product.tarefa.linha;
+    });
+
+    this.produtosDESENHO = new Array();
+
+    function spot(product, spotOn) {
+      var machine = self.maquinas.find(m => m.maquina.id == product.maquina.id);
+      var mesh = self.maquinasDESENHO.find(m => m.uuid == machine.mesh.uuid);
+      self.scene.remove(mesh);
+      self.scene.remove(machine.mesh);
+      if (spotOn) {
+        self.scene.add(product.mesh);
+        self.desenharMaquina2(product.maquina, product.maquina.posicaoRelativa, product.linha, product.tarefa, machine);
+      } else {
+        self.scene.remove(product.mesh);
+        //self.desenharMaquina1(product.maquina, product.maquina.posicaoRelativa, product.linha, product.tarefa, machine);
+        if (product.tarefa.lastTask) {
+          var storg1 = self.storages.find(i => i.id_linha == product.tarefa.linha, i => i.tipo == 'MA');
+          storg1.inside.push(product);
+        }
+      }
+    }
+  }
+
+  drawProduto(produto, tempo_exec, maquina, tarefa, linha, x, y, z) {
+    var color_product;
+
+    if (produto == 'Colher') {
+      color_product = 'red';
+    }
+
+    if (produto == 'Garfo') {
+      color_product = 'green';
+    }
+
+    if (produto == 'Faca') {
+      color_product = 'blue';
+    }
+
+    if (tarefa.ferramenta == 'Aquecedor') {
+      y -= 3;
+    }
+
     var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    var material = new THREE.MeshPhongMaterial({ color: color_product, shininess: 150 });
     var cube = new THREE.Mesh(geometry, material);
     cube.position.set(x, y + 4, z + 1);
-    this.scene.add(cube);
-    this.produtosDESENHO.push(cube);
+    this.produtosDESENHO.push(new Product(produto, cube, tempo_exec, x, y + 4, z + 1, maquina, linha, tarefa));
   }
 
   getMeshByIndex(indexMaquina: number) {
     return this.maquinasDESENHO[indexMaquina];
   }
 
-  private desenhaMaquina1(path, x, y, z, index) {
+  desenharMaquina2(maquina: Maquina, posicao, linha, tarefa, machine) {
+    var descZ = -60 + (8 + (parseInt(linha.posicao_y) * parseInt(linha.largura)) + parseInt(linha.largura) / 2);
+    if (tarefa.ferramenta == 'Furadora Mecanica') {
+      this.desenhaMaquina1('FuradoraMecanica2/FuradoraMecanica2.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Furadora Laiser') {
+      this.desenhaMaquina1('FuradoraLaser2/FuradoraLaser2.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Prensa Quadrada') {
+      this.desenhaMaquina1('EsmagadoraPrensa2/EsmagadoraPrensa2.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Prensa Redonda') {
+      this.desenhaMaquina1('EsmagadoraRedonda2/EsmagadoraRedonda2.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Aquecedor') {
+      this.desenhaMaquina1('Forno/Forno.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 8, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    }
+  }
+
+  desenharMaquina1(maquina: Maquina, posicao, linha, tarefa, machine) {
+    var descZ = -60 + (8 + (parseInt(linha.posicao_y) * parseInt(linha.largura)) + parseInt(linha.largura) / 2);
+    if (tarefa.ferramenta == 'Furadora Mecanica') {
+      this.desenhaMaquina1('FuradoraMecanica1/FuradoraMecanica1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Furadora Laiser') {
+      this.desenhaMaquina1('FuradoraLaser1/FuradoraLaser1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Prensa Quadrada') {
+      this.desenhaMaquina1('EsmagadoraPrensa1/EsmagadoraPrensa1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Prensa Redonda') {
+      this.desenhaMaquina1('EsmagadoraRedonda1/EsmagadoraRedonda1.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 3, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    } else if (tarefa.ferramenta == 'Aquecedor') {
+      this.desenhaMaquina1('Forno/Forno.gltf', (parseInt(linha.posicao_x) - ((parseInt(linha.comprimento) / 2) - 6)) + (((parseInt(linha.comprimento) / 2) - 6) * (posicao - 1)), 8, descZ - parseInt(linha.largura) / 2 - this.TAMANHO_MAQUINA / 2, machine);
+    }
+  }
+
+  private desenhaMaquina1(path, x, y, z, machine) {
     let gltfLoader = new THREE.GLTFLoader(); // Loader for Lamps
     let source = '../../../../assets/ve/importedModels/Maquinas/' + path; // resource url
     let onLoad = (gltf, position) => {
       const model = gltf.scene;
       model.position.set(x, y, z - 1);
       model.rotation.set(0, -20.40, 0);
-      console.log(model);
       this.scene.add(model);
-      this.maquinasDESENHO[index] = model;
+      machine.mesh = model;
     }; // called to load resource
     let loadingBuffer = (timer) => {
       console.log((timer.loaded / timer.total * 100) + '% loaded');

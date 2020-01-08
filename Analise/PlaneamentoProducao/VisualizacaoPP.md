@@ -43,7 +43,6 @@
     ]
 ]
 ```
-
 ## Animação do chão de fábrica com o PP
 
 - Máquinas

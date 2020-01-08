@@ -65,3 +65,8 @@
 ## Design
 
 ![visualizacao-pp.png](VisualizaçãoPlanoProdução.png)
+
+
+## Testes
+
+- Utilização de um Mock para testar a animação consoante um plano de produção exemplo.

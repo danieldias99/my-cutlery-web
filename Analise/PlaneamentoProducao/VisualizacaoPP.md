@@ -61,3 +61,7 @@
 - Storage
     - Representado por uma caixa sem tampa.
     - Tooltip para identificar os produtos e as quantidades dos mesmos já concluidos.
+
+## Design
+
+![visualizacao-pp.png](VisualizaçãoPlanoProdução.png)

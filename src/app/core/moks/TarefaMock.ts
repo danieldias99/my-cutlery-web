@@ -5,11 +5,12 @@ export class TarefaMock {
     maquina: string;
     operacao: number;
     ferramenta: string;
-    produto: number;
+    produto: string;
     tempo_setup: number;
     tempo_execucao: number;
+    lastTask: boolean;
 
-    constructor(linha: string, maquina: string, operacao: number, ferramenta: string, produto: number, tempo_setup: number, tempo_execucao: number) {
+    constructor(linha: string, maquina: string, operacao: number, ferramenta: string, produto: string, tempo_setup: number, tempo_execucao: number, lastTask: boolean) {
         this.linha = linha;
         this.maquina = maquina;
         this.operacao = operacao;
@@ -17,5 +18,6 @@ export class TarefaMock {
         this.produto = produto;
         this.tempo_setup = tempo_setup;
         this.tempo_execucao = tempo_execucao;
+        this.lastTask = lastTask;
     }
 }
